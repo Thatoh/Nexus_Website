@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* For PartnersSlider animation */
+@keyframes infinite-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+}
+
+/* Custom scrollbar for chat modal messages */
+.chat-modal-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-modal-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat-modal-messages::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.chat-modal-messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* CSS for scrolling text word animation in DomainSearch */
+.scrolling-text .word {
+    transition: background-size 0.4s ease-in-out;
+}
+
+/* Vibrant green text input cursor (caret) */
+input,
+textarea {
+    caret-color: #00FF00;
+}
