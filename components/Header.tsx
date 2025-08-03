@@ -98,8 +98,8 @@ const Header: React.FC = () => {
         <div className="flex items-center h-20"> {/* Main flex container for header content */}
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-3xl font-extrabold tracking-tight text-nexusbyte-accent-green hover:opacity-80 transition-opacity">
-              NexusByte
+            <Link to="/" className="hover:opacity-80 transition-opacity">
+              <img src="/logo/logo-w.png" alt="NexusByte" className="h-12 w-auto" />
             </Link>
           </div>
 

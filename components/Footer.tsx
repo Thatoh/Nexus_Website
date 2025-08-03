@@ -35,7 +35,9 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Mission */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h5 className="text-xl font-semibold text-white mb-4">NexusByte</h5>
+            <div className="mb-4">
+              <img src="/logo/logo-footer.png" alt="NexusByte" className="h-8 w-auto" />
+            </div>
             <p className="text-sm leading-relaxed">{COMPANY_MISSION}</p>
           </div>
 
