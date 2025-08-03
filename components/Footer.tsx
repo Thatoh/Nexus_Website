@@ -2,23 +2,25 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { FOOTER_LINKS, COMPANY_MISSION } from '../constants';
-import { XIcon, LinkedInIcon, FacebookIcon, GmailIcon, InstagramIcon, MicrosoftIcon, GithubIcon, DiscordIcon, CogIcon } from './icons'; // Added CogIcon
-import { useCookieConsent } from '../contexts/CookieConsentContext'; // Import useCookieConsent
+import { XIcon, LinkedInIcon, FacebookIcon, GmailIcon, InstagramIcon, MicrosoftIcon, GithubIcon, DiscordIcon, CogIcon } from './icons';
+import { useCookieConsent } from '../contexts/CookieConsentContext';
+// Add react-icons/si imports for payment methods
+import {
+  SiVisa,
+  SiMastercard,
+  SiAmericanexpress,
+  SiDiscover,
+  SiDinersclub,
+  SiJcb,
+  SiBitcoin,
+  SiPaypal,
+  SiGooglepay,
+  SiApplepay,
+  SiAlipay
+} from 'react-icons/si';
+import { FaCreditCard } from 'react-icons/fa'; // For UnionPay fallback
 
-const paymentMethods = [
-  { name: 'VISA', bgColor: 'bg-blue-600', textColor: 'text-white' },
-  { name: 'MC', bgColor: 'bg-red-500', textColor: 'text-white' },
-  { name: 'AMEX', bgColor: 'bg-blue-500', textColor: 'text-white' },
-  { name: 'Discover', bgColor: 'bg-orange-500', textColor: 'text-white' },
-  { name: 'Diners', bgColor: 'bg-sky-600', textColor: 'text-white' },
-  { name: 'JCB', bgColor: 'bg-green-600', textColor: 'text-white' },
-  { name: 'UnionPay', bgColor: 'bg-red-700', textColor: 'text-white' },
-  { name: 'Bitcoin', bgColor: 'bg-yellow-500', textColor: 'text-black' },
-  { name: 'PayPal', bgColor: 'bg-blue-700', textColor: 'text-white' },
-  { name: 'G Pay', bgColor: 'bg-gray-200', textColor: 'text-black' }, // Google Pay often uses multicolor, simplified here
-  { name: 'Apple Pay', bgColor: 'bg-black', textColor: 'text-white' },
-  { name: 'Alipay', bgColor: 'bg-blue-400', textColor: 'text-white' },
-];
+
 
 
 const Footer: React.FC = () => {
@@ -94,23 +96,23 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Payment Options Section */}
-        <div className="my-12">
-          <h5 className="text-xl font-semibold text-white mb-6 text-center md:text-left">Payment Options</h5>
-          <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-4">
-            {paymentMethods.slice(0, 7).map(method => (
-              <div key={method.name} title={method.name} className={`flex items-center justify-center h-10 w-16 rounded-md shadow-md text-xs font-bold ${method.bgColor} ${method.textColor}`}>
-                {method.name === 'MC' ? 'MCard' : method.name}
-              </div>
-            ))}
+        <div className="py-6">
+          <h5 className="text-lg font-semibold text-white mb-4">Payment Options</h5>
+          <div className="flex flex-wrap items-center gap-4">
+            <SiVisa title="Visa" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiMastercard title="MasterCard" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiAmericanexpress title="American Express" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiDiscover title="Discover" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiDinersclub title="Diners Club" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiJcb title="JCB" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <FaCreditCard title="UnionPay" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiBitcoin title="Bitcoin" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiPaypal title="PayPal" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiGooglepay title="Google Pay" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiApplepay title="Apple Pay" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
+            <SiAlipay title="Alipay" className="w-8 h-8 text-gray-300 hover:opacity-80 transition-opacity cursor-pointer" />
           </div>
-          <div className="flex flex-wrap justify-center md:justify-start gap-3">
-            {paymentMethods.slice(7).map(method => (
-              <div key={method.name} title={method.name} className={`flex items-center justify-center h-10 w-16 rounded-md shadow-md text-xs font-bold ${method.bgColor} ${method.textColor}`}>
-                {method.name}
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-gray-400 mt-6 text-center md:text-left">We protect and save your data.</p>
+          <p className="mt-4 text-sm text-gray-400">We protect and save your data.</p>
         </div>
 
 

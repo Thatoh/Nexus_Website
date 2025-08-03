@@ -11,7 +11,7 @@ import DomainSearchForm from './domainSearch/DomainSearchForm';
 import SearchResults from './domainSearch/SearchResults';
 import ScrollingQuotes from './domainSearch/ScrollingQuotes';
 
-const UNSPLASH_IMAGE_URL = "https://images.unsplash.com/photo-1510166089228-9fba037b5d19?auto=format&fit=crop&w=1920&q=80";
+const BACKGROUND_IMAGE_URL = "/images/resources/ab-1.jpg";
 
 type SearchStatus = 'idle' | 'searching' | 'suggesting' | 'success' | 'error';
 
@@ -88,62 +88,63 @@ const DomainSearch: React.FC = () => {
   const isLoading = status === 'searching' || status === 'suggesting';
 
   return (
-    <section className="relative w-full min-h-screen bg-gray-50">
-      {/* Background Image Container. This div defines the total scrollable height for the effect. */}
-      {/* pointer-events-none allows clicks to pass through to sections below if they were somehow positioned under this. */}
-      <div className="absolute inset-0 w-full h-[2200px] pointer-events-none"> {/* Height controls total scroll length for animation */}
+    <section className="relative w-full min-h-screen bg-gray-50 overflow-hidden">
+      {/* Background Image Container - Contained within this section only */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
         <img 
-          src={UNSPLASH_IMAGE_URL} 
+          src={BACKGROUND_IMAGE_URL} 
           alt="Abstract background" 
           className="absolute inset-0 w-full h-full object-cover z-0" 
           aria-hidden="true"
         />
-        {/* The white overlay is now part of the sticky content div below */}
       </div>
 
-      {/* Sticky Content Area - This sticks to the top for one screen height and now includes the bg-white/95 overlay */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden z-20 bg-white/95">
-        <div className="flex flex-col h-full"> {/* Ensures children can use flex-grow */}
-          
-          {/* Content that appears above the scrolling text */}
-          <div ref={contentAboveScrollingTextRef}>
-            <div className="pt-24 md:pt-32 text-center">
-              <div className="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-nexusbyte-primary-dark mb-4">
-                  Find Your Perfect Domain
-                </h2>
-                <p className="text-lg text-gray-700 mb-8">
-                  Start your online journey with a unique domain name. Powered by Nova AI suggestions.
-                </p>
-                
-                <DomainSearchForm 
-                  domainName={domainName}
-                  setDomainName={setDomainName}
-                  onSearch={handleSearch}
-                  isLoading={isLoading}
-                />
+      {/* Content Container with scroll-responsive background */}
+      <div className="relative z-10 min-h-screen">
+        {/* Sticky Content Area - This sticks to the top for one screen height */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden bg-white/85">
+          <div className="flex flex-col h-full">
+            
+            {/* Content that appears above the scrolling text */}
+            <div ref={contentAboveScrollingTextRef}>
+              <div className="pt-24 md:pt-32 text-center">
+                <div className="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+                  <h2 className="text-4xl md:text-5xl font-bold text-nexusbyte-primary-dark mb-4">
+                    Find Your Perfect Domain
+                  </h2>
+                  <p className="text-lg text-gray-700 mb-8">
+                    Start your online journey with a unique domain name. Powered by Nova AI suggestions.
+                  </p>
+                  
+                  <DomainSearchForm 
+                    domainName={domainName}
+                    setDomainName={setDomainName}
+                    onSearch={handleSearch}
+                    isLoading={isLoading}
+                  />
 
-                <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8">
-                  <Link to="/register-domain" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">Register a domain</Link>
-                  <Link to="/signup" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">SignUp</Link>
-                  <Link to="/signin" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">Customer Signin</Link>
+                  <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8">
+                    <Link to="/register-domain" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">Register a domain</Link>
+                    <Link to="/signup" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">SignUp</Link>
+                    <Link to="/signin" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">Customer Signin</Link>
+                  </div>
+                  
+                  <SearchResults
+                    status={status}
+                    searchResult={searchResult}
+                    availability={availability}
+                    suggestions={suggestedDomains}
+                    suggestionsError={suggestionsError}
+                    onSuggestionClick={handleSuggestionClick}
+                    isLoading={isLoading}
+                  />
                 </div>
-                
-                <SearchResults
-                  status={status}
-                  searchResult={searchResult}
-                  availability={availability}
-                  suggestions={suggestedDomains}
-                  suggestionsError={suggestionsError}
-                  onSuggestionClick={handleSuggestionClick}
-                  isLoading={isLoading}
-                />
               </div>
             </div>
+            
+            {/* Scrolling Quotes Area - This will take up remaining space and handle its own scroll animation */}
+            <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
           </div>
-          
-          {/* Scrolling Quotes Area - This will take up remaining space and handle its own scroll animation */}
-          <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
         </div>
       </div>
     </section>
