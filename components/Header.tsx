@@ -20,30 +20,11 @@ const Header: React.FC = () => {
   const loginIconRef = useRef<HTMLButtonElement>(null); // Ref for login icon
   const loginDropdownRef = useRef<HTMLDivElement>(null); // Ref for login dropdown
   
-  const [closeMenuTimer, setCloseMenuTimer] = useState<number | null>(null);
-
   const { getCartItemCount } = useCart(); // Get cart count
   const cartItemCount = getCartItemCount();
 
   const closeMegaMenuCompletely = () => {
-    if (closeMenuTimer) window.clearTimeout(closeMenuTimer);
-    setCloseMenuTimer(null);
     setActiveMegaMenu(null);
-  };
-
-  const handleMenuCloseIntent = () => {
-    if (closeMenuTimer) window.clearTimeout(closeMenuTimer);
-    const timerId = window.setTimeout(() => {
-      setActiveMegaMenu(null); 
-    }, 250); 
-    setCloseMenuTimer(timerId);
-  };
-
-  const cancelMenuCloseIntent = () => {
-    if (closeMenuTimer) {
-      window.clearTimeout(closeMenuTimer);
-      setCloseMenuTimer(null);
-    }
   };
 
   useEffect(() => {
@@ -55,7 +36,6 @@ const Header: React.FC = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const handleNavItemClick = (itemId: string, hasMegaMenu?: boolean) => {
-    cancelMenuCloseIntent(); 
     if (hasMegaMenu) {
       setActiveMegaMenu(prev => (prev === itemId ? null : itemId));
     } else {
@@ -87,9 +67,8 @@ const Header: React.FC = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      if (closeMenuTimer) window.clearTimeout(closeMenuTimer); 
     };
-  }, [closeMenuTimer]);
+  }, []);
 
 
   return (
@@ -110,17 +89,6 @@ const Header: React.FC = () => {
                 key={item.id}
                 className="relative group"
                 ref={(el) => { navItemRefs.current[item.id] = el; }}
-                onMouseEnter={() => {
-                  if (item.megaMenuContent) {
-                    cancelMenuCloseIntent();
-                    setActiveMegaMenu(item.id);
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (item.megaMenuContent) {
-                    handleMenuCloseIntent();
-                  }
-                }}
               >
                 <button
                   onClick={() => handleNavItemClick(item.id, !!item.megaMenuContent)}
@@ -151,8 +119,6 @@ const Header: React.FC = () => {
                     content={item.megaMenuContent}
                     onClose={closeMegaMenuCompletely} 
                     parentRef={{ current: navItemRefs.current[item.id] }}
-                    onMouseEnterMenu={cancelMenuCloseIntent}
-                    onMouseLeaveMenu={handleMenuCloseIntent}
                   />
                 )}
               </div>

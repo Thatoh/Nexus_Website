@@ -10,17 +10,13 @@ interface MegaMenuProps {
   content?: NewNavLinkMegaMenuContent;
   onClose: () => void;
   parentRef: React.RefObject<HTMLDivElement>;
-  onMouseEnterMenu?: () => void;
-  onMouseLeaveMenu?: () => void;
 }
 
 const MegaMenu: React.FC<MegaMenuProps> = ({
   isOpen,
   content,
   onClose,
-  parentRef,
-  onMouseEnterMenu,
-  onMouseLeaveMenu
+  parentRef
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [position, setPosition] = useState<{ top: number } | null>(null);
@@ -74,8 +70,6 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             top: `${position.top}px`,
             left: '0px', // Align to the left edge of the viewport
           }}
-          onMouseEnter={onMouseEnterMenu}
-          onMouseLeave={onMouseLeaveMenu}
         >
           <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8"> {/* Content wrapper */}
             <div className="flex h-full"> {/* Existing flex container for left/right panels */}
