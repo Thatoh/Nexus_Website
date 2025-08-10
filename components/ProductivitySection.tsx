@@ -28,13 +28,24 @@ const ProductivitySection: React.FC = () => {
   const activeTile = activeCubeId ? microsoftTiles.find(tile => tile.id === activeCubeId) : null;
 
   return (
-    <section className="py-16 md:py-24 bg-white"> {/* Changed background to bg-white */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/resources/festival_2.png')`,
+        }}
+      />
+      {/* Dark Overlay for better readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-nexusbyte-primary-dark">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Elevate Your Productivity
           </h2>
-          <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
             Discover Microsoft solutions designed to empower your team, streamline workflows, and drive innovation.
           </p>
         </div>

@@ -2,7 +2,7 @@
 
 
 import React, { useState, useCallback, useRef } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { generateDomainSuggestions } from '../services/geminiService';
 import { SuggestedDomain } from '../types';
 

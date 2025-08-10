@@ -1,39 +1,165 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const slides = [
+interface Slide {
+    title: string;
+    description: string;
+    image: string;
+    isVideo?: boolean;
+}
+
+const slides: Slide[] = [
     {
         title: "AI",
         description: "Artificial Intelligence Services",
-        image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop"
+        image: "/vid/panel_1.mp4",
+        isVideo: true
     },
     {
         title: "Cloud",
         description: "Cloud Migration & Management",
-        image: "https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=2070&auto=format&fit=crop"
+        image: "/vid/panel_2.mp4",
+        isVideo: true
     },
     {
         title: "ICT",
         description: "ICT Support Solutions",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+        image: "/vid/panel_3.mp4",
+        isVideo: true
     },
     {
         title: "Cyber",
         description: "Cybersecurity and Compliance",
-        image: "https://images.unsplash.com/photo-1585224329712-61501918ac59?q=80&w=2070&auto=format&fit=crop"
+        image: "/vid/panel_4.mp4",
+        isVideo: true
     },
     {
         title: "Hybrid",
         description: "Hybrid Work Environments",
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop"
+        image: "/vid/panel_5.mp4",
+        isVideo: true
     },
     {
         title: "Web-hosting",
         description: "Reliable & Fast Web Hosting",
-        image: "https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=2071&auto=format&fit=crop"
+        image: "/vid/panel_6.mp4",
+        isVideo: true
     }
 ];
+
+const VideoHandler: React.FC<{ src: string; className?: string }> = ({ src, className }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) {
+      console.error('Video ref not found');
+      return;
+    }
+
+    console.log('Setting up video handler for:', src);
+    console.log('Video element:', video);
+
+    const handleLoadStart = () => {
+      console.log('Video loading started:', src);
+      setIsLoading(true);
+    };
+    
+    const handleCanPlay = () => {
+      console.log('Video can play:', src);
+      setIsLoading(false);
+    };
+    
+    const handleCanPlayThrough = () => {
+      console.log('Video can play through:', src);
+      setIsLoading(false);
+    };
+    
+    const handleError = (e: Event) => {
+      console.error('Video error:', src, e);
+      setHasError(true);
+      setIsLoading(false);
+    };
+
+    const handleLoadedData = () => {
+      console.log('Video data loaded:', src);
+      setIsLoading(false);
+    };
+
+    video.addEventListener('loadstart', handleLoadStart);
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('canplaythrough', handleCanPlayThrough);
+    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('error', handleError);
+
+    // Set video attributes for better loading
+    video.preload = 'auto';
+    video.muted = true;
+    video.playsInline = true;
+    video.loop = true;
+
+    // Try to play the video
+    const playVideo = async () => {
+      try {
+        await video.play();
+        console.log('Video started playing:', src);
+      } catch (error) {
+        console.error('Failed to play video:', error);
+      }
+    };
+
+    playVideo();
+
+    return () => {
+      video.removeEventListener('loadstart', handleLoadStart);
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('canplaythrough', handleCanPlayThrough);
+      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('error', handleError);
+    };
+  }, [src]);
+
+  if (hasError) {
+    return (
+      <div className={`${className} bg-gray-800 flex items-center justify-center`}>
+        <span className="text-white text-sm">Video unavailable</span>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {isLoading && (
+        <div className={`${className} bg-gray-800 flex items-center justify-center`}>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+        </div>
+      )}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        style={{ 
+          objectFit: 'cover',
+          transition: 'opacity 0.3s ease-in-out'
+        }}
+        onError={(e) => {
+          console.error('Video failed to load:', src, e);
+          setHasError(true);
+        }}
+      >
+        <source src={src} type="video/mp4" />
+        <source src="/vid/main_1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </>
+  );
+};
 
 const HeroSlider: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -53,12 +179,7 @@ const HeroSlider: React.FC = () => {
         <motion.div
           {...{
             key: slide.title,
-            className: "relative h-full cursor-pointer group",
-            style: {
-              backgroundImage: `url(${slide.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            },
+            className: "relative h-full cursor-pointer group overflow-hidden",
             onMouseEnter: () => setHoveredIndex(index),
             animate: {
               flex: hoveredIndex === index ? 4 : hoveredIndex !== null ? 0.75 : 1,
@@ -67,6 +188,22 @@ const HeroSlider: React.FC = () => {
             transition: springTransition,
           } as any}
         >
+          {/* Background Image or Video */}
+          {slide.isVideo ? (
+            <VideoHandler 
+              src={slide.image} 
+              className="absolute inset-0 w-full h-full" 
+            />
+          ) : (
+            <div
+              className="absolute inset-0 w-full h-full"
+              style={{
+                backgroundImage: `url(${slide.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          )}
           {/* Dark Overlay */}
           <motion.div
             {...{
