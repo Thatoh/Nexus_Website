@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router';
 import { NAV_ITEMS } from '../constants';
 import { NavItem } from '../types';
 import MegaMenu from './MegaMenu';
-import { MenuIcon, XMarkIcon, ChevronDownIcon, UserCircleIcon, ShoppingCartIcon } from './icons'; // Added UserCircleIcon, ShoppingCartIcon
+import { MenuIcon, XMarkIcon, ChevronDownIcon, UserCircleIcon, ShoppingCartIcon, TicketIcon } from './icons'; // Added UserCircleIcon, ShoppingCartIcon, TicketIcon
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../contexts/CartContext'; // Added useCart
 
@@ -217,6 +217,18 @@ const Header: React.FC = () => {
                   </span>
                 )}
               </Link>
+
+              {/* Support Menu Option - Text Only */}
+              <a
+                href="https://www.ticketing.nexusbyte.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-nexusbyte-accent-green transition-colors focus:outline-none text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700"
+                aria-label="Support and ticketing system"
+                title="Support & Ticketing System"
+              >
+                Support
+              </a>
             </div>
             
             {/* Mobile Menu Toggle */}
@@ -305,7 +317,7 @@ const Header: React.FC = () => {
                   )}
                 </div>
               ))}
-              {/* Added User/Cart links for mobile */}
+              {/* Added User/Cart/Support links for mobile */}
               <div className="border-t border-gray-700 mt-3 pt-3 space-y-1">
                 <Link
                   to="/signin"
@@ -321,6 +333,15 @@ const Header: React.FC = () => {
                 >
                   Sign Up
                 </Link>
+                <a
+                  href="https://www.ticketing.nexusbyte.co.za"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                >
+                  Support
+                </a>
                 <Link
                   to="/cart"
                   onClick={() => setIsMobileMenuOpen(false)}

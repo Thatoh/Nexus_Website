@@ -63,37 +63,78 @@ const HybridWorkPage: React.FC = () => {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <UsersIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
-          >
-            Hybrid Work Solutions
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-          >
-            NexusByte’s Hybrid Work Solutions empower your team to thrive—whether remote, on-site, or on the move. We deliver secure access, seamless communication, and cloud-based productivity tools that ensure continuity without compromising performance.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.4 }}
-            className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
-            <blockquote className="text-xl italic text-gray-200 leading-relaxed">
-            "Hybrid work isn’t just a setup—it’s a strategic advantage."
-            </blockquote>
-        </motion.div>
-        </div>
-      </section>
+     {/* Hero Section (full screen) */}
+<section className="relative isolate bg-nexusbyte-primary-dark text-white min-h-[100svh] flex items-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-16 overflow-hidden">
+  {/* Optional faint icon watermark */}
+  <div className="pointer-events-none absolute inset-0 opacity-10">
+    <UsersIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-300/40 rotate-12" />
+  </div>
+
+  {/* Blurred gradient blob (top) */}
+  <div
+    aria-hidden="true"
+    className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+  >
+    <div
+      style={{
+        clipPath:
+          'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+      }}
+      className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72rem]"
+    />
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 mx-auto max-w-4xl text-center">
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
+    >
+      Hybrid Work Solutions
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
+    >
+      NexusByte’s Hybrid Work Solutions empower your team to thrive—whether remote, on-site, or on the move. We deliver secure access, seamless communication, and cloud-based productivity tools that ensure continuity without compromising performance.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="mt-8 text-center max-w-2xl mx-auto bg-white/5 p-6 rounded-lg shadow-lg ring-1 ring-white/10 backdrop-blur"
+    >
+      <blockquote className="text-xl italic text-gray-100 leading-relaxed">
+        "Hybrid work isn’t just a setup—it’s a strategic advantage."
+      </blockquote>
+    </motion.div>
+  </div>
+
+  {/* Blurred gradient blob (bottom) */}
+  <div
+    aria-hidden="true"
+    className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+  >
+    <div
+      style={{
+        clipPath:
+          'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+      }}
+      className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72rem]"
+    />
+  </div>
+</section>
+
 
       {/* What We Offer Section */}
-      <Section title="What We Offer" className="bg-gray-50">
-        <div className="grid md:grid-cols-2 gap-8 mt-12">
+      <Section title="What We Offer" className="bg-gray-50 py-16 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 mt-8">
             {whatWeOfferData.map((offering, index) => {
                 const Icon = offering.icon;
                 return (
@@ -144,8 +185,8 @@ const HybridWorkPage: React.FC = () => {
       </Section>
       
       {/* Pricing Section */}
-      <Section title="Pricing Packages (Indicative)" className="bg-gray-50" subtitle="Volume and NPO discounts available.">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-12">
+      <Section title="Pricing Packages (Indicative)" className="bg-gray-50 py-16 md:py-20" subtitle="Volume and NPO discounts available.">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-8">
             {pricingData.map((plan, index) => (
                  <motion.div
                     key={index}
@@ -189,14 +230,14 @@ const HybridWorkPage: React.FC = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section title="Bridge the Office Gap—Securely" className="bg-nexusbyte-primary-dark" textWhite
+      <Section title="Bridge the Office Gap—Securely" className="bg-nexusbyte-primary-dark py-16 md:py-20" textWhite
                subtitle="Empower your people, wherever they are.">
         <motion.div 
             initial={{ opacity:0, y:20 }} 
             whileInView={{ opacity:1, y:0 }} 
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration:0.6, delay:0.2 }}
-            className="mt-10"
+            className="mt-8"
         >
             <a
               href="mailto:hybrid@nexusbyte.co.za?subject=Inquiry about Hybrid Work Solutions"

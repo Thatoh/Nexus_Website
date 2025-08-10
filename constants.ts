@@ -398,7 +398,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: 'solutions',
     title: 'Solutions',
-    path: '/solutions', 
+    path: '/solutions',
     megaMenuContent: solutionsMegaMenu,
   },
   {
@@ -411,35 +411,35 @@ export const NAV_ITEMS: NavItem[] = [
     id: 'insights',
     title: 'Insights',
     path: '/insights',
-    megaMenuContent: insightsMegaMenu, 
+    megaMenuContent: insightsMegaMenu,
   },
   {
     id: 'ai',
     title: 'AI',
     path: '/ai',
-    megaMenuContent: aiMegaMenu, 
+    megaMenuContent: aiMegaMenu,
   },
   {
     id: 'hybrid-solutions',
     title: 'Hybrid',
     path: '/hybrid-solutions', // Path in NAV_ITEM
-    megaMenuContent: hybridSolutionsMegaMenu, 
+    megaMenuContent: hybridSolutionsMegaMenu,
   },
   {
     id: 'connectivity',
-    title: 'Connectivity',
+    title: 'Connect',
     path: '/solutions/connectivity',
     megaMenuContent: connectivityMegaMenu,
   },
-  { 
-    id: 'ticketing-system', 
-    title: 'Ticketing System', 
+  {
+    id: 'ticketing-system',
+    title: 'Ticket System',
     path: '/ticketing-system',
     megaMenuContent: ticketingSystemMegaMenu,
   },
-  { 
-    id: 'bytedesk', 
-    title: 'ByteDesk', 
+  {
+    id: 'bytedesk',
+    title: 'ByteDesk',
     path: '/bytedesk',
     megaMenuContent: byteDeskMegaMenu,
   },
@@ -480,8 +480,8 @@ export const FOOTER_LINKS = { // Updated to reflect new main nav items, if neces
     { title: 'Insights', href: '/insights' },
     { title: 'AI', href: '/ai' },
     { title: 'Hybrid', href: '/hybrid-solutions' },
-    { title: 'Connectivity', href: '/solutions/connectivity' },
-    { title: 'Ticketing System', href: '/ticketing-system' },
+    { title: 'Connect', href: '/solutions/connectivity' },
+    { title: 'Ticket System', href: '/ticketing-system' },
     { title: 'ByteDesk', href: '/bytedesk' },
   ],
   support: [
