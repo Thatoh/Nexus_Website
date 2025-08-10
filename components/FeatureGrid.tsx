@@ -18,7 +18,7 @@ const FeatureGrid: React.FC<FeatureGridProps> = ({ tiles, onCubeClick, activeCub
         className: "grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8",
         initial: { opacity: 1 },
         animate: { opacity: activeCubeId ? 0.3 : 1 }, // Fade out grid if a cube is active
-        transition: { duration: 0.3 },
+        transition: { duration: 0.15 },
       } as any}
     >
       {tiles.map((tile, index) => (

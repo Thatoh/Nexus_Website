@@ -19,10 +19,10 @@ const ProductivitySection: React.FC = () => {
 
   const handleCloseOverlay = () => {
     setActiveCubeId(null);
-    // Restore focus to the last clicked cube
-    setTimeout(() => { // Timeout helps ensure the element is focusable after layout changes
-        lastFocusedCubeRef?.current?.focus();
-    }, 50); 
+    // Restore focus immediately without timeout
+    requestAnimationFrame(() => {
+      lastFocusedCubeRef?.current?.focus();
+    });
   };
 
   const activeTile = activeCubeId ? microsoftTiles.find(tile => tile.id === activeCubeId) : null;

@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckIcon, ArrowRightIcon, ShieldCheckIcon, CloudArrowUpIcon, BriefcaseIcon, UsersIcon } from '../../../components/icons';
+import StandardHeroSection from '../../../components/StandardHeroSection';
 
 // Reusable Section Component
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string; textWhite?: boolean}> = ({ title, subtitle, children, className = 'py-16 md:py-20', textWhite }) => (

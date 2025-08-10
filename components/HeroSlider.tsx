@@ -134,3 +134,4 @@ const HeroSlider: React.FC = () => {
 }
 
 export default HeroSlider;
+ 

@@ -71,11 +71,14 @@ const AIAgentsAutomationPage: React.FC = () => {
   return (
     <div className="bg-white text-nexusbyte-primary-dark">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center text-white py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-nexusbyte-primary-dark to-gray-800">
-        <div className="absolute inset-0 opacity-10">
-          {/* Placeholder for abstract background animation */}
-          <CpuChipIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-          <BoltIcon className="absolute bottom-1/4 right-1/4 w-48 h-48 text-gray-700 transform -rotate-12" />
+      <section className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/gif/hello.gif" 
+            alt="AI Agents in action" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-nexusbyte-primary-dark/70 to-gray-800/80"></div>
         </div>
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <motion.h1 

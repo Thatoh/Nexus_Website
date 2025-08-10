@@ -1,6 +1,6 @@
 import { ProductTile } from '../types';
-// Placeholder icons - consider replacing with actual Microsoft product icons if available
-import { BriefcaseIcon, UsersIcon, CloudArrowUpIcon, CpuChipIcon } from '../components/icons';
+// Microsoft product icons
+import { MicrosoftOfficeIcon, MicrosoftTeamsIcon, MicrosoftAzureIcon, MicrosoftCopilotIcon } from '../components/microsoftIcons';
 
 export const microsoftTiles: ProductTile[] = [
   {
@@ -9,7 +9,7 @@ export const microsoftTiles: ProductTile[] = [
     tagline: 'Office Apps & Email',
     longDescription: 'Create, edit & share from anywhere',
     color: 'red',
-    icon: BriefcaseIcon,
+    icon: MicrosoftOfficeIcon,
     heroCopy: [
       {
         header: 'Desktop & Web Apps',
@@ -26,7 +26,7 @@ export const microsoftTiles: ProductTile[] = [
     tagline: 'Teams & Collaboration',
     longDescription: 'Meet, chat & co-create',
     color: 'green',
-    icon: UsersIcon,
+    icon: MicrosoftTeamsIcon,
     heroCopy: [
       {
         header: 'Unified Communications',
@@ -43,7 +43,7 @@ export const microsoftTiles: ProductTile[] = [
     tagline: 'Innovate & Scale with Azure',
     longDescription: 'Build, deploy & manage applications',
     color: 'blue',
-    icon: CloudArrowUpIcon,
+    icon: MicrosoftAzureIcon,
     heroCopy: [
       {
         header: 'Comprehensive Cloud Platform',
@@ -59,8 +59,8 @@ export const microsoftTiles: ProductTile[] = [
     title: 'Microsoft Copilot',
     tagline: 'Your AI Companion',
     longDescription: 'Boost productivity with AI',
-    color: 'purple',
-    icon: CpuChipIcon,
+    color: 'yellow',
+    icon: MicrosoftCopilotIcon,
     heroCopy: [
       {
         header: 'AI-Powered Assistance',

@@ -130,33 +130,83 @@ const IctSupportPage: React.FC = () => {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <CogIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
-          >
-            Proactive ICT Support
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-          >
-            We offer a complete suite of Proactive ICT Support Services designed to help businesses of all sizes maintain, optimise, and secure their technology infrastructure.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.4 }}
-            className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
-            <blockquote className="text-xl italic text-gray-200 leading-relaxed">
-            "From helpdesk to hardware – we manage it all, so you can focus on what matters."
-            </blockquote>
-        </motion.div>
-        </div>
-      </section>
+     {/* Hero Section (Full Screen) */}
+<div className="relative isolate overflow-hidden bg-nexusbyte-primary-dark min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  {/* Background image */}
+  <img
+    alt=""
+    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
+    className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+  />
+
+  {/* Blurred gradient blob (top) */}
+  <div
+    aria-hidden="true"
+    className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+  >
+    <div
+      style={{
+        clipPath:
+          'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+      }}
+      className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72rem]"
+    />
+  </div>
+
+  {/* Optional faint icon watermark */}
+  <div className="pointer-events-none absolute inset-0 opacity-10">
+    <CogIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-300/40 rotate-12" />
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 mx-auto max-w-4xl text-center">
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-5xl sm:text-6xl font-extrabold text-white mb-6"
+    >
+      Proactive ICT Support
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+    >
+      We offer a complete suite of Proactive ICT Support Services designed to help businesses of all sizes
+      maintain, optimise, and secure their technology infrastructure.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="mt-8 text-center max-w-2xl mx-auto bg-white/5 p-6 rounded-lg shadow-lg ring-1 ring-white/10 backdrop-blur"
+    >
+      <blockquote className="text-xl italic text-gray-100 leading-relaxed">
+        "From helpdesk to hardware – we manage it all, so you can focus on what matters."
+      </blockquote>
+    </motion.div>
+  </div>
+
+  {/* Blurred gradient blob (bottom) */}
+  <div
+    aria-hidden="true"
+    className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+  >
+    <div
+      style={{
+        clipPath:
+          'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+      }}
+      className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72rem]"
+    />
+  </div>
+</div>
+
+
 
       {/* Main Services Grid */}
       <Section title="Our Proactive ICT Support Services">
@@ -176,44 +226,53 @@ const IctSupportPage: React.FC = () => {
       </Section>
 
       {/* Why Us Section */}
-      <Section title="Why NexusByte ICT Support?" className="bg-gray-50">
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-12 text-left max-w-3xl mx-auto">
-          {whyNexusByteData.map((feature, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="flex items-start bg-white p-4 rounded-lg shadow-sm"
-            >
-              <CpuChipIcon className="w-6 h-6 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
-              <span className="text-gray-700">{feature}</span>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+<Section title="Why NexusByte ICT Support?" className="bg-gray-50 py-16 md:py-20">
+  <div className="grid md:grid-cols-2 gap-x-8 gap-y-8 mt-12 text-left max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    {whyNexusByteData.map((feature, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.4, delay: index * 0.1 }}
+        className="flex items-start bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+      >
+        <CpuChipIcon className="w-7 h-7 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
+        <span className="text-gray-700 text-base">{feature}</span>
+      </motion.div>
+    ))}
+  </div>
+</Section>
 
-      {/* CTA Section */}
-      <Section title="Let’s Keep Your Business Running" className="bg-nexusbyte-primary-dark" textWhite
-               subtitle="Whether you need fully managed services or support for internal IT, NexusByte’s ICT Support is built to scale and simplify operations.">
-        <motion.div 
-            initial={{ opacity:0, y:20 }} 
-            whileInView={{ opacity:1, y:0 }} 
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration:0.6, delay:0.2 }}
-            className="mt-10"
-        >
-            <a
-              href="mailto:support@nexusbyte.co.za?subject=Inquiry about ICT Support Services"
-              className="inline-flex items-center px-10 py-4 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-bold rounded-lg shadow-xl hover:bg-opacity-80 transition-colors transform hover:scale-105 text-lg"
-            >
-              Email Us: support@nexusbyte.co.za
-              <ArrowRightIcon className="w-5 h-5 ml-3" />
-            </a>
-            <p className="mt-6 text-gray-400 text-sm">Or book a call via the Nova Client Portal.</p>
-        </motion.div>
-      </Section>
+
+     {/* CTA Section */}
+<Section
+  title="Let’s Keep Your Business Running"
+  className="bg-nexusbyte-primary-dark py-16 md:py-20"
+  textWhite
+  subtitle="Whether you need fully managed services or support for internal IT, NexusByte’s ICT Support is built to scale and simplify operations."
+>
+  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="mt-10"
+    >
+      <a
+        href="mailto:support@nexusbyte.co.za?subject=Inquiry about ICT Support Services"
+        className="inline-flex items-center px-10 py-4 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-bold rounded-lg shadow-xl hover:bg-opacity-80 transition-colors transform hover:scale-105 text-lg"
+      >
+        Email Us: support@nexusbyte.co.za
+        <ArrowRightIcon className="w-5 h-5 ml-3" />
+      </a>
+      <p className="mt-6 text-gray-300 text-sm">
+        Or book a call via the Nova Client Portal.
+      </p>
+    </motion.div>
+  </div>
+</Section>
     </div>
   );
 }

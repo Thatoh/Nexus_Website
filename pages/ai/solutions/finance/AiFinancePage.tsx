@@ -6,6 +6,7 @@ import {
     CheckIcon, ArrowRightIcon, BriefcaseIcon, CpuChipIcon, ShieldCheckIcon,
     UsersIcon, ChartPieIcon, CurrencyDollarIcon
 } from '../../../../components/icons';
+import StandardHeroSection from '../../../../components/StandardHeroSection';
 
 // Reusable Section Component
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string, textWhite?: boolean}> = ({ title, subtitle, children, className = '', textWhite = false }) => (

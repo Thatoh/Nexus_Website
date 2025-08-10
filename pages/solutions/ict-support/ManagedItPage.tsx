@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckIcon, ArrowRightIcon, CpuChipIcon, ShieldCheckIcon, UsersIcon } from '../../../components/icons';
+import StandardHeroSection from '../../../components/StandardHeroSection';
 
 // Reusable Section Component
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string; textWhite?: boolean}> = ({ title, subtitle, children, className = 'py-16 md:py-20', textWhite }) => (
@@ -60,32 +61,17 @@ const ManagedItPage: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <UsersIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
-          >
-            Managed IT Services
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-          >
-            Always-On Support That Grows With You. End-to-end IT support—from helpdesk to endpoint protection—so you can keep your team productive and your systems secure.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.4 }}
-            className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
-            <blockquote className="text-xl italic text-gray-200 leading-relaxed">
+      <StandardHeroSection
+        title="Managed IT Services"
+        subtitle="Always-On Support That Grows With You"
+        description="End-to-end IT support—from helpdesk to endpoint protection—so you can keep your team productive and your systems secure."
+      >
+        <div className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
+          <blockquote className="text-xl italic text-gray-200 leading-relaxed">
             "Think of us as your outsourced IT department—without the overhead."
-            </blockquote>
-        </motion.div>
+          </blockquote>
         </div>
-      </section>
+      </StandardHeroSection>
 
       {/* Core Features Section */}
       <Section title="Core Features" className="bg-gray-50">

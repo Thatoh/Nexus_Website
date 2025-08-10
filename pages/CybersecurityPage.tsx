@@ -66,37 +66,85 @@ const CybersecurityPage: React.FC = () => {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <ShieldCheckIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
-          >
-            Cybersecurity & Cloud Firewalls
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-          >
-            NexusByte’s Cybersecurity Solutions combine next-gen firewall protection, proactive threat detection, and Zero Trust architecture to help businesses defend against the evolving threat landscape—all locally managed and globally aligned.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.4 }}
-            className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
-            <blockquote className="text-xl italic text-gray-200 leading-relaxed">
-            "Security isn’t a checkbox—it’s a continuous shield around your digital operations."
-            </blockquote>
-        </motion.div>
-        </div>
-      </section>
+      {/* Hero Section (Full Screen) */}
+<div className="relative isolate overflow-hidden bg-nexusbyte-primary-dark min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  {/* Background image */}
+  <img
+    alt=""
+    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
+    className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+  />
+
+  {/* Blurred gradient blob (top) */}
+  <div
+    aria-hidden="true"
+    className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+  >
+    <div
+      style={{
+        clipPath:
+          'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+      }}
+      className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72rem]"
+    />
+  </div>
+
+  {/* Optional faint icon watermark (kept from your design) */}
+  <div className="pointer-events-none absolute inset-0 opacity-10">
+    <ShieldCheckIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-300/40 rotate-12" />
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 mx-auto max-w-4xl text-center">
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-5xl sm:text-6xl font-extrabold text-white mb-6"
+    >
+      Cybersecurity &amp; Cloud Firewalls
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+    >
+      NexusByte’s Cybersecurity Solutions combine next‑gen firewall protection, proactive threat detection, and Zero Trust architecture to help businesses defend against the evolving threat landscape—all locally managed and globally aligned.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="mt-8 text-center max-w-2xl mx-auto bg-white/5 p-6 rounded-lg shadow-lg ring-1 ring-white/10 backdrop-blur"
+    >
+      <blockquote className="text-xl italic text-gray-100 leading-relaxed">
+        "Security isn’t a checkbox—it’s a continuous shield around your digital operations."
+      </blockquote>
+    </motion.div>
+  </div>
+
+  {/* Blurred gradient blob (bottom) */}
+  <div
+    aria-hidden="true"
+    className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+  >
+    <div
+      style={{
+        clipPath:
+          'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+      }}
+      className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72rem]"
+    />
+  </div>
+</div>
+
 
       {/* Core Offerings Section */}
-      <Section title="Core Offerings" className="bg-gray-50">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <Section title="Core Offerings" className="bg-gray-50 py-16 md:py-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {coreOfferingsData.map((offering, index) => {
                 const Icon = offering.icon;
                 return (
@@ -192,14 +240,14 @@ const CybersecurityPage: React.FC = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section title="Stay Secure with NexusByte" className="bg-nexusbyte-primary-dark" textWhite
+      <Section title="Stay Secure with NexusByte" className="bg-nexusbyte-primary-dark py-16 md:py-20" textWhite
                subtitle="From small teams to large enterprises, our Cybersecurity Solutions scale with your needs—without compromise.">
         <motion.div 
             initial={{ opacity:0, y:20 }} 
             whileInView={{ opacity:1, y:0 }} 
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration:0.6, delay:0.2 }}
-            className="mt-10"
+            className="mt-8"
         >
             <a
               href="mailto:security@nexusbyte.co.za?subject=Inquiry about Cybersecurity Solutions"

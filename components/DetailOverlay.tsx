@@ -15,7 +15,7 @@ const getDynamicTextAndBorderColor = (color: ProductTileColor): string => {
     case 'red': return 'text-red-700 border-red-500';
     case 'green': return 'text-green-700 border-green-500';
     case 'blue': return 'text-blue-700 border-blue-500';
-    case 'purple': return 'text-purple-700 border-purple-500';
+    case 'yellow': return 'text-yellow-700 border-yellow-500';
     default: return 'text-gray-700 border-gray-500';
   }
 };
@@ -25,7 +25,7 @@ const getDynamicBgColor = (color: ProductTileColor): string => {
     case 'red': return 'bg-red-600';
     case 'green': return 'bg-green-600';
     case 'blue': return 'bg-blue-600';
-    case 'purple': return 'bg-purple-600';
+    case 'yellow': return 'bg-yellow-600';
     default: return 'bg-gray-600';
   }
 };
@@ -48,9 +48,9 @@ const DetailOverlay: React.FC<DetailOverlayProps> = ({ tile, onClose }) => {
 
   useEffect(() => {
     // Focus the "Add to Cart" button when the overlay opens
-    setTimeout(() => { // Timeout ensures the element is rendered and focusable
-        addToCartButtonRef.current?.focus();
-    }, 100); 
+    requestAnimationFrame(() => {
+      addToCartButtonRef.current?.focus();
+    });
     
     // Trap focus within the modal
     const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -94,7 +94,7 @@ const DetailOverlay: React.FC<DetailOverlayProps> = ({ tile, onClose }) => {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        transition: { duration: 0.3 },
+        transition: { duration: 0.15 },
         role: "dialog",
         "aria-modal": "true",
         "aria-labelledby": titleId,
@@ -108,7 +108,7 @@ const DetailOverlay: React.FC<DetailOverlayProps> = ({ tile, onClose }) => {
           initial: { scale: 0.9, y: 20 },
           animate: { scale: 1, y: 0 },
           exit: { scale: 0.9, y: 20, opacity: 0 },
-          transition: { type: 'spring', stiffness: 300, damping: 30, duration: 0.3 },
+          transition: { duration: 0.2, ease: 'easeOut' },
           onClick: (e: React.MouseEvent) => e.stopPropagation(), // Prevent closing when clicking inside modal content
         } as any}
       >

@@ -105,7 +105,7 @@ export interface SuggestedDomain {
 }
 
 // Type for Microsoft Productivity Section
-export type ProductTileColor = 'red' | 'green' | 'blue' | 'purple'; // Using purple instead of yellow
+export type ProductTileColor = 'red' | 'green' | 'blue' | 'yellow'; // Microsoft brand colors
 
 export interface ProductTile {
   id: 'm365' | 'teams' | 'azure' | 'copilot';
@@ -114,7 +114,7 @@ export interface ProductTile {
   longDescription: string;
   color: ProductTileColor;
   heroCopy: { header: string; bullets: string[] }[];
-  planDetails: { header: string; bullets:string[] }[];
+  planDetails: { header: string; bullets: string[] }[];
   pricePerUser: number;
   icon?: React.FC<React.SVGProps<SVGSVGElement>>; // Optional: for an icon on the cube
 }

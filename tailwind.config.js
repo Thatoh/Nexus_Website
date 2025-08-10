@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         'nexusbyte-primary-dark': '#111827', // Example: Gray 900
         'nexusbyte-accent-green': '#10B981', // Example: Emerald 500
+        'primary': '#10B981', // Emerald 500
+        'primary-dark': '#059669', // Emerald 600
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

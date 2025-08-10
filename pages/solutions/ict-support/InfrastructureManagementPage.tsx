@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckIcon, ArrowRightIcon, WifiIcon, BriefcaseIcon, CloudArrowUpIcon, ChartPieIcon, CommandLineIcon, CogIcon } from '../../../components/icons';
+import StandardHeroSection from '../../../components/StandardHeroSection';
 
 // Reusable Section Component
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string; textWhite?: boolean}> = ({ title, subtitle, children, className = 'py-16 md:py-20', textWhite }) => (
@@ -65,32 +66,17 @@ const InfrastructureManagementPage: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <CogIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
-          >
-            Infrastructure Management
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-          >
-            Build a Reliable Digital Backbone. Our service helps your business scale with secure, high-performance, and monitored networks, servers, and IT hardware—on-premises, cloud, or hybrid.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.4 }}
-            className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
-            <blockquote className="text-xl italic text-gray-200 leading-relaxed">
+      <StandardHeroSection
+        title="Infrastructure Management"
+        subtitle="Build a Reliable Digital Backbone"
+        description="Our service helps your business scale with secure, high-performance, and monitored networks, servers, and IT hardware—on-premises, cloud, or hybrid."
+      >
+        <div className="mt-8 text-center max-w-2xl mx-auto bg-gray-700/30 p-6 rounded-lg shadow-lg border border-gray-600 backdrop-blur-sm">
+          <blockquote className="text-xl italic text-gray-200 leading-relaxed">
             "We turn complex infrastructure into a seamless operational advantage."
-            </blockquote>
-        </motion.div>
+          </blockquote>
         </div>
-      </section>
+      </StandardHeroSection>
 
       {/* Core Capabilities Section */}
       <Section title="Core Capabilities" className="bg-gray-50">
