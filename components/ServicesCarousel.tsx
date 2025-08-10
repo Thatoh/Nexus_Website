@@ -1,42 +1,109 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { SERVICES_DATA } from '../constants';
+import React, { useMemo, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ServiceCard from './ServiceCard';
+import { SERVICES_DATA } from '../constants';
+
+const SCROLL_STEP = 400; // px per arrow click (roughly one card + gap)
 
 const ServicesCarousel: React.FC = () => {
-  // Calculate approximate width of a card + gap for dragConstraints
-  // This is an estimation; for precise calculation, consider using ResizeObserver or similar if card widths are dynamic.
-  const cardWidthEstimate = 320; // Based on md:min-w-[320px]
-  const gapEstimate = 24; // Based on gap-6 (1.5rem = 24px)
-  const totalContentWidth = SERVICES_DATA.length * (cardWidthEstimate + gapEstimate) - gapEstimate; // Total width of all cards and gaps
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState<number | null>(null);
+
+  const total = useMemo(() => SERVICES_DATA.length, []);
+  const onArrow = (dir: 'left' | 'right') => {
+    const el = trackRef.current;
+    if (!el) return;
+    const delta = dir === 'left' ? -SCROLL_STEP : SCROLL_STEP;
+    el.scrollBy({ left: delta, behavior: 'smooth' });
+  };
 
   return (
-    <section className="py-16 md:py-24 bg-white"> {/* Changed background to bg-white */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-nexusbyte-primary-dark">Core Services</h2>
-          <p className="mt-4 text-lg text-gray-600">Powering your business with cutting-edge ICT solutions.</p>
+    <section className="relative py-16 md:py-24 bg-[#0A0D14]">
+      <div className="w-full">
+        {/* Heading */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold text-white">Core Services</h2>
+          <p className="mt-3 text-white/60">
+            Powering your business with advanced cloud, AI and managed solutions.
+          </p>
         </div>
-        <div className="overflow-hidden cursor-grab active:cursor-grabbing">
-            <motion.div 
-                {...{
-                    className: "flex gap-6 pb-4",
-                    drag: "x",
-                    dragConstraints: { left: -(totalContentWidth - (typeof window !== 'undefined' ? window.innerWidth * 0.8 : cardWidthEstimate)) , right: 0 } // Allow dragging until last card is mostly visible
-                } as any}
+
+        {/* Rail */}
+        <div className="relative w-full">
+          {/* Left Arrow */}
+          <button
+            aria-label="Scroll left"
+            onClick={() => onArrow('left')}
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            aria-label="Scroll right"
+            onClick={() => onArrow('right')}
+            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Scroll/Drag Track */}
+          <div
+            ref={trackRef}
+            className="overflow-x-auto no-scrollbar w-full px-4"
+          >
+            <motion.div
+              className={`
+                flex gap-6 md:gap-8 py-4
+                group
+              `}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }} // framer enables inertia feel; scrolling does actual movement
+              onDragStart={() => setActive(null)}
             >
-            {SERVICES_DATA.map(service => (
-              <motion.div key={service.id} className="min-w-[280px] md:min-w-[320px] flex-shrink-0">
-                <ServiceCard service={service} />
-              </motion.div>
-            ))}
-          </motion.div>
+              {SERVICES_DATA.map((service, idx) => {
+                const isActive = active === service.id;
+                return (
+                  <motion.div
+                    key={service.id}
+                    className={`
+                      min-w-[280px] sm:min-w-[320px] md:min-w-[360px] lg:min-w-[400px]
+                      flex-shrink-0
+                      transition-[transform,filter] duration-200
+                      ${isActive ? 'scale-[1.03]' : 'scale-100'}
+                    `}
+                    onMouseEnter={() => setActive(service.id)}
+                    onMouseLeave={() => setActive(null)}
+                    onFocus={() => setActive(service.id)}
+                    onBlur={() => setActive(null)}
+                  >
+                    <ServiceCard
+                      service={service}
+                      active={isActive}
+                      index={idx}
+                      total={total}
+                    />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
         </div>
-         <p className="text-center mt-8 text-sm text-gray-500">Hint: You can drag the cards horizontally to see more.</p>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center mt-6 text-xs text-white/40">
+            Tip: Hover or focus a card to expand. Use arrows (desktop) or swipe/drag (mobile) to browse.
+          </p>
+        </div>
       </div>
     </section>
   );
-}
+};
 
 export default ServicesCarousel;

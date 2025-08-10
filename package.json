@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@google/genai": "^1.4.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.17.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
