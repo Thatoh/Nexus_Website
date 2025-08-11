@@ -189,7 +189,7 @@ const ManagedItPage: React.FC = () => {
             </a>
              <p className="mt-6 text-gray-400 text-sm">Or request a custom proposal via Nova</p>
         </motion.div>
-      </section>
+      </Section>
     </div>
   );
 }

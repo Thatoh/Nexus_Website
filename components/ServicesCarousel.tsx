@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ServiceCard from './ServiceCard';
 import { SERVICES_DATA } from '../constants';
 
-const SCROLL_STEP = 400; // px per arrow click (roughly one card + gap)
+const SCROLL_STEP = 360; // px per arrow click (320px card + 40px gap)
 
 const ServicesCarousel: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -19,8 +19,10 @@ const ServicesCarousel: React.FC = () => {
   };
 
   return (
-    <section className="relative py-16 md:py-24 bg-[#0A0D14]">
-      <div className="w-full">
+    <section className="relative py-16 md:py-24 bg-[#0A0D14] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/resources/ab-2.jpg)' }}>
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-[#0A0D14]/80"></div>
+      <div className="relative z-10 w-full">
         {/* Heading */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <h2 className="text-2xl md:text-4xl font-bold text-white">Core Services</h2>
@@ -73,10 +75,9 @@ const ServicesCarousel: React.FC = () => {
                   <motion.div
                     key={service.id}
                     className={`
-                      min-w-[280px] sm:min-w-[320px] md:min-w-[360px] lg:min-w-[400px]
-                      flex-shrink-0
-                      transition-[transform,filter] duration-200
-                      ${isActive ? 'scale-[1.03]' : 'scale-100'}
+                      w-[320px] flex-shrink-0
+                      transition-all duration-300
+                      ${isActive ? 'z-10' : 'z-0'}
                     `}
                     onMouseEnter={() => setActive(service.id)}
                     onMouseLeave={() => setActive(null)}

@@ -211,7 +211,7 @@ const DeviceLifecyclePage: React.FC = () => {
             </a>
              <p className="mt-6 text-gray-400 text-sm">Request a lifecycle audit or plan via Nova.</p>
         </motion.div>
-      </section>
+      </Section>
     </div>
   );
 }

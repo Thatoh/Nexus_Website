@@ -105,7 +105,7 @@ export interface SuggestedDomain {
 }
 
 // Type for Microsoft Productivity Section
-export type ProductTileColor = 'red' | 'green' | 'blue' | 'yellow'; // Microsoft brand colors
+export type ProductTileColor = 'red' | 'green' | 'blue' | 'yellow' | 'purple'; // Microsoft brand colors
 
 export interface ProductTile {
   id: 'm365' | 'teams' | 'azure' | 'copilot';

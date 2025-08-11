@@ -341,4 +341,25 @@ export const MicrosoftCopilotIcon: React.FC<React.SVGProps<SVGSVGElement>> = (pr
   </svg>
 );
 
+export const BrainIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082m-.75-.082a24.301 24.301 0 00-4.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L15 14.5m-4.5-11.396a24.301 24.301 0 00-4.5 0m0 0v5.714a2.25 2.25 0 01-.659 1.591L5 14.5m0 0v2.25a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V14.5m-10.5 0h10.5" />
+  </svg>
+);
+
+// SVG Wrapper Components for Service Cards
+export const ServiceCardIcon1: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" {...props}>
+    <image href="/icons/serviceCards/icon-1.svg" width="24" height="24" />
+  </svg>
+);
+
+export const ServiceCardIcon2: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" {...props}>
+    <image href="/icons/serviceCards/icon-2.svg" width="24" height="24" />
+  </svg>
+);
+
+
+
 

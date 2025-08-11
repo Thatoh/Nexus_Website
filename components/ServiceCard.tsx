@@ -1,18 +1,18 @@
 import React from 'react';
 import { ServiceItem } from '../types';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
 
 /**
- * Matches the dark, elastic tile style from your screenshot:
- * - Dark glass tile with subtle border
- * - Blue glow & gradient when active
- * - Yellow "Get Started" pill appears on active
+ * Improved ServiceCard with collapsed/expanded states:
+ * - Default: Compact card with title and description only
+ * - Hover/Focus: Expanded card with icon and CTA button
+ * - Smooth animations with framer-motion
  */
 const cardBase =
-  'relative h-full min-h-[320px] rounded-2xl ring-1 ring-white/5 bg-gradient-to-b from-[#0C111A] to-[#0A0D14] ' +
+  'relative rounded-2xl ring-1 ring-white/5 bg-gradient-to-b from-[#0C111A] to-[#0A0D14] ' +
   'text-white/90 shadow-[0_1px_0_rgba(255,255,255,0.03)] overflow-hidden ' +
-  'transition-all duration-200 ease-[cubic-bezier(.2,.8,.2,1)]';
+  'transition-all duration-300 ease-[cubic-bezier(.2,.8,.2,1)]';
 
 const halo =
   'pointer-events-none absolute inset-0 rounded-2xl ' +
@@ -36,54 +36,127 @@ const ServiceCard: React.FC<Props> = ({ service, active = false }) => {
           ? 'ring-[rgba(80,170,255,0.35)] ring-2'
           : 'hover:ring-white/10'
       )}
+      initial={{ height: 190 }}
+      animate={{ 
+        height: active ? 320 : 190,
+        y: active ? -5 : 0,
+        scale: active ? 1.01 : 1
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 30,
+        duration: 0.3
+      }}
       whileHover={{ y: -2 }}
     >
       {/* Blue halo when active */}
-      {active && <div className={halo} />}
+      <AnimatePresence>
+        {active && (
+          <motion.div 
+            className={halo}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          />
+        )}
+      </AnimatePresence>
 
-      {/* Inner */}
-      <div className="relative z-10 p-5 sm:p-6 md:p-7 flex flex-col h-full">
-        {/* Icon */}
-        <div
-          className={clsx(
-            'mb-4 inline-flex items-center justify-center rounded-xl',
-            'h-12 w-12 ring-1 ring-white/10',
-            active ? 'bg-cyan-400/10 shadow-[0_0_40px_rgba(56,189,248,0.25)]' : 'bg-white/5'
+      {/* Inner content container */}
+      <div className="relative z-10 p-4 flex flex-col h-full">
+        {/* Icon - Only visible when active */}
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.8 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+                delay: 0.1
+              }}
+              className="mb-3 flex justify-center"
+            >
+              <div className={clsx(
+                'inline-flex items-center justify-center rounded-lg',
+                'h-10 w-10 ring-1 ring-white/10',
+                'bg-cyan-400/10 shadow-[0_0_20px_rgba(56,189,248,0.25)]'
+              )}>
+                {React.cloneElement(service.icon, { 
+                  className: 'h-5 w-5 text-white/90' 
+                })}
+              </div>
+            </motion.div>
           )}
-        >
-          {React.cloneElement(service.icon, { className: 'h-6 w-6 text-white/90' })}
-        </div>
+        </AnimatePresence>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
+        <motion.h3 
+          className="text-lg font-semibold tracking-tight text-white text-center"
+          animate={{ 
+            fontSize: active ? "1.125rem" : "1rem",
+            marginBottom: active ? "0.5rem" : "0.25rem"
+          }}
+          transition={{ duration: 0.3 }}
+        >
           {service.title}
-        </h3>
+        </motion.h3>
 
         {/* Description */}
-        <p className={clsx(
-          'mt-2 text-sm md:text-[15px] leading-relaxed',
-          active ? 'text-white/80' : 'text-white/60 line-clamp-3'
-        )}>
+        <motion.p 
+          className={clsx(
+            'text-xs leading-relaxed text-center',
+            active ? 'text-white/80' : 'text-white/60'
+          )}
+          animate={{ 
+            fontSize: active ? "0.75rem" : "0.625rem",
+            lineHeight: active ? "1.5" : "1.4"
+          }}
+          transition={{ duration: 0.3 }}
+        >
           {service.description}
-        </p>
+        </motion.p>
 
-        {/* Spacer */}
-        <div className="flex-1" />
+        {/* Spacer - pushes CTA to bottom when active */}
+        <motion.div 
+          className="flex-1"
+          animate={{ 
+            minHeight: active ? "0.75rem" : "0rem"
+          }}
+          transition={{ duration: 0.3 }}
+        />
 
-        {/* CTA (only prominent when active) */}
-        <div className="mt-5">
-          <button
-            className={clsx(
-              'inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold',
-              'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400',
-              active
-                ? 'bg-green-400 text-[#0A0D14]'
-                : 'bg-white/5 text-white/80 hover:bg-white/10'
-            )}
-          >
-            {active ? 'Get Started' : 'Learn More'}
-          </button>
-        </div>
+        {/* CTA Button - Only visible when active */}
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.9 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+                delay: 0.15
+              }}
+              className="mt-3 flex justify-center"
+            >
+              <button
+                className={clsx(
+                  'inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold',
+                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400',
+                  'bg-yellow-400 text-[#0A0D14] hover:bg-yellow-300',
+                  'transition-colors duration-200'
+                )}
+              >
+                Get Started
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.article>
   );

@@ -208,7 +208,7 @@ const BackupRecoveryPage: React.FC = () => {
             </a>
              <p className="mt-6 text-gray-400 text-sm">Schedule a free risk assessment with Nova.</p>
         </motion.div>
-      </section>
+      </Section>
     </div>
   );
 }
