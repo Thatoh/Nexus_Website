@@ -59,7 +59,7 @@ export interface ServiceItem {
   id: number;
   title: string;
   description: string;
-  icon: ReactElement<SVGProps<SVGSVGElement>>;
+  icon: string; // Path to PNG image
 }
 
 export interface ChatMessage {

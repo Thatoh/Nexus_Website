@@ -454,11 +454,11 @@ export const HERO_SLIDES_DATA = [ // Kept as is, not requested to change
 ];
 
 export const SERVICES_DATA = [
-  { id: 1, title: 'Managed IT', description: 'Tailored IT solutions and proactive support.', icon: React.createElement(CpuChipIcon, { className: 'w-8 h-8' }) },
-  { id: 2, title: 'Cloud', description: 'Advanced cloud solutions for your business.', icon: React.createElement(CloudArrowUpIcon, { className: 'w-8 h-8' }) },
-  { id: 3, title: 'AI', description: 'Advanced AI solutions for your business.', icon: React.createElement(BrainIcon, { className: 'w-8 h-8' }) },
-  { id: 4, title: 'Hybrid IT', description: 'Combine on-premises and cloud services.', icon: React.createElement(UsersIcon, { className: 'w-8 h-8' }) },
-  { id: 5, title: 'Web Hosting', description: 'High-performance hosting for your site.', icon: React.createElement(GlobeAltIcon, { className: 'w-8 h-8' }) },
+  { id: 1, title: 'Managed IT', description: 'Tailored IT solutions and proactive support.', icon: '/images/managed-it-icon.png' },
+  { id: 2, title: 'Cloud', description: 'Advanced cloud solutions for your business.', icon: '/images/cloud-icon.png' },
+  { id: 3, title: 'AI', description: 'Advanced AI solutions for your business.', icon: '/images/ai-brain-icon.png' },
+  { id: 4, title: 'Hybrid IT', description: 'Combine on-premises and cloud services.', icon: '/images/hybrid-it-icon.png' },
+  { id: 5, title: 'Web Hosting', description: 'High-performance hosting for your site.', icon: '/images/web-hosting-icon.png' },
 ];
 
 export const PARTNER_LOGOS_DATA = [ // Kept as is

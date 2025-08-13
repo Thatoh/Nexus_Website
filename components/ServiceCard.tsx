@@ -85,9 +85,11 @@ const ServiceCard: React.FC<Props> = ({ service, active = false }) => {
                 'h-10 w-10 ring-1 ring-white/10',
                 'bg-cyan-400/10 shadow-[0_0_20px_rgba(56,189,248,0.25)]'
               )}>
-                {React.cloneElement(service.icon, { 
-                  className: 'h-5 w-5 text-white/90' 
-                })}
+                <img 
+                  src={service.icon} 
+                  alt={`${service.title} icon`}
+                  className="h-5 w-5 object-contain" 
+                />
               </div>
             </motion.div>
           )}

@@ -6,7 +6,8 @@ import DomainSearch from '../components/DomainSearch';
 import AIChatbotSection from '../components/AIChatbotSection';
 import CorporatePartnersSection from '../components/PartnersSlider'; // Updated import
 import ProductivitySection from '../components/ProductivitySection'; 
-import ClientReviewSection from '../components/ClientReviewSection';
+import { CaseStudies } from '../components/case-studies';
+import TestimonialsSection from '../components/TestimonialsSection';
 import AnnouncementBanner from '../components/AnnouncementBanner'; 
 
 interface HomePageProps {
@@ -117,7 +118,8 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
       <DomainSearch />
       <AIChatbotSection onOpenChat={openChat} /> 
       <ProductivitySection />
-      <ClientReviewSection /> 
+      <CaseStudies />
+      <TestimonialsSection /> 
       <CorporatePartnersSection /> {/* Updated component instance */}
     </>
   );
