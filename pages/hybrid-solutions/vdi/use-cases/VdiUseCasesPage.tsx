@@ -95,7 +95,7 @@ const VdiUseCasesPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {useCase.points.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span>{item}</span>
                                         </li>
                                     ))}

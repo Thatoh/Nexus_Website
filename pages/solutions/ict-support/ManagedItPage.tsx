@@ -92,7 +92,7 @@ const ManagedItPage: React.FC = () => {
                         <ul className="space-y-2 text-sm text-gray-600 flex-grow">
                             {feature.items.map((item, idx) => (
                                 <li key={idx} className="flex items-start">
-                                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0" />
+                                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                                     <span>{item}</span>
                                 </li>
                             ))}
@@ -161,10 +161,10 @@ const ManagedItPage: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="flex items-center bg-green-50 p-3 rounded-md shadow-sm"
+              className="flex items-center bg-nexusbyte-accent-green/5 p-3 rounded-md shadow-sm"
             >
-              <CheckIcon className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
-              <span className="text-sm text-green-800 font-medium">{item}</span>
+              <CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-3 flex-shrink-0" />
+              <span className="text-sm text-nexusbyte-accent-green font-medium">{item}</span>
             </motion.div>
           ))}
         </div>

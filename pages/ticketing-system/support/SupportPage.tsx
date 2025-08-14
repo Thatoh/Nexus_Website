@@ -152,9 +152,9 @@ export const SupportPage: React.FC = () => {
                         <h3 className="font-bold text-xl mb-4">🤖 AI Assistant Documentation</h3>
                         <p className="text-sm text-gray-600 mb-4">Nova AI can be added to automate triage, summarise tickets, and assist in response drafting.</p>
                          <ul className="space-y-2 text-sm">
-                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Nova for Ticket Support Setup</li>
-                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Training Custom Prompt Libraries</li>
-                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Security & Compliance (POPIA Ready)</li>
+                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Nova for Ticket Support Setup</li>
+                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Training Custom Prompt Libraries</li>
+                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Security & Compliance (POPIA Ready)</li>
                         </ul>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ export const SupportPage: React.FC = () => {
                         <h3 className="font-semibold text-xl mb-3">📥 Downloads & Assets</h3>
                         <ul className="space-y-2">
                            {["User Manual PDF", "SLA Configuration Templates", "CSV Ticket Import Tool", "Brand Style Guidelines"].map(item => (
-                               <li key={item} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>{item}</li>
+                               <li key={item} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>
                            ))}
                         </ul>
                     </div>

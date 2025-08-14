@@ -49,7 +49,7 @@ const CoreCapabilityCard: React.FC<{title: string; items: string[]; icon: React.
         <ul className="space-y-2 text-sm text-gray-600 flex-grow">
             {items.map((item, idx) => (
                 <li key={idx} className="flex items-start">
-                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0" />
+                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                     <span>{item}</span>
                 </li>
             ))}
@@ -79,7 +79,7 @@ const PlanCard: React.FC<{plan: any; index: number}> = ({ plan, index }) => (
     <ul className="space-y-3 text-sm mb-8 flex-grow">
       {plan.features.map((feature: string, i: number) => (
         <li key={i} className="flex items-start">
-          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} />
+          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />
           <span>{feature}</span>
         </li>
       ))}
@@ -225,10 +225,10 @@ const AIPoweredAutomationPage: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="flex items-center bg-green-50 p-3 rounded-md shadow-sm"
+              className="flex items-center bg-nexusbyte-accent-green/5 p-3 rounded-md shadow-sm"
             >
-              <CheckIcon className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" />
-              <span className="text-sm text-green-800 font-medium">{item}</span>
+              <CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2 flex-shrink-0" />
+              <span className="text-sm text-nexusbyte-accent-green font-medium">{item}</span>
             </motion.div>
           ))}
         </div>

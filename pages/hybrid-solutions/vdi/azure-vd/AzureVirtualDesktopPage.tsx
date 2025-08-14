@@ -162,10 +162,10 @@ export const AzureVirtualDesktopPage: React.FC = () => {
                         <div>
                             <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 text-center">🧩 Integrated with Microsoft 365 & Teams</h3>
                             <ul className="space-y-2 text-left text-gray-700">
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Teams chat, calling, and meetings in VDI</li>
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Outlook, Word, Excel, and PowerPoint natively optimised</li>
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Shared OneDrive and SharePoint access</li>
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Seamless SSO via Azure Active Directory</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Teams chat, calling, and meetings in VDI</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Outlook, Word, Excel, and PowerPoint natively optimised</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Shared OneDrive and SharePoint access</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Seamless SSO via Azure Active Directory</li>
                             </ul>
                         </div>
                          <div>
@@ -229,7 +229,7 @@ export const AzureVirtualDesktopPage: React.FC = () => {
                         <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 text-center">📦 AVD with NexusByte</h3>
                         <div className="bg-white p-6 rounded-lg shadow-md space-y-3">
                             {includedFeatures.map((feature, i) => (
-                                <p key={i} className="flex items-center"><CheckIcon className="w-5 h-5 text-green-500 mr-2"/> {feature}</p>
+                                <p key={i} className="flex items-center"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2"/> {feature}</p>
                             ))}
                         </div>
                     </div>

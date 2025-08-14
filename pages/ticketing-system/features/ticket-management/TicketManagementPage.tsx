@@ -113,7 +113,7 @@ export const TicketManagementPage: React.FC = () => {
                         <p className="text-sm text-gray-600 mb-4">Clients can log tickets in seconds—without needing to create an account.</p>
                         <ul className="space-y-2 text-sm">
                             {ticketCreationFeatures.external.map((item, i) => (
-                                <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>
+                                <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>
                             ))}
                         </ul>
                     </div>
@@ -122,7 +122,7 @@ export const TicketManagementPage: React.FC = () => {
                         <p className="text-sm text-gray-600 mb-4">Support teams and staff can log detailed tickets from the dashboard.</p>
                         <ul className="space-y-2 text-sm">
                             {ticketCreationFeatures.internal.map((item, i) => (
-                                <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>
+                                <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>
                             ))}
                         </ul>
                     </div>
@@ -138,7 +138,7 @@ export const TicketManagementPage: React.FC = () => {
                             <p className="text-sm text-gray-600 mb-4">Every logged issue is accessible in a dynamic management interface, with powerful filters, sorting, and live stats.</p>
                             <ul className="space-y-2 text-left">
                                 {managementPanelFeatures.map((item, i) => (
-                                    <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 text-green-500"/>{item}</li>
+                                    <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 text-nexusbyte-accent-green"/>{item}</li>
                                 ))}
                             </ul>
                         </div>
@@ -149,7 +149,7 @@ export const TicketManagementPage: React.FC = () => {
                             <p className="text-sm text-gray-600 mb-4">Each ticket opens into a full-page view designed for collaborative resolution.</p>
                             <ul className="space-y-2 text-left">
                                 {detailViewFeatures.map((item, i) => (
-                                    <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 text-green-500"/>{item}</li>
+                                    <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 text-nexusbyte-accent-green"/>{item}</li>
                                 ))}
                             </ul>
                         </div>
@@ -163,21 +163,21 @@ export const TicketManagementPage: React.FC = () => {
                     <div className="bg-white p-6 rounded-lg shadow-md">
                         <h3 className="font-semibold text-xl mb-3">✅ Status & Progress Control</h3>
                         <ul className="space-y-2 text-sm">
-                            {statusControlFeatures.map((item, i) => <li key={i} className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                            {statusControlFeatures.map((item, i) => <li key={i} className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                     <div className="bg-white p-6 rounded-lg shadow-md">
                          <h3 className="font-semibold text-xl mb-3">🔐 Secure & Compliant</h3>
                         <ul className="space-y-2 text-sm">
-                            <li className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Role-based access</li>
-                            <li className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Audit trails for accountability</li>
-                            <li className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Future integrations with advanced security</li>
+                            <li className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Role-based access</li>
+                            <li className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Audit trails for accountability</li>
+                            <li className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Future integrations with advanced security</li>
                         </ul>
                     </div>
                      <div className="bg-white p-6 rounded-lg shadow-md">
                          <h3 className="font-semibold text-xl mb-3">🔄 Coming Soon (Q1 2026)</h3>
                         <ul className="space-y-2 text-sm">
-                            {comingSoonFeatures.map((item, i) => <li key={i} className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                            {comingSoonFeatures.map((item, i) => <li key={i} className="flex"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                 </div>

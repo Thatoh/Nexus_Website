@@ -132,7 +132,7 @@ export const EndpointManagementPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {capability.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -197,7 +197,7 @@ export const EndpointManagementPage: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.8 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-green-100 text-green-800 font-medium px-4 py-3 rounded-lg shadow-sm text-center"
+                            className="bg-nexusbyte-accent-green/10 text-nexusbyte-accent-green font-medium px-4 py-3 rounded-lg shadow-sm text-center"
                         >
                             {benefit}
                         </motion.div>

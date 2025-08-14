@@ -134,7 +134,7 @@ const CloudSolutionsPage: React.FC = () => {
             >
               <Link 
                 to="/contact"
-                className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center bg-nexusbyte-accent-green hover:bg-nexusbyte-accent-green text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 CONTACT US
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
@@ -146,7 +146,7 @@ const CloudSolutionsPage: React.FC = () => {
         {/* Additional floating elements */}
         <motion.div
           {...{
-            className: "absolute top-1/4 right-1/4 w-2 h-2 bg-green-500 rounded-full opacity-70", // Adjusted color/opacity
+            className: "absolute top-1/4 right-1/4 w-2 h-2 bg-nexusbyte-accent-green rounded-full opacity-70", // Adjusted color/opacity
             animate: {
               scale: [1, 1.5, 1],
               opacity: [0.7, 1, 0.7],

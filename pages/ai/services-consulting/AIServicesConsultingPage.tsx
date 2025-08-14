@@ -144,7 +144,7 @@ const AIServicesConsultingPage: React.FC = () => {
                                 <ul className="text-sm text-gray-500 space-y-1">
                                     {item.details.map((detail, dIndex) => (
                                         <li key={dIndex} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-0.5 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-0.5 text-nexusbyte-accent-green flex-shrink-0"/>
                                             {detail}
                                         </li>
                                     ))}

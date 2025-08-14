@@ -161,7 +161,7 @@ export const ByteDeskSolutionsPage: React.FC = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md text-left">
                            <p className="text-gray-600 mb-4">Use ByteDesk's Integration Hub to:</p>
                            <ul className="space-y-3">
-                                {customStackData.map((item, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>{item.feature}</li>)}
+                                {customStackData.map((item, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>{item.feature}</li>)}
                             </ul>
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export const ByteDeskSolutionsPage: React.FC = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md text-left">
                             <p className="text-gray-600 mb-4">Running ByteDesk as a service for your clients? It supports:</p>
                              <ul className="space-y-3">
-                                {["Custom theming & domain mapping", "Role-based tenant views", "Client-specific integrations", "Multi-org management for MSPs"].map((item, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>{item}</li>)}
+                                {["Custom theming & domain mapping", "Role-based tenant views", "Client-specific integrations", "Multi-org management for MSPs"].map((item, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>{item}</li>)}
                             </ul>
                         </div>
                     </div>

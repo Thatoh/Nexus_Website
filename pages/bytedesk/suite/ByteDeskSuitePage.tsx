@@ -135,9 +135,9 @@ export const ByteDeskSuitePage: React.FC = () => {
                          <div className="bg-gray-50 p-6 rounded-lg text-left">
                             <p className="text-gray-600 mb-4">Each ByteDesk Suite deployment includes a Nova-powered agent, which can be extended to:</p>
                             <ul className="space-y-2 text-sm text-gray-700">
-                                <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Automate recurring IT tasks (password resets, app access)</li>
-                                <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Provide usage analytics (ticket trends, resolution time)</li>
-                                <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Offer compliance suggestions (POPIA-aligned prompts)</li>
+                                <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Automate recurring IT tasks (password resets, app access)</li>
+                                <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Provide usage analytics (ticket trends, resolution time)</li>
+                                <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Offer compliance suggestions (POPIA-aligned prompts)</li>
                             </ul>
                          </div>
                     </div>

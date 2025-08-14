@@ -46,7 +46,7 @@ const CapabilityCard: React.FC<{title: string; items: string[]; icon: React.FC<R
         <ul className="space-y-2 text-sm text-gray-600 flex-grow">
             {items.map((item, idx) => (
                 <li key={idx} className="flex items-start">
-                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0" />
+                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                     <span>{item}</span>
                 </li>
             ))}
@@ -191,7 +191,7 @@ const IaaSPage: React.FC = () => {
                     <ul className="space-y-4 text-left flex-grow mb-8">
                         {plan.features.map((feature, i) => (
                             <li key={i} className="flex items-center gap-3 text-sm">
-                                <CheckIcon className={`w-5 h-5 flex-shrink-0 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} />
+                                <CheckIcon className={`w-5 h-5 flex-shrink-0 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />
                                 <span>{feature}</span>
                             </li>
                         ))}
@@ -210,13 +210,13 @@ const IaaSPage: React.FC = () => {
           <div>
             <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 flex items-center gap-3"><ShieldCheckIcon className="w-8 h-8 text-nexusbyte-accent-green" />Security & Governance</h3>
             <ul className="space-y-2">
-              {securityFeatures.map((feature, i) => <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 text-green-500 mr-2" />{feature}</li>)}
+              {securityFeatures.map((feature, i) => <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2" />{feature}</li>)}
             </ul>
           </div>
           <div>
             <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 flex items-center gap-3"><PuzzlePieceIcon className="w-8 h-8 text-nexusbyte-accent-green" />Integration & Add-ons</h3>
             <ul className="space-y-2">
-              {integrationFeatures.map((feature, i) => <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 text-green-500 mr-2" />{feature}</li>)}
+              {integrationFeatures.map((feature, i) => <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2" />{feature}</li>)}
             </ul>
           </div>
         </div>

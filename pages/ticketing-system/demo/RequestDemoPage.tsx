@@ -90,7 +90,7 @@ export const RequestDemoPage: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
                     {demoFeatures.map((feature, index) => (
                         <div key={index} className="flex items-center bg-gray-100 p-3 rounded-md">
-                            <CheckIcon className="w-5 h-5 mr-3 text-green-500 flex-shrink-0" />
+                            <CheckIcon className="w-5 h-5 mr-3 text-nexusbyte-accent-green flex-shrink-0" />
                             <span className="text-gray-700">{feature}</span>
                         </div>
                     ))}

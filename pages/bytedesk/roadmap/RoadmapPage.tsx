@@ -97,7 +97,7 @@ export const RoadmapPage: React.FC = () => {
                 <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     {/* Now Shipping */}
                     <div className="bg-white p-6 rounded-lg shadow-lg border-t-4 border-green-500">
-                        <h3 className="text-2xl font-bold text-green-600 mb-4">✅ Now Shipping (Q3 2025)</h3>
+                        <h3 className="text-2xl font-bold text-nexusbyte-accent-green mb-4">✅ Now Shipping (Q3 2025)</h3>
                         <div className="space-y-4">
                             {roadmapData.now.map((item, i) => (
                                 <div key={i} className="text-left">

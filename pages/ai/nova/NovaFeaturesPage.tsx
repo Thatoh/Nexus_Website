@@ -113,10 +113,10 @@ const NovaFeaturesPage = () => {
                             Nova ships with an intuitive Playground Interface, giving developers and non-technical users a low-code, visual builder to design, test, and deploy AI agents using modular blocks.
                         </p>
                         <ul className="space-y-3">
-                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-green-500 mr-3 mt-1"/>Design agents with prompts, rules, & API calls.</li>
-                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-green-500 mr-3 mt-1"/>Test inputs and responses in real-time.</li>
-                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-green-500 mr-3 mt-1"/>Upload documents to test agent retrieval (RAG).</li>
-                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-green-500 mr-3 mt-1"/>Chain agents for multi-role task execution.</li>
+                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-3 mt-1"/>Design agents with prompts, rules, & API calls.</li>
+                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-3 mt-1"/>Test inputs and responses in real-time.</li>
+                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-3 mt-1"/>Upload documents to test agent retrieval (RAG).</li>
+                            <li className="flex items-start"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-3 mt-1"/>Chain agents for multi-role task execution.</li>
                         </ul>
                         <p className="mt-4 text-gray-700">All in one interface—sandboxed, secure, and team-collab ready.</p>
                     </div>

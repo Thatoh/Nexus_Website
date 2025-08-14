@@ -140,7 +140,7 @@ const AiHealthcarePage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {useCase.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0" />
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                                             <span>{item}</span>
                                         </li>
                                     ))}
@@ -201,7 +201,7 @@ const AiHealthcarePage: React.FC = () => {
                                     {outcomesData.map((row, i) => (
                                         <tr key={i}>
                                             <td className="px-6 py-3 font-medium">{row.area}</td>
-                                            <td className="px-6 py-3 font-bold text-green-600">{row.impact}</td>
+                                            <td className="px-6 py-3 font-bold text-nexusbyte-accent-green">{row.impact}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -219,7 +219,7 @@ const AiHealthcarePage: React.FC = () => {
                         <ul className="space-y-3">
                            {[ "Sensitive data encrypted in transit and at rest", "Role-based access for agents & providers", "No patient data used for training without consent", "Hosted in secure, POPIA-compliant environments" ].map((item, i) => (
                                 <li key={i} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"/>
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0"/>
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}
@@ -230,7 +230,7 @@ const AiHealthcarePage: React.FC = () => {
                         <ul className="space-y-3">
                            {techStackData.map((item, i) => (
                                 <li key={i} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"/>
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0"/>
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}

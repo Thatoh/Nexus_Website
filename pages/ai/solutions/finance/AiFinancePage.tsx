@@ -127,7 +127,7 @@ const AiFinancePage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {useCase.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0" />
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                                             <span>{item}</span>
                                         </li>
                                     ))}
@@ -146,7 +146,7 @@ const AiFinancePage: React.FC = () => {
                         <ul className="space-y-3">
                            {[ "AI-driven anomaly detection (fraud, outliers)", "Role-based dashboards for CFOs, Controllers, and Analysts", "Natural language queries: \"Show me spend over R100,000 last quarter\"" ].map((item, i) => (
                                 <li key={i} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"/>
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0"/>
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}
@@ -157,7 +157,7 @@ const AiFinancePage: React.FC = () => {
                         <ul className="space-y-3">
                            {[ "End-to-end encryption", "Audit logs & immutable records", "No data used to train external models", "Finance-specific data governance policies" ].map((item, i) => (
                                 <li key={i} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"/>
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0"/>
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}
@@ -194,7 +194,7 @@ const AiFinancePage: React.FC = () => {
                                     {outcomesData.map((row, i) => (
                                         <tr key={i}>
                                             <td className="px-6 py-3 font-medium">{row.outcome}</td>
-                                            <td className="px-6 py-3 font-bold text-green-600">{row.benefit}</td>
+                                            <td className="px-6 py-3 font-bold text-nexusbyte-accent-green">{row.benefit}</td>
                                         </tr>
                                     ))}
                                 </tbody>

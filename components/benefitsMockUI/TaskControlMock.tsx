@@ -52,7 +52,7 @@ export const TaskControlInitial: React.FC = () => (
 export const TaskControlHover: React.FC = () => (
   <MockWindow title="PRIORITY TASK">
     <div className="space-y-1">
-      <TaskItem title="Mobile App" time="10:00 AM - 06:00 PM" avatars={['bg-red-400', 'bg-green-400', 'bg-yellow-400']} />
+      <TaskItem title="Mobile App" time="10:00 AM - 06:00 PM" avatars={['bg-red-400', 'bg-nexusbyte-accent-green', 'bg-yellow-400']} />
       <TaskItem title="Design System" time="10:00 AM - 12:00 AM" avatars={['bg-purple-400', 'bg-pink-400']} />
       <TaskItem title="Moodboarding" time="03:00 PM - 05:00 PM" avatars={['bg-teal-400']} />
       <TaskItem title="Research" time="09:00 AM - 09:00 AM" avatars={['bg-orange-400', 'bg-cyan-400']} />

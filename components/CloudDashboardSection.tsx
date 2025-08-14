@@ -27,7 +27,7 @@ const ChartBarIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 );
 
 const LockIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}> {/* Adjusted color for light theme */}
+  <svg className="w-6 h-6 text-nexusbyte-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}> {/* Adjusted color for light theme */}
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -108,7 +108,7 @@ export default function CloudDashboardSection() {
           </div>
 
           <div className="space-y-3 p-4 rounded-lg hover:bg-gray-100 transition-colors"> {/* Adjusted hover */}
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto"> {/* Adjusted icon bg */}
+            <div className="w-12 h-12 bg-nexusbyte-accent-green/10 rounded-lg flex items-center justify-center mx-auto"> {/* Adjusted icon bg */}
               <LockIcon />
             </div>
             <h3 className="text-lg font-semibold text-nexusbyte-primary-dark">Secure & Private</h3> {/* Changed text-white */}

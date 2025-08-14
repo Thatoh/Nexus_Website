@@ -126,7 +126,7 @@ export const PlansAccessPage: React.FC = () => {
                             <p className={`text-3xl font-extrabold mb-6 ${plan.featured ? 'text-nexusbyte-accent-green' : ''}`}>{plan.price}</p>
                             <ul className="space-y-3 text-sm flex-grow mb-8 text-left">
                                 {plan.features.map((feature, i) => (
-                                    <li key={i} className="flex items-start"><CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-green-500'}`}/>{feature}</li>
+                                    <li key={i} className="flex items-start"><CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`}/>{feature}</li>
                                 ))}
                             </ul>
                              <button className={`w-full mt-auto py-3 rounded-lg font-semibold transition-colors ${plan.featured ? 'bg-nexusbyte-accent-green text-nexusbyte-primary-dark hover:bg-opacity-90' : 'bg-gray-800 text-white hover:bg-gray-700'}`}>
@@ -145,7 +145,7 @@ export const PlansAccessPage: React.FC = () => {
                         <h3 className="text-xl font-semibold mb-3">🧪 Request a Live Demo</h3>
                         <p className="text-gray-600 mb-4">Want to see how Nexus-Ticketing fits into your workflow? We offer guided demos to walk you through:</p>
                         <ul className="space-y-2 text-sm">
-                            {[ "Full ticket lifecycle", "SLA workflows", "Time tracking & audit logs", "Custom automation setup", "Dashboard reports", "White-labelling options" ].map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                            {[ "Full ticket lifecycle", "SLA workflows", "Time tracking & audit logs", "Custom automation setup", "Dashboard reports", "White-labelling options" ].map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                          <button className="mt-6 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-semibold px-6 py-2 rounded-md hover:bg-opacity-90">
                            Request Now &rarr;
@@ -155,7 +155,7 @@ export const PlansAccessPage: React.FC = () => {
                         <h3 className="text-xl font-semibold mb-3">📘 Resources & Support</h3>
                         <p className="text-gray-600 mb-4">Access everything you need to run Nexus-Ticketing effectively:</p>
                         <ul className="space-y-2 text-sm">
-                            {resourcesData.map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                            {resourcesData.map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                 </div>

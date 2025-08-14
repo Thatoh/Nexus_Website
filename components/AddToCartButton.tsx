@@ -14,7 +14,7 @@ const getButtonColorClasses = (color: ProductTileColor) => {
     case 'red':
       return 'bg-red-600 hover:bg-red-700 focus:ring-red-500';
     case 'green':
-      return 'bg-green-600 hover:bg-green-700 focus:ring-green-500';
+      return 'bg-nexusbyte-accent-green hover:bg-nexusbyte-accent-green focus:ring-green-500';
     case 'blue':
       return 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500';
     case 'purple':

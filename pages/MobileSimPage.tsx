@@ -169,7 +169,7 @@ const MobileSimPage: React.FC = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="flex items-center bg-white p-4 rounded-lg shadow-sm"
                         >
-                            <CheckIcon className="w-6 h-6 text-green-500 mr-4 flex-shrink-0"/>
+                            <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-4 flex-shrink-0"/>
                             <span className="text-lg text-gray-800">{item}</span>
                         </motion.div>
                     ))}

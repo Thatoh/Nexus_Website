@@ -13,7 +13,7 @@ interface DetailOverlayProps {
 const getDynamicTextAndBorderColor = (color: ProductTileColor): string => {
   switch (color) {
     case 'red': return 'text-red-700 border-red-500';
-    case 'green': return 'text-green-700 border-green-500';
+    case 'green': return 'text-nexusbyte-accent-green border-green-500';
     case 'blue': return 'text-blue-700 border-blue-500';
     case 'yellow': return 'text-yellow-700 border-yellow-500';
     default: return 'text-gray-700 border-gray-500';
@@ -23,7 +23,7 @@ const getDynamicTextAndBorderColor = (color: ProductTileColor): string => {
 const getDynamicBgColor = (color: ProductTileColor): string => {
   switch (color) {
     case 'red': return 'bg-red-600';
-    case 'green': return 'bg-green-600';
+    case 'green': return 'bg-nexusbyte-accent-green';
     case 'blue': return 'bg-blue-600';
     case 'yellow': return 'bg-yellow-600';
     default: return 'bg-gray-600';

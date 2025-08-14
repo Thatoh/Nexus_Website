@@ -57,7 +57,7 @@ export const MonitoringHover: React.FC = () => (
     <Notification 
       appName="Syntra"
       title="Task Time Completed"
-      icon={<CheckIcon className="w-2.5 h-2.5 text-green-400 inline"/>}
+      icon={<CheckIcon className="w-2.5 h-2.5 text-nexusbyte-accent-green inline"/>}
       time="now"
       bgColor="bg-slate-650/80 backdrop-blur-sm" // Slightly different bg for variation
     />

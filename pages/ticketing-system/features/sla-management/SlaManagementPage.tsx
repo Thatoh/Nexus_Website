@@ -152,7 +152,7 @@ export const SlaManagementPage: React.FC = () => {
                           <ul className="space-y-3 text-left">
                             {monitoringData.map((item, index) => (
                                typeof item === 'string' ? 
-                               <li key={index} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 mt-1 text-green-500 flex-shrink-0"/>{item}</li>
+                               <li key={index} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>{item}</li>
                                : (
                                    <li key={index}>
                                         <p className="font-semibold text-gray-800">{item.title}</p>
@@ -174,14 +174,14 @@ export const SlaManagementPage: React.FC = () => {
                         <h3 className="text-xl font-semibold mb-3">🚨 SLA Escalation Triggers</h3>
                         <p className="text-sm text-gray-600 mb-4">When SLA thresholds are hit:</p>
                         <ul className="space-y-3">
-                           {escalationData.map((item, i) => <li key={i} className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                           {escalationData.map((item, i) => <li key={i} className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                      <div className="bg-gray-50 p-6 rounded-lg text-left">
                         <h3 className="text-xl font-semibold mb-3">📈 SLA Reporting & Analytics</h3>
                         <p className="text-sm text-gray-600 mb-4">From the admin dashboard, view detailed SLA metrics like:</p>
                         <ul className="space-y-3">
-                           {reportingMetrics.map((item, i) => <li key={i} className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                           {reportingMetrics.map((item, i) => <li key={i} className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                 </div>

@@ -147,7 +147,7 @@ const AiReadinessAssessmentPage: React.FC = () => {
                         <ul className="space-y-4">
                             {deliverablesData.map((item, index) => (
                                 <li key={index} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}
@@ -158,7 +158,7 @@ const AiReadinessAssessmentPage: React.FC = () => {
                         <ul className="space-y-4">
                             {perfectForData.map((item, index) => (
                                 <li key={index} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}

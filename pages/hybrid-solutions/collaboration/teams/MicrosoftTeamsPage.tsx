@@ -118,7 +118,7 @@ export const MicrosoftTeamsPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {offering.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -158,7 +158,7 @@ export const MicrosoftTeamsPage: React.FC = () => {
                         <div className="grid grid-cols-2 gap-4">
                             {integrationsData.map((item, i) => (
                                 <div key={i} className="bg-white p-4 rounded-lg shadow-sm flex items-center">
-                                    <CheckIcon className="w-5 h-5 mr-3 text-green-500 flex-shrink-0" />
+                                    <CheckIcon className="w-5 h-5 mr-3 text-nexusbyte-accent-green flex-shrink-0" />
                                     <span className="text-gray-800">{item}</span>
                                 </div>
                             ))}

@@ -53,7 +53,7 @@ const PlanCard: React.FC<{plan: any; index: number}> = ({ plan, index }) => (
     <ul className="space-y-3 text-sm mb-8 flex-grow">
       {plan.features.map((feature: string, i: number) => (
         <li key={i} className="flex items-start">
-          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.name === 'Agentic Pro' ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} />
+          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.name === 'Agentic Pro' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />
           <span>{feature}</span>
         </li>
       ))}

@@ -126,7 +126,7 @@ export const AnalyticsReportingPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {report.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -153,7 +153,7 @@ export const AnalyticsReportingPage: React.FC = () => {
                             <ul className="space-y-2 text-sm text-gray-600">
                                 {items.map((item, i) => (
                                     <li key={i} className="flex items-start">
-                                        <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                        <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                         <span className="text-gray-700">{item}</span>
                                     </li>
                                 ))}

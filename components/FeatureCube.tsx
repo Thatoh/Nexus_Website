@@ -17,7 +17,7 @@ const getCubeColorClasses = (color: ProductTileColor, isAnyActive: boolean, isAc
     case 'red':
       return `bg-red-500 hover:bg-red-600 text-white ${baseOpacity}`;
     case 'green':
-      return `bg-green-500 hover:bg-green-600 text-white ${baseOpacity}`;
+      return `bg-nexusbyte-accent-green hover:bg-nexusbyte-accent-green text-white ${baseOpacity}`;
     case 'blue':
       return `bg-blue-500 hover:bg-blue-600 text-white ${baseOpacity}`;
     case 'yellow':

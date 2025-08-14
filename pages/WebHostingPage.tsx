@@ -100,16 +100,16 @@ const WebHostingHero: React.FC = () => {
 
             <ul className="space-y-4 my-8 text-lg text-gray-700">
                 <li className="flex items-center gap-3">
-                <CheckIcon className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green flex-shrink-0" />
                 <span>Free domain</span>
                 <span className="w-5 h-5 flex items-center justify-center border-2 border-gray-400 text-gray-500 text-xs font-bold rounded-full cursor-help" title="Free domain for the first year.">?</span>
                 </li>
                 <li className="flex items-center gap-3">
-                <CheckIcon className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green flex-shrink-0" />
                 <span>Built-in AI tools and bonus credits</span>
                 </li>
                 <li className="flex items-center gap-3">
-                <CheckIcon className="w-6 h-6 text-green-500 flex-shrink-0" />
+                <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green flex-shrink-0" />
                 <span>24/7 customer support</span>
                 </li>
             </ul>
@@ -321,7 +321,7 @@ const PricingSection = () => (
                         <ul className="space-y-4 text-left flex-grow mb-8">
                             {plan.features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-3">
-                                    <CheckIcon className={`w-5 h-5 flex-shrink-0 ${plan.popular ? 'text-purple-400' : 'text-green-500'}`} />
+                                    <CheckIcon className={`w-5 h-5 flex-shrink-0 ${plan.popular ? 'text-purple-400' : 'text-nexusbyte-accent-green'}`} />
                                     <span>{feature}</span>
                                 </li>
                             ))}

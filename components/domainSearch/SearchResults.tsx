@@ -16,7 +16,7 @@ interface SearchResultsProps {
 
 const getResultTextColor = (availability: 'available' | 'taken' | null, status: string) => {
   if (status === 'error' && !availability) return 'text-orange-600'; // Specific error color if no availability context
-  if (availability === 'available') return 'text-green-600';
+  if (availability === 'available') return 'text-nexusbyte-accent-green';
   if (availability === 'taken') return 'text-red-600';
   return 'text-gray-700'; // Default or for loading messages
 };

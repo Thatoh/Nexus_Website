@@ -143,7 +143,7 @@ const AiStrategyRoadmapPage: React.FC = () => {
                                         <ul className="space-y-2 text-gray-600">
                                             {stage.items.map((item, i) => (
                                                 <li key={i} className="flex items-start">
-                                                    <CheckIcon className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0"/>
+                                                    <CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2 mt-1 flex-shrink-0"/>
                                                     <span>{item}</span>
                                                 </li>
                                             ))}
@@ -190,7 +190,7 @@ const AiStrategyRoadmapPage: React.FC = () => {
                             {maturityModelData.map((item) => (
                                 <tr key={item.level}>
                                     <td className="px-6 py-4 font-bold text-nexusbyte-accent-green">
-                                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm">Level {item.level}</span>
+                                        <span className="bg-nexusbyte-accent-green/10 text-nexusbyte-accent-green px-2 py-1 rounded-full text-sm">Level {item.level}</span>
                                     </td>
                                     <td className="px-6 py-4">{item.description}</td>
                                 </tr>
@@ -212,7 +212,7 @@ const AiStrategyRoadmapPage: React.FC = () => {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="flex items-start text-lg"
                             >
-                                <CheckIcon className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                                <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
                                 <span className="text-gray-700">{item}</span>
                             </motion.li>
                         ))}

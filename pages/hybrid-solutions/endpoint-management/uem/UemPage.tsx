@@ -135,7 +135,7 @@ const UemPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {capability.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -218,7 +218,7 @@ const UemPage: React.FC = () => {
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             className="bg-gray-700 text-white font-medium px-4 py-2 rounded-full shadow-sm flex items-center"
                         >
-                            <CheckIcon className="w-5 h-5 mr-2 text-green-400"/> {item}
+                            <CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/> {item}
                         </motion.div>
                     ))}
                 </div>

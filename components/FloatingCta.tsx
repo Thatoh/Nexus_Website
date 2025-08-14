@@ -30,7 +30,7 @@ const FloatingCta: React.FC = () => {
               aria-label={item.label}
             >
               <span className="hidden sm:inline">{item.label}</span>
-              <item.icon className={`w-6 h-6 ${item.isWhatsApp ? 'text-green-500' : 'text-blue-700'}`} />
+              <item.icon className={`w-6 h-6 ${item.isWhatsApp ? 'text-nexusbyte-accent-green' : 'text-blue-700'}`} />
             </motion.a>
           ))}
         </AnimatePresence>

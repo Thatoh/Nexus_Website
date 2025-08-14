@@ -116,9 +116,9 @@ export const CommunicationIntegrationsPage: React.FC = () => {
                     <div className="bg-gray-50 p-6 rounded-lg">
                         <h3 className="text-xl font-semibold mb-3">🧠 Unified Conversations</h3>
                         <ul className="space-y-2 text-sm">
-                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>One interface for email, chat, and voice support</li>
-                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Merge duplicate requests across multiple channels</li>
-                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Preserve full history regardless of entry point</li>
+                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>One interface for email, chat, and voice support</li>
+                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Merge duplicate requests across multiple channels</li>
+                            <li className="flex items-start"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Preserve full history regardless of entry point</li>
                         </ul>
                     </div>
                      <div className="bg-gray-50 p-6 rounded-lg">

@@ -277,9 +277,9 @@ const AIAgentsAutomationPage: React.FC = () => {
                 <p className={`text-sm mb-6 ${plan.featured ? 'text-gray-400' : 'text-gray-500'}`}>{plan.name !== 'Enterprise' ? '/mo' : ''}</p>
                 
                 <ul className={`space-y-3 text-sm mb-8 flex-grow ${plan.featured ? 'text-gray-300' : 'text-gray-600'}`}>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} /> AI Requests: {plan.requests}</li>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} /> Integrates with: {plan.integrations}</li>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} /> Support: {plan.support}</li>
+                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} /> AI Requests: {plan.requests}</li>
+                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} /> Integrates with: {plan.integrations}</li>
+                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} /> Support: {plan.support}</li>
                 </ul>
                 <Link
                   to={plan.name === 'Enterprise' ? '/contact' : `/signup?plan=${plan.name.toLowerCase()}`}

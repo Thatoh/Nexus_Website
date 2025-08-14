@@ -110,7 +110,7 @@ export const TicketingSystemPlatformPage: React.FC = () => {
                             <ul className="space-y-3">
                                 {features.map((feature, i) => (
                                     <li key={i} className="flex items-start">
-                                        <CheckIcon className="w-5 h-5 mr-3 mt-1 text-green-500 flex-shrink-0" />
+                                        <CheckIcon className="w-5 h-5 mr-3 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                                         <span className="text-gray-700">{feature}</span>
                                     </li>
                                 ))}

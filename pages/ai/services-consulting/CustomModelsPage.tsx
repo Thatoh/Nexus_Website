@@ -154,7 +154,7 @@ const CustomModelsPage: React.FC = () => {
                         <ul className="space-y-3">
                             {whatWeDeliverData[0].items.map((item, index) => (
                                 <li key={index} className="flex items-start">
-                                    <CheckIcon className="w-5 h-5 mr-3 mt-1 text-green-500 flex-shrink-0"/>
+                                    <CheckIcon className="w-5 h-5 mr-3 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}
@@ -264,7 +264,7 @@ const CustomModelsPage: React.FC = () => {
                         <ul className="space-y-3">
                             {perfectForData.map((item, index) => (
                                 <li key={index} className="flex items-start">
-                                    <CheckIcon className="w-6 h-6 mr-3 text-green-500 flex-shrink-0"/>
+                                    <CheckIcon className="w-6 h-6 mr-3 text-nexusbyte-accent-green flex-shrink-0"/>
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}

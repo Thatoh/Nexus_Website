@@ -113,7 +113,7 @@ export const RolesPermissionsPage: React.FC = () => {
                                         <ul className="space-y-1">
                                             {row.permissions.map((perm, pIndex) => (
                                                 <li key={pIndex} className="flex items-start">
-                                                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0" />
+                                                    <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0" />
                                                     {perm}
                                                 </li>
                                             ))}
@@ -149,9 +149,9 @@ export const RolesPermissionsPage: React.FC = () => {
                         <div className="bg-gray-50 p-6 rounded-lg text-left">
                              <p className="text-gray-600 mb-4">Build your own permission matrix:</p>
                             <ul className="space-y-3 text-sm">
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Toggle feature access (e.g. commenting, linking tickets)</li>
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Define visibility scope (e.g. department-only tickets)</li>
-                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>Assign roles per team, per project, or per region</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Toggle feature access (e.g. commenting, linking tickets)</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Define visibility scope (e.g. department-only tickets)</li>
+                                <li className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>Assign roles per team, per project, or per region</li>
                             </ul>
                         </div>
                     </div>
@@ -164,7 +164,7 @@ export const RolesPermissionsPage: React.FC = () => {
                     <div className="text-left bg-white p-6 rounded-lg shadow-md">
                         <h3 className="text-xl font-semibold mb-3">🧠 Best Practices</h3>
                         <ul className="space-y-3">
-                           {bestPracticesData.map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                           {bestPracticesData.map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                      <div className="text-left bg-white p-6 rounded-lg shadow-md">

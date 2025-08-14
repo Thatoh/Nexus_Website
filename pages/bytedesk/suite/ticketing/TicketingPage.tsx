@@ -110,7 +110,7 @@ export const TicketingPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {feature.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -144,7 +144,7 @@ export const TicketingPage: React.FC = () => {
                          <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 text-center">🔄 Productivity Features</h3>
                          <div className="bg-gray-50 p-6 rounded-lg text-left">
                             <ul className="space-y-3">
-                                {productivityFeatures.map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 mt-1 text-green-500"/>{item}</li>)}
+                                {productivityFeatures.map((item, i) => <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-3 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                             </ul>
                         </div>
                     </div>

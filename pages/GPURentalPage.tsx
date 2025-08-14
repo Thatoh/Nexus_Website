@@ -105,7 +105,7 @@ const GPURentalPage: React.FC = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className={`p-2 rounded-full mr-3 ${
-                            gpu.tier === 'Starter' ? 'bg-green-100 text-green-700' :
+                            gpu.tier === 'Starter' ? 'bg-nexusbyte-accent-green/10 text-nexusbyte-accent-green' :
                             gpu.tier === 'Pro' ? 'bg-blue-100 text-blue-700' :
                             'bg-purple-100 text-purple-700'
                           }`}>
@@ -124,7 +124,7 @@ const GPURentalPage: React.FC = () => {
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">{gpu.idealFor}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <Link to="/contact" state={{ subject: `Inquiry about ${gpu.tier} GPU Plan`}} className="text-nexusbyte-accent-green hover:text-green-700 font-semibold">
+                        <Link to="/contact" state={{ subject: `Inquiry about ${gpu.tier} GPU Plan`}} className="text-nexusbyte-accent-green hover:text-nexusbyte-accent-green font-semibold">
                           Get Started &rarr;
                         </Link>
                       </td>
@@ -202,9 +202,9 @@ const GPURentalPage: React.FC = () => {
                 <p className={`mb-1 text-sm ${plan.plan === 'Growth' ? 'text-gray-800' : 'text-gray-500'}`}>{plan.billingType}</p>
                 <p className={`text-3xl font-extrabold my-4 ${plan.plan === 'Growth' ? '' : 'text-nexusbyte-accent-green'}`}>{plan.price}</p>
                 <ul className="space-y-3 text-sm mb-8 flex-grow">
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.plan === 'Growth' ? 'text-green-900' : 'text-nexusbyte-accent-green'}`} />Duration: {plan.duration}</li>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.plan === 'Growth' ? 'text-green-900' : 'text-nexusbyte-accent-green'}`} />GPU Access: {plan.gpuAccess}</li>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.plan === 'Growth' ? 'text-green-900' : 'text-nexusbyte-accent-green'}`} />Support: {plan.support}</li>
+                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.plan === 'Growth' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />Duration: {plan.duration}</li>
+                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.plan === 'Growth' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />GPU Access: {plan.gpuAccess}</li>
+                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.plan === 'Growth' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />Support: {plan.support}</li>
                 </ul>
                 <Link 
                   to="/contact"

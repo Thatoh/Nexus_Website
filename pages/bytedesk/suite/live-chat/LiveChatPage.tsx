@@ -119,7 +119,7 @@ export const LiveChatPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {feature.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -179,7 +179,7 @@ export const LiveChatPage: React.FC = () => {
                 <div className="max-w-3xl mx-auto text-left space-y-4">
                     {mspBenefits.map((item, index) => (
                         <div key={index} className="flex items-center bg-white p-4 rounded-lg shadow-sm">
-                            <CheckIcon className="w-6 h-6 mr-3 text-green-500 flex-shrink-0" />
+                            <CheckIcon className="w-6 h-6 mr-3 text-nexusbyte-accent-green flex-shrink-0" />
                             <span className="text-gray-800 font-medium">{item}</span>
                         </div>
                     ))}

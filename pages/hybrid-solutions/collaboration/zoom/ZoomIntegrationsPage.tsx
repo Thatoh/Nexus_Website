@@ -121,7 +121,7 @@ export const ZoomIntegrationsPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {service.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -161,7 +161,7 @@ export const ZoomIntegrationsPage: React.FC = () => {
                         <h3 className="text-xl font-semibold mb-2 text-nexusbyte-primary-dark">🧠 Zoom-Enhanced Nova Agents</h3>
                         <ul className="space-y-2 text-gray-700">
                         {novaAgentsForZoom.map((agent, i) => (
-                             <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>{agent}</li>
+                             <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>{agent}</li>
                         ))}
                         </ul>
                     </div>

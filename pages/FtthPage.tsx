@@ -199,7 +199,7 @@ const FtthPage: React.FC = () => {
                         <ul className="space-y-4">
                             {gamingFeatures.map((feature, index) => (
                                 <li key={index} className="flex items-start text-lg">
-                                    <CheckIcon className="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0"/>
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0"/>
                                     <span>{feature}</span>
                                 </li>
                             ))}

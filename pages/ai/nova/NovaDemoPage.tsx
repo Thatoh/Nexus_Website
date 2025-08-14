@@ -116,10 +116,10 @@ const NovaDemoPage: React.FC = () => {
       <Section title="How The Demo Works">
         <div className="max-w-2xl mx-auto text-left space-y-4">
           <p className="text-center text-gray-700">This demo allows you to:</p>
-          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1"/>Choose a sample industry use case.</li>
-          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1"/>Interact with a pre-trained Nova Agent.</li>
-          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1"/>See how agent reasoning, data boundaries, and knowledge recall works.</li>
-          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1"/>Explore agent memory and chaining.</li>
+          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1"/>Choose a sample industry use case.</li>
+          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1"/>Interact with a pre-trained Nova Agent.</li>
+          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1"/>See how agent reasoning, data boundaries, and knowledge recall works.</li>
+          <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1"/>Explore agent memory and chaining.</li>
           <p className="text-center text-sm font-semibold text-red-600 bg-red-100 p-3 rounded-md mt-6">
             🛑 Note: This is a sandboxed demo. Responses are simulated from limited datasets and do not reflect full production agent integrations.
           </p>

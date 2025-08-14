@@ -117,7 +117,7 @@ export const KnowledgeBasePage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {feature.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -174,7 +174,7 @@ export const KnowledgeBasePage: React.FC = () => {
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             className="bg-white text-gray-800 font-medium px-4 py-2 rounded-full shadow-sm border border-gray-200 flex items-center"
                         >
-                            <CheckIcon className="w-5 h-5 mr-2 text-green-500"/> {item}
+                            <CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/> {item}
                         </motion.div>
                     ))}
                 </div>

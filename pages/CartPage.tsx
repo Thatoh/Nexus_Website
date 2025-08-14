@@ -23,7 +23,7 @@ const CartPage: React.FC = () => {
         return <BriefcaseIcon className="w-10 h-10 text-red-500" />;
       case 'teams':
       case 'green':
-        return <UsersIcon className="w-10 h-10 text-green-500" />;
+        return <UsersIcon className="w-10 h-10 text-nexusbyte-accent-green" />;
       case 'azure':
       case 'blue':
         return <CloudArrowUpIcon className="w-10 h-10 text-blue-500" />;

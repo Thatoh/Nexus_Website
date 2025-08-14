@@ -155,7 +155,7 @@ export const CrmIntegrationsPage: React.FC = () => {
                          <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 text-center">🛠️ Integration Methods</h3>
                          <div className="bg-white p-6 rounded-lg shadow-md text-left">
                             <ul className="space-y-3">
-                                {integrationMethodsData.map((item, i) => <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>{item}</li>)}
+                                {integrationMethodsData.map((item, i) => <li key={i} className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>{item}</li>)}
                             </ul>
                         </div>
                     </div>

@@ -184,13 +184,13 @@ const DomainRegistrationsPage: React.FC = () => {
           <div>
             <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 flex items-center gap-3"><CheckIcon className="w-8 h-8 text-nexusbyte-accent-green" />Value-Added Services</h3>
             <ul className="space-y-2">
-              {valueAddedServicesData.map((feature, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 text-green-500 mr-2" />{feature}</li>)}
+              {valueAddedServicesData.map((feature, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2" />{feature}</li>)}
             </ul>
           </div>
           <div>
             <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 flex items-center gap-3"><ShieldCheckIcon className="w-8 h-8 text-nexusbyte-accent-green" />Why Register with NexusByte?</h3>
             <ul className="space-y-2">
-              {whyNexusByteData.map((feature, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 text-green-500 mr-2" />{feature}</li>)}
+              {whyNexusByteData.map((feature, i) => <li key={i} className="flex items-center text-gray-700"><CheckIcon className="w-5 h-5 text-nexusbyte-accent-green mr-2" />{feature}</li>)}
             </ul>
           </div>
         </div>

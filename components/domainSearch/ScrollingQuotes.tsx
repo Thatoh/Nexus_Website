@@ -18,7 +18,6 @@ const ScrollingQuotes: React.FC<ScrollingQuotesProps> = ({ contentAboveRef }) =>
   const wordSpansRef = useRef<HTMLSpanElement[]>([]);
   const paragraphRefs = useRef<HTMLParagraphElement[]>([]);
 
-
   // Prepare word spans and paragraph refs once on mount
   useEffect(() => {
     if (animationAreaRef.current) {
@@ -44,7 +43,6 @@ const ScrollingQuotes: React.FC<ScrollingQuotesProps> = ({ contentAboveRef }) =>
         p.style.opacity = '0';
         p.style.transition = 'opacity 0.5s ease-in-out 0.1s';
     });
-
 
     const handleScroll = () => {
       if (!animationAreaRef.current || !contentAboveRef.current) return;
@@ -100,8 +98,6 @@ const ScrollingQuotes: React.FC<ScrollingQuotesProps> = ({ contentAboveRef }) =>
             // attributionPara.style.opacity = '0'; // Allow it to stay if revealed
         }
       }
-
-
     };
 
     const initTimeoutId = setTimeout(handleScroll, 100); // Initial check

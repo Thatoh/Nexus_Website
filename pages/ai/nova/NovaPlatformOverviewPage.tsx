@@ -203,7 +203,7 @@ const NovaPlatformOverviewPage = () => {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="flex items-start text-lg"
                             >
-                                <CheckIcon className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                                <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
                                 <span className="text-gray-700">{item}</span>
                             </motion.li>
                         ))}

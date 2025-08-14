@@ -51,7 +51,7 @@ const ServiceCard: React.FC<{ icon: React.FC<React.SVGProps<SVGSVGElement>>; tit
       <ul className="space-y-3 text-sm text-gray-700 flex-grow mb-6">
         {features.map((feature, i) => (
           <li key={i} className="flex items-start">
-            <CheckIcon className="w-5 h-5 mr-2 mt-0.5 text-green-500 flex-shrink-0" />
+            <CheckIcon className="w-5 h-5 mr-2 mt-0.5 text-nexusbyte-accent-green flex-shrink-0" />
             <span>{feature}</span>
           </li>
         ))}

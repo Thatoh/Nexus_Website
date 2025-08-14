@@ -89,7 +89,7 @@ const AiAutomationArticlesPage: React.FC = () => {
                         <ul className="space-y-4 text-left">
                             {whatYoullFind.map((item, index) => (
                                 <li key={index} className="flex items-start">
-                                    <CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                                    <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0" />
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}

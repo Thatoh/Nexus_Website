@@ -113,7 +113,7 @@ export const WorkflowAutomationPage: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     {feature.items.map((item, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500 flex-shrink-0"/>
+                                            <CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green flex-shrink-0"/>
                                             <span className="text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -152,15 +152,15 @@ export const WorkflowAutomationPage: React.FC = () => {
                     <div className="bg-white p-6 rounded-lg shadow-md text-left">
                         <h3 className="text-xl font-semibold mb-3">🎛️ Easy Admin Control Panel</h3>
                          <ul className="space-y-3">
-                           {adminPanelFeatures.map((item, i) => <li key={i} className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>{item}</li>)}
+                           {adminPanelFeatures.map((item, i) => <li key={i} className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>)}
                         </ul>
                     </div>
                      <div className="bg-white p-6 rounded-lg shadow-md text-left">
                         <h3 className="text-xl font-semibold mb-3">🔒 Secure & Compliant</h3>
                         <ul className="space-y-3">
-                           <li className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>All automation actions are logged in the audit trail</li>
-                           <li className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>Role-based execution to ensure no unintended access</li>
-                           <li className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-green-500"/>POPIA-compliant decision logic with auditability</li>
+                           <li className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>All automation actions are logged in the audit trail</li>
+                           <li className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>Role-based execution to ensure no unintended access</li>
+                           <li className="flex items-start text-sm"><CheckIcon className="w-4 h-4 mr-2 mt-1 text-nexusbyte-accent-green"/>POPIA-compliant decision logic with auditability</li>
                         </ul>
                     </div>
                 </div>

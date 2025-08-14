@@ -51,7 +51,7 @@ const NovaPlanCard: React.FC<{plan: any; index: number}> = ({ plan, index }) => 
     <ul className="space-y-3 text-sm mb-8 flex-grow">
       {plan.features.map((feature: string, i: number) => (
         <li key={i} className="flex items-start">
-          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.name === 'Nova Edge' ? 'text-nexusbyte-accent-green' : 'text-green-500'}`} />
+          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.name === 'Nova Edge' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />
           <span>{feature}</span>
         </li>
       ))}
@@ -247,7 +247,7 @@ const NovaPlatformPage: React.FC = () => {
                         transition={{ duration: 0.5, delay: idx * 0.15 }}
                         className="flex items-start p-4 bg-white rounded-lg shadow-sm"
                     >
-                        <CheckIcon className="w-7 h-7 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                        <CheckIcon className="w-7 h-7 text-nexusbyte-accent-green mr-4 mt-1 flex-shrink-0" />
                         <div>
                             <h4 className="font-semibold text-nexusbyte-primary-dark">{item.title}</h4>
                             <p className="text-gray-600 text-sm">{item.text}</p>

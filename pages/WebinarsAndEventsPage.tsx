@@ -100,7 +100,7 @@ const WebinarsAndEventsPage: React.FC = () => {
                                 <p className="text-sm font-semibold text-gray-800 mb-2">What you’ll learn:</p>
                                 <ul className="space-y-2 text-sm text-gray-600 mb-6 flex-grow">
                                     {event.learnings.map((item, i) => (
-                                        <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />{item}</li>
+                                        <li key={i} className="flex items-start"><CheckIcon className="w-4 h-4 text-nexusbyte-accent-green mr-2 mt-0.5 flex-shrink-0" />{item}</li>
                                     ))}
                                 </ul>
                                 <a href={event.ctaLink} className="mt-auto block w-full text-center bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-semibold py-2.5 rounded-lg hover:bg-opacity-80 transition-colors">

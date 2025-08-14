@@ -65,10 +65,10 @@ const BriefsAndBytesPage: React.FC = () => {
                     <Section title="What is Briefs & Bytes?">
                         <p className="text-gray-700 leading-relaxed mb-6">A curated stream of:</p>
                         <ul className="space-y-4 text-left">
-                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Industry Briefings</strong> – Regulatory updates, threat intelligence, funding shifts, and policy changes</div></li>
-                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Market Bytes</strong> – Local and global tech insights impacting cloud, cybersecurity, AI, and digital infrastructure</div></li>
-                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Tech Pulse Reports</strong> – Monthly indicators and metrics to guide strategic planning</div></li>
-                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Sector Snapshots</strong> – Short reads focused on vertical-specific trends (finance, public sector, retail, health)</div></li>
+                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Industry Briefings</strong> – Regulatory updates, threat intelligence, funding shifts, and policy changes</div></li>
+                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Market Bytes</strong> – Local and global tech insights impacting cloud, cybersecurity, AI, and digital infrastructure</div></li>
+                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Tech Pulse Reports</strong> – Monthly indicators and metrics to guide strategic planning</div></li>
+                            <li className="flex items-start"><CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0" /><div><strong className="text-gray-800">Sector Snapshots</strong> – Short reads focused on vertical-specific trends (finance, public sector, retail, health)</div></li>
                         </ul>
                     </Section>
 
@@ -102,7 +102,7 @@ const BriefsAndBytesPage: React.FC = () => {
                         <p className="text-gray-700 mb-6">Want new briefings monthly? Sign up for:</p>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="flex items-center justify-center p-4 bg-gray-100 rounded-lg"><GmailIcon className="w-6 h-6 text-red-500 mr-3"/>Email digests</div>
-                            <div className="flex items-center justify-center p-4 bg-gray-100 rounded-lg"><WhatsAppIcon className="w-6 h-6 text-green-500 mr-3"/>WhatsApp brief drops</div>
+                            <div className="flex items-center justify-center p-4 bg-gray-100 rounded-lg"><WhatsAppIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3"/>WhatsApp brief drops</div>
                             <div className="flex items-center justify-center p-4 bg-gray-100 rounded-lg"><CpuChipIcon className="w-6 h-6 text-purple-500 mr-3"/>Nova push alerts</div>
                         </div>
                         <p className="text-xs text-gray-500 mt-4">(Nova push alerts for registered NexusByte dashboard users)</p>

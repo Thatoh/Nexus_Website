@@ -195,18 +195,18 @@ const NovaApplicationsPage: React.FC = () => {
                 <div>
                     <h3 className="font-semibold text-xl mb-3">Nova is built for any sector that requires:</h3>
                     <ul className="space-y-2">
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>High-volume queries</li>
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>Policy-heavy workflows</li>
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>Secure information handling</li>
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>Auditability of every step</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>High-volume queries</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>Policy-heavy workflows</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>Secure information handling</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>Auditability of every step</li>
                     </ul>
                 </div>
                  <div>
                     <h3 className="font-semibold text-xl mb-3">Whether you're building:</h3>
                      <ul className="space-y-2">
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>An AI-powered HR assistant</li>
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>A ticket resolution bot</li>
-                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-green-500"/>A multi-agent financial ops automation system</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>An AI-powered HR assistant</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>A ticket resolution bot</li>
+                        <li className="flex items-center"><CheckIcon className="w-5 h-5 mr-2 text-nexusbyte-accent-green"/>A multi-agent financial ops automation system</li>
                     </ul>
                 </div>
             </div>

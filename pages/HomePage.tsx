@@ -27,7 +27,7 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
       <HeroSlider />
       
       {/* Call to Action Section */}
-      <div className="bg-white">
+      <div className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/cta-1.png)' }}>
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8">
           <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-black sm:text-5xl">
             Ready to dive in?
@@ -37,7 +37,7 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
           <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:shrink-0">
             <a
               href="#"
-              className="rounded-md bg-green-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+              className="rounded-md bg-nexusbyte-accent-green px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-nexusbyte-accent-green focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
             >
               {' '}
               Get started{' '}

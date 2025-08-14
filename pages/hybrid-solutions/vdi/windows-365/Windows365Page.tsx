@@ -192,13 +192,13 @@ export const Windows365Page: React.FC = () => {
                         <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4">🧠 NexusByte Enhancements</h3>
                         <ul className="space-y-3 text-left text-gray-700">
                             {nexusByteEnhancements.map((item, i) => (
-                                <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>{item}</li>
+                                <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>
                             ))}
                         </ul>
                         <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-4 mt-8">🧩 Add-Ons Available</h3>
                         <ul className="space-y-3 text-left text-gray-700">
                              {addOnsData.map((item, i) => (
-                                <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-green-500"/>{item}</li>
+                                <li key={i} className="flex items-start"><CheckIcon className="w-5 h-5 mr-2 mt-1 text-nexusbyte-accent-green"/>{item}</li>
                             ))}
                         </ul>
                     </div>

@@ -63,9 +63,9 @@ const CloudCostPlatformSection: React.FC = () => {
       <div className="max-w-6xl mx-auto text-center">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-green-500 font-medium mb-6">
-            <span className="text-green-500">•</span> The World's Leading Cloud Cost Optimization Platform{" "}
-            <span className="text-green-500">•</span>
+          <p className="text-nexusbyte-accent-green font-medium mb-6">
+            <span className="text-nexusbyte-accent-green">•</span> The World's Leading Cloud Cost Optimization Platform{" "}
+            <span className="text-nexusbyte-accent-green">•</span>
           </p>
         </div>
 
@@ -117,7 +117,7 @@ const CloudCostPlatformSection: React.FC = () => {
 
         {/* CTA Button */}
         <button
-          className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-semibold rounded-lg"
+          className="bg-nexusbyte-accent-green hover:bg-nexusbyte-accent-green text-white px-8 py-4 text-lg font-semibold rounded-lg"
         >
           Get Started
         </button>
