@@ -18,7 +18,7 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
   return (
     <>
       <AnnouncementBanner 
-        title="NexusByte Tech Summit 2024"
+        title="NexusByte Tech Summit 2026"
         message="Join us for the biggest tech event of the year. Discover the latest in AI, Cloud, and Cybersecurity."
         ctaText="Get Tickets"
         ctaLink="/events/tech-summit"
