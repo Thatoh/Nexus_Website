@@ -1,90 +1,89 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import DomainSearch from './DomainSearch';
 
 type Props = {
-  /** Path to video placed in /public */
   src: string;
-  /** Height of the combined section in px */
-  heightPx?: number;
-  /** Newsletter content */
+  heightPx?: number; // optional; otherwise sizes to content
   newsletterContent: React.ReactNode;
-  /** Domain search content */
   domainSearchContent: React.ReactNode;
 };
 
-/**
- * SharedVideoBackground
- * - Combines Newsletter and Domain Search sections with continuous video background
- * - Video plays continuously across both sections
- * - Parallax effect maintains visual continuity
- */
 export default function SharedVideoBackground({
   src,
-  heightPx = 3000, // Increased height to accommodate both sections
+  heightPx,
   newsletterContent,
   domainSearchContent,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-
-  // Progress from when the section top hits the viewport to when its bottom leaves
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end end'],
   });
 
-  /**
-   * We pan the background from -25vh to +25vh across the section.
-   * This creates a continuous flow across both sections.
-   */
-  const bgY = useTransform(scrollYProgress, [0, 1], ['-25vh', '25vh']);
+  // Gentle parallax
+  const bgY = useTransform(scrollYProgress, [0, 1], ['-15vh', '15vh']);
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.05]);
+
+  // Determine if the source is a video or image based on file extension
+  const isVideo = src.match(/\.(mp4|webm|ogg|mov|avi)$/i);
+  const isImage = src.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i);
+
+  // Debug logging
+  console.log('SharedVideoBackground props:', { src, isVideo, isImage });
 
   return (
     <section
       ref={ref}
-      className="relative w-full overflow-clip"
-      style={{
-        minHeight: `${heightPx}px`,
-      }}
+      className="relative w-full overflow-hidden bg-red-500"
+      style={heightPx ? { minHeight: `${heightPx}px` } : { minHeight: '600px' }}
     >
-      {/* Continuous video background */}
-      <motion.div
-        className="pointer-events-none absolute inset-0"
-        style={{ y: bgY, scale: bgScale }}
-      >
-        <video
-          className="h-full w-full object-cover"
-          src={src}
-          autoPlay
-          playsInline
-          muted
-          loop
-          onError={(e) => {
-            console.error('Video error:', e);
-            console.error('Video src:', src);
-          }}
-          onLoadStart={() => console.log('Video loading started:', src)}
-          onCanPlay={() => console.log('Video can play:', src)}
-          onPlay={() => console.log('Video started playing:', src)}
-        />
-      </motion.div>
+      {/* Debug info */}
+      <div className="absolute top-0 left-0 z-50 bg-black text-white p-2 text-xs">
+        Debug: {src} | isImage: {isImage ? 'true' : 'false'} | isVideo: {isVideo ? 'true' : 'false'}
+      </div>
+      
+      {/* Simple background test - no motion effects */}
+      <div className="absolute inset-0 -z-10">
+        {isVideo ? (
+          <video 
+            className="h-full w-full object-cover" 
+            src={src} 
+            autoPlay 
+            playsInline 
+            muted 
+            loop 
+            onError={(e) => console.error('Video error:', e)}
+            onLoadStart={() => console.log('Video loading started:', src)}
+          />
+        ) : isImage ? (
+          <img 
+            className="h-full w-full object-cover" 
+            src={src} 
+            alt="" 
+            onError={(e) => console.error('Image error:', e)}
+            onLoad={() => console.log('Image loaded successfully:', src)}
+            style={{ minHeight: '400px' }}
+          />
+        ) : (
+          // Fallback for unknown file types
+          <video 
+            className="h-full w-full object-cover" 
+            src={src} 
+            autoPlay 
+            playsInline 
+            muted 
+            loop 
+            onError={(e) => console.error('Fallback video error:', e)}
+          />
+        )}
+        {/* Tint for readability */}
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
 
-      {/* Content sections */}
-      <div className="relative z-10">
-        {/* Newsletter Section - Top half */}
-        <div className="min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-14">
-          <div className="max-w-7xl w-full">
-            {newsletterContent}
-          </div>
-        </div>
-
-        {/* Domain Search Section - Bottom half */}
-        <div className="min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-14">
-          <div className="max-w-7xl w-full">
-            {domainSearchContent}
-          </div>
-        </div>
+      {/* Foreground content with consistent spacing */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14 py-24 md:py-32 space-y-24 md:space-y-32">
+        <div>{newsletterContent}</div>
+        <div>{domainSearchContent}</div>
       </div>
     </section>
   );

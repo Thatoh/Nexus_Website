@@ -1,6 +1,3 @@
-
-
-
 import React, { useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { generateDomainSuggestions } from '../services/geminiService';
@@ -10,12 +7,6 @@ import { SuggestedDomain } from '../types';
 import DomainSearchForm from './domainSearch/DomainSearchForm';
 import SearchResults from './domainSearch/SearchResults';
 import ScrollingQuotes from './domainSearch/ScrollingQuotes';
-import ParallaxReveal from './ParallaxReveal';
-
-const BACKGROUND_VIDEO_URL = "/vid/ds.mp4";
-
-// Debug logging
-console.log('DomainSearch - Video URL:', BACKGROUND_VIDEO_URL);
 
 type SearchStatus = 'idle' | 'searching' | 'suggesting' | 'success' | 'error';
 
@@ -24,7 +15,7 @@ const DomainSearch: React.FC = () => {
   const [searchResult, setSearchResult] = useState<string | null>(null);
   const [status, setStatus] = useState<SearchStatus>('idle');
   const [availability, setAvailability] = useState<'available' | 'taken' | null>(null);
-  
+
   const [suggestedDomains, setSuggestedDomains] = useState<SuggestedDomain[]>([]);
   const [suggestionsError, setSuggestionsError] = useState<string | null>(null);
 
@@ -36,31 +27,32 @@ const DomainSearch: React.FC = () => {
       setStatus('error');
       setSearchResult('Please enter a domain name.');
       setSuggestedDomains([]);
-      setSuggestionsError(null); // Clear previous errors
-      setAvailability(null); // Clear previous availability
+      setSuggestionsError(null);
+      setAvailability(null);
       return;
     }
 
-    // --- Start Search Process ---
+    // Start
     setStatus('searching');
     setSearchResult(`Searching for ${trimmedDomain}...`);
     setSuggestedDomains([]);
     setSuggestionsError(null);
     setAvailability(null);
 
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Mock API delay
+    // Mock delay – replace with your real API call
+    await new Promise((r) => setTimeout(r, 1000));
 
+    // Mock availability
     const isAvailable = Math.random() > 0.5;
     const currentAvailability = isAvailable ? 'available' : 'taken';
     setAvailability(currentAvailability);
+    setSearchResult(
+      isAvailable
+        ? `Congratulations! "${trimmedDomain}" is available.`
+        : `Sorry, "${trimmedDomain}" is already taken. Try another?`
+    );
 
-    if (isAvailable) {
-      setSearchResult(`Congratulations! "${trimmedDomain}" is available.`);
-    } else {
-      setSearchResult(`Sorry, "${trimmedDomain}" is already taken. Try another?`);
-    }
-    
-    // --- Fetch Suggestions ---
+    // Suggestions
     setStatus('suggesting');
     try {
       const suggestions = await generateDomainSuggestions(trimmedDomain, currentAvailability);
@@ -71,12 +63,12 @@ const DomainSearch: React.FC = () => {
         setSuggestedDomains([]);
         setSuggestionsError("Nova couldn't fetch suggestions this time. Try again?");
       }
-    } catch (error) {
-      console.error("Error fetching domain suggestions:", error);
+    } catch (err) {
+      console.error('Error fetching domain suggestions:', err);
       setSuggestedDomains([]);
-      setSuggestionsError("An error occurred while fetching suggestions.");
+      setSuggestionsError('An error occurred while fetching suggestions.');
     } finally {
-      setStatus('success'); // Final state after suggestions are processed
+      setStatus('success');
     }
   }, []);
 
@@ -84,57 +76,65 @@ const DomainSearch: React.FC = () => {
     const fullSuggestedDomain = `${suggestion.name}${suggestion.tld}`;
     setDomainName(fullSuggestedDomain);
     handleSearch(fullSuggestedDomain);
-    // Scroll to the top of the page smoothly so user sees the new search results
-    contentAboveScrollingTextRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start'});
+    contentAboveScrollingTextRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   };
 
   const isLoading = status === 'searching' || status === 'suggesting';
 
   return (
-    <ParallaxReveal 
-      src={BACKGROUND_VIDEO_URL} 
-      kind="video"
-      heightPx={2200}
-      overlayClassName=""
-    >
-      <div ref={contentAboveScrollingTextRef}>
-        <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-nexusbyte-primary-dark mb-4">
-            Find Your Perfect Domain
-          </h2>
-          <p className="text-lg text-gray-700 mb-8">
-            Start your online journey with a unique domain name. Powered by Nova AI suggestions.
-          </p>
-          
-          <DomainSearchForm 
-            domainName={domainName}
-            setDomainName={setDomainName}
-            onSearch={handleSearch}
-            isLoading={isLoading}
-          />
+    <section className="px-6 sm:px-8 lg:px-10 py-24 md:py-32">
+      <div ref={contentAboveScrollingTextRef} className="text-center mx-auto max-w-3xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow mb-4">
+          Find Your Perfect Domain
+        </h2>
+        <p className="text-lg text-white/85 mb-8">
+          Start your online journey with a unique domain name. Powered by Nova AI suggestions.
+        </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8">
-            <Link to="/register-domain" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">Register a domain</Link>
-            <Link to="/signup" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">SignUp</Link>
-            <Link to="/signin" className="text-xs font-normal text-gray-600 hover:text-gray-800 hover:underline">Customer Signin</Link>
-          </div>
-          
-          <SearchResults
-            status={status}
-            searchResult={searchResult}
-            availability={availability}
-            suggestions={suggestedDomains}
-            suggestionsError={suggestionsError}
-            onSuggestionClick={handleSuggestionClick}
-            isLoading={isLoading}
-          />
+        <DomainSearchForm
+          domainName={domainName}
+          setDomainName={setDomainName}
+          onSearch={handleSearch}
+          isLoading={isLoading}
+        />
+
+        <div className="mt-4 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8">
+          <Link
+            to="/register-domain"
+            className="text-xs font-normal text-white/80 hover:text-white hover:underline"
+          >
+            Register a domain
+          </Link>
+          <Link to="/signup" className="text-xs font-normal text-white/80 hover:text-white hover:underline">
+            SignUp
+          </Link>
+          <Link to="/signin" className="text-xs font-normal text-white/80 hover:text-white hover:underline">
+            Customer Signin
+          </Link>
         </div>
+
+        <SearchResults
+          status={status}
+          searchResult={searchResult}
+          availability={availability}
+          suggestions={suggestedDomains}
+          suggestionsError={suggestionsError}
+          onSuggestionClick={handleSuggestionClick}
+          isLoading={isLoading}
+        />
       </div>
-      
-      {/* Scrolling Quotes Area - This will take up remaining space and handle its own scroll animation */}
-      <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
-    </ParallaxReveal>
+
+      {/* Scrolling Quotes Area */}
+      <div className="mt-16">
+        <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
+      </div>
+    </section>
   );
-}
+};
 
 export default DomainSearch;
+
+

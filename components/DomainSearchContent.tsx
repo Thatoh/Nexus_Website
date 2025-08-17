@@ -10,7 +10,7 @@ import ScrollingQuotes from './domainSearch/ScrollingQuotes';
 
 type SearchStatus = 'idle' | 'searching' | 'suggesting' | 'success' | 'error';
 
-const DomainSearchContent: React.FC = () => {
+export default function DomainSearchContent() {
   const [domainName, setDomainName] = useState('');
   const [searchResult, setSearchResult] = useState<string | null>(null);
   const [status, setStatus] = useState<SearchStatus>('idle');
@@ -79,12 +79,12 @@ const DomainSearchContent: React.FC = () => {
   const isLoading = status === 'searching' || status === 'suggesting';
 
   return (
-    <div className="text-center">
+    <div className="mx-auto max-w-4xl text-center">
       <div ref={contentAboveScrollingTextRef}>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
           Find Your Perfect Domain
         </h2>
-        <p className="text-lg text-gray-200 mb-8 drop-shadow-md">
+        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
           Start your online journey with a unique domain name. Powered by Nova AI suggestions.
         </p>
         
@@ -95,10 +95,10 @@ const DomainSearchContent: React.FC = () => {
           isLoading={isLoading}
         />
 
-        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8">
-          <Link to="/register-domain" className="text-xs font-normal text-gray-300 hover:text-white hover:underline">Register a domain</Link>
-          <Link to="/signup" className="text-xs font-normal text-gray-300 hover:text-white hover:underline">SignUp</Link>
-          <Link to="/signin" className="text-xs font-normal text-gray-300 hover:text-white hover:underline">Customer Signin</Link>
+        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8 mt-6">
+          <Link to="/register-domain" className="text-sm text-white/70 hover:text-white hover:underline">Register a domain</Link>
+          <Link to="/signup" className="text-sm text-white/70 hover:text-white hover:underline">SignUp</Link>
+          <Link to="/signin" className="text-sm text-white/70 hover:text-white hover:underline">Customer Signin</Link>
         </div>
         
         <SearchResults
@@ -115,6 +115,4 @@ const DomainSearchContent: React.FC = () => {
       <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
     </div>
   );
-};
-
-export default DomainSearchContent;
+}

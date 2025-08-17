@@ -102,34 +102,41 @@ const CustomGptsPage: React.FC = () => {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <CpuChipIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
-        </div>
+             {/* Hero Section */}
+       <section className="relative text-white py-24 md:py-36 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/images/resources/cgpt-1.jpg)' }}
+        ></div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-nexusbyte-primary-dark opacity-0"></div>
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
-          >
-            Custom GPTs and AI Chatbots
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8"
-          >
-            Automate, scale, and elevate user experiences with intelligent AI assistants built for your business.
-          </motion.p>
+                                 <motion.h1 
+              initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
+              style={{ color: '#a8b545' }}
+            >
+              Custom GPTs and AI Chatbots
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.2 }}
+              className="text-lg sm:text-xl mb-8"
+              style={{ color: '#a8b545' }}
+            >
+              Automate, scale, and elevate user experiences with intelligent AI assistants built for your business.
+            </motion.p>
           <motion.div 
             initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.4 }}
           >
-            <Link
-              to="/contact"
-              state={{ subject: 'Inquiry about Custom GPT & Chatbot Solutions' }}
-              className="px-8 py-3 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-semibold rounded-lg shadow-lg hover:bg-opacity-80 transition-colors transform hover:scale-105 text-lg"
-            >
-              Get Started
-            </Link>
+                         <Link
+               to="/contact"
+               state={{ subject: 'Inquiry about Custom GPT & Chatbot Solutions' }}
+               className="px-8 py-3 text-nexusbyte-primary-dark font-semibold rounded-lg shadow-lg hover:bg-opacity-80 transition-colors transform hover:scale-105 text-lg"
+               style={{ backgroundColor: '#a8b545' }}
+             >
+               Get Started
+             </Link>
           </motion.div>
         </div>
       </section>

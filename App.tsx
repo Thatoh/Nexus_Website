@@ -122,12 +122,102 @@ import CookieConsentBanner from './components/CookieConsentBanner';
 import CookiePreferencesModal from './components/CookiePreferencesModal'; 
 import FloatingCta from './components/FloatingCta';
 
-const ScrollToTop: React.FC = () => {
+// Custom hook for scroll restoration
+const useScrollRestoration = () => {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    // Store current scroll position before navigation
+    const handleBeforeUnload = () => {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    };
+
+    // Restore scroll position or scroll to top
+    const restoreScroll = () => {
+      const savedPosition = sessionStorage.getItem('scrollPosition');
+      
+      if (savedPosition) {
+        // Clear the saved position
+        sessionStorage.removeItem('scrollPosition');
+        
+        // For same-page navigation, restore position
+        if (window.history.state && window.history.state.usr && window.history.state.usr.fromSamePage) {
+          window.scrollTo(0, parseInt(savedPosition));
+        } else {
+          // For new page navigation, scroll to top
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+          });
+        }
+      } else {
+        // No saved position, scroll to top
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'instant'
+        });
+      }
+    };
+
+    // Add event listeners
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    
+    // Restore scroll after component mounts
+    const timer = setTimeout(restoreScroll, 0);
+    
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      clearTimeout(timer);
+    };
   }, [pathname]);
+};
+
+const ScrollToTop: React.FC = () => {
+  const { pathname, hash } = useLocation();
+
+  React.useEffect(() => {
+    // Force scroll to top for all navigation
+    const scrollToTop = () => {
+      // Use multiple methods to ensure it works across different browsers
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant' // Use instant for immediate effect
+      });
+      
+      // Fallback for older browsers
+      if (document.documentElement) {
+        document.documentElement.scrollTop = 0;
+      }
+      if (document.body) {
+        document.body.scrollTop = 0;
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(scrollToTop, 0);
+    
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  // Handle hash navigation separately
+  React.useEffect(() => {
+    if (hash) {
+      const timer = setTimeout(() => {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [hash]);
 
   return null;
 };
@@ -136,6 +226,9 @@ const AppContent: React.FC = () => {
   const { openChat, ChatModalComponent, isChatOpen, closeChat } = useChatControl();
   const location = useLocation();
   const isAuthPage = location.pathname === '/signin' || location.pathname === '/signup';
+  
+  // Use the scroll restoration hook
+  useScrollRestoration();
   
   return (
     <>

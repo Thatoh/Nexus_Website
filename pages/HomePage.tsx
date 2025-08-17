@@ -2,16 +2,16 @@
 import React from 'react';
 import HeroSlider from '../components/HeroSlider';
 import ServicesCarousel from '../components/ServicesCarousel';
-import DomainSearch from '../components/DomainSearch';
 import AIChatbotSection from '../components/AIChatbotSection';
 import CorporatePartnersSection from '../components/PartnersSlider';
-import ProductivitySection from '../components/ProductivitySection'; 
-import { CaseStudies } from '../components/case-studies';
 import TestimonialsSection from '../components/TestimonialsSection';
 import AnnouncementBanner from '../components/AnnouncementBanner';
 import SharedVideoBackground from '../components/SharedVideoBackground';
 import NewsletterContent from '../components/NewsletterContent';
 import DomainSearchContent from '../components/DomainSearchContent';
+import SharedImageBackground from '../components/SharedImageBackground';
+import ProductivityContent from '../components/ProductivityContent';
+import CaseStudiesContent from '../components/CaseStudiesContent';
 
 interface HomePageProps {
   openChat: () => void; 
@@ -55,17 +55,22 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
       
       <ServicesCarousel />
       
-      {/* Combined Newsletter and Domain Search with shared video background */}
-      <SharedVideoBackground
-        src="/vid/ds.mp4"
-        heightPx={3000}
-        newsletterContent={<NewsletterContent />}
-        domainSearchContent={<DomainSearchContent />}
+      {/* Image background page with Newsletter and Domain Search */}
+      <SharedImageBackground
+        src="/images/resources/ab-3.jpg"
+        firstContent={<NewsletterContent />}
+        secondContent={<DomainSearchContent />}
       />
       
       <AIChatbotSection onOpenChat={openChat} /> 
-      <ProductivitySection />
-      <CaseStudies />
+      
+      {/* Image background page with Productivity and Case Studies */}
+      <SharedImageBackground
+        src="/images/resources/ab-1.jpg"
+        firstContent={<ProductivityContent />}
+        secondContent={<CaseStudiesContent />}
+      />
+      
       <TestimonialsSection /> 
       <CorporatePartnersSection />
     </>
