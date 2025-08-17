@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NexusByte Solutions Portal</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <style>
-    html, body {
+    html,
+    body {
       height: 100%;
-      overflow-x: hidden; /* Prevent horizontal scroll from wide blurs etc. */
+      overflow-x: hidden;
+      /* Prevent horizontal scroll from wide blurs etc. */
     }
+
     body {
       font-family: 'Inter', sans-serif;
     }
+
     /* For PartnersSlider animation */
     @keyframes infinite-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
     }
+
     .animate-infinite-scroll {
       animation: infinite-scroll 40s linear infinite;
     }
+
     /* Custom scrollbar for chat modal messages for better aesthetics */
     .chat-modal-messages::-webkit-scrollbar {
       width: 8px;
     }
+
     .chat-modal-messages::-webkit-scrollbar-track {
       background: #f1f1f1;
       border-radius: 10px;
     }
+
     .chat-modal-messages::-webkit-scrollbar-thumb {
       background: #888;
       border-radius: 10px;
     }
+
     .chat-modal-messages::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
@@ -46,13 +63,15 @@
       /* background-image: linear-gradient(to right, #111827, #111827); /* Handled by bg-gradient utility */
       /* background-size: 0% 100%; /* Applied via inline style */
       /* background-repeat: no-repeat; */
-      transition: background-size 0.4s ease-in-out; /* This can be kept or removed if framer-motion handles it */
+      transition: background-size 0.4s ease-in-out;
+      /* This can be kept or removed if framer-motion handles it */
     }
 
     /* Vibrant green text input cursor (caret) */
     input,
     textarea {
-      caret-color: #00FF00; /* Vibrant Green */
+      caret-color: #00FF00;
+      /* Vibrant Green */
     }
   </style>
   <script>
@@ -70,7 +89,7 @@
       }
     }
   </script>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.1.0",
@@ -83,11 +102,13 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
+
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
