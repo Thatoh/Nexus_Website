@@ -150,9 +150,10 @@ const ServiceCard: React.FC<Props> = ({ service, active = false }) => {
                 className={clsx(
                   'inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400',
-                  'bg-yellow-400 text-[#0A0D14] hover:bg-yellow-300',
+                  'text-[#0A0D14]',
                   'transition-colors duration-200'
                 )}
+                style={{ backgroundColor: '#a8b545' }}
               >
                 Get Started
               </button>

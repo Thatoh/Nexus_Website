@@ -238,7 +238,8 @@ const HeroSlider: React.FC = () => {
                   </p>
                   <motion.button
                     {...{
-                      className: "px-5 py-2.5 sm:px-6 sm:py-3 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-semibold rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-nexusbyte-accent-green focus:ring-offset-2 focus:ring-offset-black transition-colors text-sm sm:text-base",
+                      className: "px-5 py-2.5 sm:px-6 sm:py-3 text-nexusbyte-primary-dark font-semibold rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black transition-colors text-sm sm:text-base",
+                      style: { backgroundColor: '#a8b545' },
                       whileHover: { scale: 1.05 },
                       whileTap: { scale: 0.95 },
                     } as any}

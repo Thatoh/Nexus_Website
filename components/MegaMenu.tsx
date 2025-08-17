@@ -81,9 +81,23 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                     onMouseEnter={() => setActiveIndex(index)}
                     className={`block w-full text-left p-3 my-1 rounded-md text-sm font-semibold transition-all duration-150 ease-in-out focus:outline-none
                       ${currentActiveIndex === index
-                        ? 'bg-white text-nexusbyte-accent-green shadow-sm transform scale-[1.02]'
-                        : 'text-nexusbyte-primary-dark hover:bg-gray-200/80 hover:text-nexusbyte-accent-green'
+                        ? 'bg-white shadow-sm transform scale-[1.02]'
+                        : 'text-nexusbyte-primary-dark hover:bg-gray-200/80'
                       }`}
+                    style={{ 
+                      '--hover-color': '#a8b545',
+                      '--active-color': currentActiveIndex === index ? '#a8b545' : undefined
+                    } as React.CSSProperties}
+                    onMouseEnter={(e) => {
+                      if (currentActiveIndex !== index) {
+                        e.currentTarget.style.color = '#a8b545';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (currentActiveIndex !== index) {
+                        e.currentTarget.style.color = '';
+                      }
+                    }}
                     aria-current={currentActiveIndex === index ? "true" : "false"}
                   >
                     {item.title} &raquo;
@@ -116,7 +130,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                           <Link
                               to={activeContent.featured.linkUrl}
                               onClick={handleLinkClick}
-                              className="text-sm md:text-base font-semibold text-nexusbyte-accent-green hover:underline inline-block mt-3"
+                              className="text-sm md:text-base font-semibold hover:underline inline-block mt-3"
+                              style={{ color: '#a8b545' }}
                           >
                               {activeContent.featured.linkText} &rarr;
                           </Link>
@@ -138,11 +153,17 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                           <img
                               src={subLink.imageUrl}
                               alt={subLink.title}
-                              className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-md flex-shrink-0 border border-gray-200 group-hover:border-nexusbyte-accent-green transition-colors" // Slightly larger images
+                              className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-md flex-shrink-0 border border-gray-200 transition-colors"
+                              style={{ '--hover-border-color': '#a8b545' } as React.CSSProperties}
+                              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#a8b545'}
+                              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''} // Slightly larger images
                               onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
                           />
                           <div className="flex-grow">
-                              <h4 className="font-semibold text-sm md:text-base text-gray-800 group-hover:text-nexusbyte-accent-green mb-1 line-clamp-1">
+                              <h4 className="font-semibold text-sm md:text-base text-gray-800 mb-1 line-clamp-1"
+                                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                                  onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                                   {subLink.title}
                               </h4>
                               {subLink.description && (

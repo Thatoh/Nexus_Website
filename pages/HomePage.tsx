@@ -21,8 +21,8 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
   return (
     <>
       <AnnouncementBanner 
-        title="NexusByte Tech Summit 2026"
-        message="Join us for the biggest tech event of the year. Discover the latest in AI, Cloud, and Cybersecurity."
+        title=""
+        message="NexusByte Tech Summit 2026. Join us for the biggest tech event of the year. Discover the latest in AI, Cloud, and Cybersecurity."
         ctaText="Get Tickets"
         ctaLink="/events/tech-summit"
         onDismiss={() => console.log('Announcement banner dismissed')}
@@ -40,7 +40,8 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
           <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:shrink-0">
             <a
               href="#"
-              className="rounded-md bg-nexusbyte-accent-green px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-nexusbyte-accent-green focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+              className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+              style={{ backgroundColor: '#a8b545' }}
             >
               {' '}
               Get started{' '}

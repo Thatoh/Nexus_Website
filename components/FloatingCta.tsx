@@ -30,7 +30,7 @@ const FloatingCta: React.FC = () => {
               aria-label={item.label}
             >
               <span className="hidden sm:inline">{item.label}</span>
-              <item.icon className={`w-6 h-6 ${item.isWhatsApp ? 'text-nexusbyte-accent-green' : 'text-blue-700'}`} />
+                             <item.icon className={`w-6 h-6 ${item.isWhatsApp ? 'text-green-500' : 'text-blue-700'}`} />
             </motion.a>
           ))}
         </AnimatePresence>
@@ -38,7 +38,8 @@ const FloatingCta: React.FC = () => {
         {/* Main Floating Action Button */}
         <motion.button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="w-16 h-16 bg-[#00529b] text-white rounded-full flex items-center justify-center shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300"
+                     className="w-16 h-16 text-white rounded-full flex items-center justify-center shadow-2xl focus:outline-none focus:ring-4 focus:ring-gray-600"
+           style={{ backgroundColor: '#a8b545' }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           aria-expanded={isMenuOpen}

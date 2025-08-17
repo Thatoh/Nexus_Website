@@ -92,8 +92,22 @@ const Header: React.FC = () => {
               >
                 <button
                   onClick={() => handleNavItemClick(item.id, !!item.megaMenuContent)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-nexusbyte-accent-green focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex items-center
+                  className={`px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex items-center
                     ${location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? 'text-nexusbyte-accent-green' : 'text-gray-300'}`}
+                  style={{ 
+                    '--hover-color': '#a8b545',
+                    '--active-color': location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? '#a8b545' : undefined
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => {
+                    if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
+                      e.currentTarget.style.color = '#a8b545';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
+                      e.currentTarget.style.color = '';
+                    }
+                  }}
                   aria-haspopup={!!item.megaMenuContent}
                   aria-expanded={activeMegaMenu === item.id}
                 >
@@ -134,7 +148,10 @@ const Header: React.FC = () => {
                 <button
                   ref={loginIconRef}
                   onClick={() => setIsLoginDropdownOpen(prev => !prev)}
-                  className="text-gray-300 hover:text-nexusbyte-accent-green transition-colors focus:outline-none"
+                  className="text-gray-300 transition-colors focus:outline-none"
+                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
                   aria-label="User menu"
                   aria-haspopup="true"
                   aria-expanded={isLoginDropdownOpen}
@@ -154,14 +171,20 @@ const Header: React.FC = () => {
                       <Link
                         to="/signin"
                         onClick={() => setIsLoginDropdownOpen(false)}
-                        className="block px-4 py-2 text-sm text-nexusbyte-primary-dark hover:bg-gray-100 hover:text-nexusbyte-accent-green"
+                        className="block px-4 py-2 text-sm text-nexusbyte-primary-dark hover:bg-gray-100"
+                        style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
                       >
                         Sign In
                       </Link>
                       <Link
                         to="/signup"
                         onClick={() => setIsLoginDropdownOpen(false)}
-                        className="block px-4 py-2 text-sm text-nexusbyte-primary-dark hover:bg-gray-100 hover:text-nexusbyte-accent-green"
+                        className="block px-4 py-2 text-sm text-nexusbyte-primary-dark hover:bg-gray-100"
+                        style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                        onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
                       >
                         Sign Up
                       </Link>
@@ -173,7 +196,10 @@ const Header: React.FC = () => {
               {/* Shopping Cart Icon */}
               <Link
                 to="/cart"
-                className="relative text-gray-300 hover:text-nexusbyte-accent-green transition-colors focus:outline-none"
+                className="relative text-gray-300 transition-colors focus:outline-none"
+                style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 aria-label="Shopping cart"
               >
                 <ShoppingCartIcon className="h-7 w-7" />
@@ -189,7 +215,10 @@ const Header: React.FC = () => {
                 href="https://www.ticketing.nexusbyte.co.za"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-nexusbyte-accent-green transition-colors focus:outline-none text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700"
+                className="text-gray-300 transition-colors focus:outline-none text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700"
+                style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 aria-label="Support and ticketing system"
                 title="Support & Ticketing System"
               >
@@ -229,8 +258,19 @@ const Header: React.FC = () => {
                 <div key={`${item.id}-mobile`}>
                   <button
                      onClick={() => handleNavItemClick(item.id, !!item.megaMenuContent)}
-                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 hover:text-nexusbyte-accent-green focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex justify-between items-center
+                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex justify-between items-center
                       ${location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? 'text-nexusbyte-accent-green' : 'text-gray-300'}`}
+                    style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                    onMouseEnter={(e) => {
+                      if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
+                        e.currentTarget.style.color = '#a8b545';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
+                        e.currentTarget.style.color = '';
+                      }
+                    }}
                     aria-haspopup={!!item.megaMenuContent}
                     aria-expanded={item.megaMenuContent && activeMegaMenu === item.id}
                   >
@@ -258,7 +298,10 @@ const Header: React.FC = () => {
                                 setIsMobileMenuOpen(false);
                                 setActiveMegaMenu(null);
                               }}
-                              className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                              className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700"
+                              style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                              onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                              onMouseLeave={(e) => e.currentTarget.style.color = ''}
                             >
                               {menuItem.featured.linkText}
                             </Link>
@@ -272,7 +315,10 @@ const Header: React.FC = () => {
                                 setIsMobileMenuOpen(false);
                                 setActiveMegaMenu(null);
                               }}
-                              className="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                              className="block pl-6 pr-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700"
+                              style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                              onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                              onMouseLeave={(e) => e.currentTarget.style.color = ''}
                             >
                               {subLink.title}
                             </Link>
@@ -288,14 +334,20 @@ const Header: React.FC = () => {
                 <Link
                   to="/signin"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/signup"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 >
                   Sign Up
                 </Link>
@@ -304,14 +356,20 @@ const Header: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 >
                   Support
                 </a>
                 <Link
                   to="/cart"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-nexusbyte-accent-green"
+                  className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 >
                   <span>View Cart</span>
                   {cartItemCount > 0 && (
