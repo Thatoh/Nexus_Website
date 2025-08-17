@@ -14,7 +14,8 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = ({ onOpen }
     <motion.button
       {...{
         onClick: onOpen,
-        className: "fixed bottom-6 left-6 bg-nexusbyte-accent-green text-nexusbyte-primary-dark p-4 rounded-full shadow-xl hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-nexusbyte-accent-green focus:ring-opacity-50 z-50",
+        className: "fixed bottom-6 left-6 text-nexusbyte-primary-dark p-4 rounded-full shadow-xl hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-nexusbyte-accent-green focus:ring-opacity-50 z-50",
+        style: { backgroundColor: '#a8b545' },
         whileHover: { scale: 1.1 },
         whileTap: { scale: 0.95 },
         "aria-label": "Open chat",

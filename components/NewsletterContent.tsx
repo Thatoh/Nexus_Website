@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function NewsletterContent() {
   return (
-    <div className="mx-auto max-w-3xl rounded-2xl bg-white/10 backdrop-blur-md ring-1 ring-white/15 p-8 text-white shadow-lg">
-      <h3 className="text-2xl font-semibold">Elevate Your Productivity</h3>
-      <p className="mt-2 text-white/80">
+         <div className="mx-auto max-w-3xl rounded-2xl bg-white/20 backdrop-blur-md ring-1 ring-white/30 p-8 shadow-xl">
+       <h3 className="text-2xl font-semibold" style={{ color: '#a8b545' }}>Elevate Your Productivity</h3>
+       <p className="mt-2" style={{ color: '#a8b545' }}>
         Discover Microsoft solutions designed to empower your team, streamline workflows, and drive innovation.
       </p>
 
@@ -16,7 +16,8 @@ export default function NewsletterContent() {
         />
         <button
           type="submit"
-          className="rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-white hover:bg-emerald-400"
+          className="rounded-lg px-5 py-3 font-semibold text-white transition-colors"
+          style={{ backgroundColor: '#a8b545' }}
         >
           Subscribe
         </button>

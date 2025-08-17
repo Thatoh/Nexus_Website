@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 type Props = {
@@ -15,6 +15,9 @@ export default function SharedImageBackground({
   secondContent,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end end'],
@@ -26,17 +29,31 @@ export default function SharedImageBackground({
   return (
     <section
       ref={ref}
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden min-h-screen bg-gray-900"
       style={heightPx ? { minHeight: `${heightPx}px` } : undefined}
     >
       {/* Background image with motion effects */}
-      <motion.div className="pointer-events-none absolute inset-0 -z-10" style={{ y: bgY, scale: bgScale }}>
-        <img 
-          src={src} 
-          alt="" 
-          className="h-full w-full object-cover" 
-        />
-        <div className="absolute inset-0 bg-black/35" />
+      <motion.div className="pointer-events-none absolute inset-0" style={{ y: bgY, scale: bgScale, zIndex: -10 }}>
+        {!imageError && (
+          <img 
+            src={src} 
+            alt="" 
+            className="h-full w-full object-cover opacity-100"
+            style={{ minHeight: '100vh' }}
+            onLoad={() => {
+              console.log('Image loaded successfully:', src);
+              setImageLoaded(true);
+            }}
+            onError={(e) => {
+              console.error('Image failed to load:', src, e);
+              setImageError(true);
+            }}
+          />
+        )}
+        {imageError && (
+          <div className="h-full w-full bg-gradient-to-br from-gray-800 to-gray-900" />
+        )}
+        <div className="absolute inset-0 bg-black/20" />
       </motion.div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14 py-24 md:py-32 space-y-24 md:space-y-32">

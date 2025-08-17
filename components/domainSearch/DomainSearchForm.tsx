@@ -22,13 +22,15 @@ const DomainSearchForm: React.FC<DomainSearchFormProps> = ({ domainName, setDoma
         value={domainName}
         onChange={(e) => setDomainName(e.target.value)}
         placeholder="eg, mydomain.co.za"
-        className="flex-grow px-5 py-3.5 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 transition-shadow shadow-sm"
+        className="flex-grow px-5 py-3.5 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 transition-shadow shadow-sm"
+        style={{ '--tw-ring-color': '#a8b545' } as React.CSSProperties}
         disabled={isLoading}
         aria-label="Desired domain name"
       />
       <button
         type="submit"
-        className="px-8 py-3.5 bg-teal-500 text-white font-semibold rounded-md hover:bg-teal-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-md"
+        className="px-8 py-3.5 text-white font-semibold rounded-md transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-md"
+        style={{ backgroundColor: '#a8b545' }}
         disabled={isLoading}
       >
         {isLoading ? 'Searching...' : 'Search'}

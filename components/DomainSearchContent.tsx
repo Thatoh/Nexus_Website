@@ -81,10 +81,10 @@ export default function DomainSearchContent() {
   return (
     <div className="mx-auto max-w-4xl text-center">
       <div ref={contentAboveScrollingTextRef}>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style={{ color: '#a8b545' }}>
           Find Your Perfect Domain
         </h2>
-        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#a8b545' }}>
           Start your online journey with a unique domain name. Powered by Nova AI suggestions.
         </p>
         
@@ -96,9 +96,9 @@ export default function DomainSearchContent() {
         />
 
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8 mt-6">
-          <Link to="/register-domain" className="text-sm text-white/70 hover:text-white hover:underline">Register a domain</Link>
-          <Link to="/signup" className="text-sm text-white/70 hover:text-white hover:underline">SignUp</Link>
-          <Link to="/signin" className="text-sm text-white/70 hover:text-white hover:underline">Customer Signin</Link>
+          <Link to="/register-domain" className="text-sm hover:underline" style={{ color: '#a8b545' }}>Register a domain</Link>
+          <Link to="/signup" className="text-sm hover:underline" style={{ color: '#a8b545' }}>SignUp</Link>
+          <Link to="/signin" className="text-sm hover:underline" style={{ color: '#a8b545' }}>Customer Signin</Link>
         </div>
         
         <SearchResults

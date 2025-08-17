@@ -118,7 +118,7 @@ const ScrollingQuotes: React.FC<ScrollingQuotesProps> = ({ contentAboveRef }) =>
         // Otherwise it's a word, so wrap it
         <span 
           key={index} 
-          className="word text-transparent bg-clip-text bg-gradient-to-r from-nexusbyte-primary-dark to-nexusbyte-primary-dark" 
+          className="word text-transparent bg-clip-text bg-gradient-to-r from-white to-white" 
           style={{ backgroundSize: '0% 100%', backgroundRepeat: 'no-repeat' }}
         >
           {segment}
@@ -132,12 +132,12 @@ const ScrollingQuotes: React.FC<ScrollingQuotesProps> = ({ contentAboveRef }) =>
       className="scrolling-text flex-grow flex flex-col justify-center items-center text-center px-6 pb-12" // flex-grow takes available space
     >
       {MAIN_QUOTES_DATA.map((line, pIndex) => (
-        <p key={pIndex} data-quote-para className="text-4xl font-semibold text-nexusbyte-primary-dark mb-6 leading-normal opacity-0">
+        <p key={pIndex} data-quote-para className="text-4xl font-semibold text-white mb-6 leading-normal opacity-0">
           {renderTextWithSpans(line)}
         </p>
       ))}
       {ATTRIBUTION_TEXT && (
-        <p data-quote-para className="text-2xl font-medium text-nexusbyte-primary-dark mt-4 opacity-0">
+        <p data-quote-para className="text-2xl font-medium text-white mt-4 opacity-0">
           {renderTextWithSpans(ATTRIBUTION_TEXT)}
         </p>
       )}
