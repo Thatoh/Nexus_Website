@@ -53,7 +53,8 @@ const CookieConsentBanner: React.FC = () => {
               </button>
               <button
                 onClick={acceptAll}
-                className="px-5 py-2.5 text-sm font-medium bg-nexusbyte-accent-green text-nexusbyte-primary-dark rounded-md hover:bg-opacity-80 transition-colors font-semibold w-full sm:w-auto"
+                className="px-5 py-2.5 text-sm font-medium text-nexusbyte-primary-dark rounded-md transition-colors font-semibold w-full sm:w-auto"
+                style={{ backgroundColor: '#a8b545' }}
                 aria-label="Accept all cookies"
               >
                 Accept All
