@@ -121,6 +121,7 @@ import { CookieConsentProvider } from './contexts/CookieConsentContext';
 import CookieConsentBanner from './components/CookieConsentBanner'; 
 import CookiePreferencesModal from './components/CookiePreferencesModal'; 
 import FloatingCta from './components/FloatingCta';
+import { ThreeScene } from "./components/three";
 
 // Custom hook for scroll restoration
 const useScrollRestoration = () => {
@@ -234,6 +235,11 @@ const AppContent: React.FC = () => {
     <>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-gray-50 font-sans">
+        {/* 3D Background (non-interactive, stays behind all content) */}
+          <div id="three-bg" className="fixed inset-0 -z-10 pointer-events-none">
+            <ThreeScene />
+          </div>
+          
         {!isAuthPage && <Header />}
         <main className={`flex-grow ${!isAuthPage ? 'pt-20' : ''}`}>
           <Routes>

@@ -99,7 +99,10 @@ const AIAgentsAutomationPage: React.FC = () => {
           >
             <Link
               to="/ai/nova/plans" // Assuming a future plans page or contact
-              className="px-8 py-3 sm:px-10 sm:py-4 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-semibold rounded-lg shadow-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 text-lg sm:text-xl"
+              className="px-8 py-3 sm:px-10 sm:py-4 text-nexusbyte-primary-dark font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-lg sm:text-xl"
+              style={{ backgroundColor: '#a8b545' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#8a9a3a'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#a8b545'}
             >
               Explore Nova AI Plans
             </Link>

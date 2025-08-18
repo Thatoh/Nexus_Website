@@ -7,32 +7,45 @@ import {
     CheckIcon, ArrowRightIcon, CpuChipIcon, PuzzlePieceIcon, TicketIcon, 
     ChartPieIcon, BriefcaseIcon, CogIcon
 } from '../../../components/icons';
+import ByteDesk3DHero from "../../../components/three/ByteDesk3DHero";
+
 
 // Reusable Section Component
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string, textWhite?: boolean}> = ({ title, subtitle, children, className = '', textWhite = false }) => (
-  <section className={`py-16 px-4 sm:px-6 lg:px-8 ${className}`}>
-    <div className="max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className="text-center"
-      >
-        <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${textWhite ? 'text-white' : 'text-nexusbyte-primary-dark'}`}>
-          {title}
-        </h2>
-        {subtitle && (
-          <p className={`mt-4 text-lg max-w-3xl mx-auto ${textWhite ? 'text-gray-300' : 'text-gray-600'}`}>
-            {subtitle}
-          </p>
-        )}
-      </motion.div>
-      <div className="mt-12">
-        {children}
+  <>
+    <ByteDesk3DHero
+      title="ByteDesk Suite"
+      subtitle="AI-powered service desk that unifies live chat, knowledge, ticketing, and proactive automation."
+      ctaLabel="Request a Demo"
+      onCtaClick={() => {
+        window.location.href = "/bytedesk/demo"; // adjust to your real demo route
+      }}
+    />
+    
+    <section className={`py-16 px-4 sm:px-6 lg:px-8 ${className}`}>
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${textWhite ? 'text-white' : 'text-nexusbyte-primary-dark'}`}>
+            {title}
+          </h2>
+          {subtitle && (
+            <p className={`mt-4 text-lg max-w-3xl mx-auto ${textWhite ? 'text-gray-300' : 'text-gray-600'}`}>
+              {subtitle}
+            </p>
+          )}
+        </motion.div>
+        <div className="mt-12">
+          {children}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </>
 );
 
 export const ByteDeskSuitePage: React.FC = () => {
