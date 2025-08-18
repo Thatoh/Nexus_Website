@@ -16,9 +16,9 @@ interface SearchResultsProps {
 
 const getResultTextColor = (availability: 'available' | 'taken' | null, status: string) => {
   if (status === 'error' && !availability) return 'text-orange-600'; // Specific error color if no availability context
-  if (availability === 'available') return ''; // Will use inline style for #a8b545
-  if (availability === 'taken') return 'text-red-400'; // Lighter red for better visibility
-  return ''; // Will use inline style for #a8b545
+  if (availability === 'available') return 'text-nexusbyte-accent-green';
+  if (availability === 'taken') return 'text-red-600';
+  return 'text-gray-700'; // Default or for loading messages
 };
 
 const containerVariants = {
@@ -54,8 +54,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               animate: { opacity: 1, y: 0 },
               exit: { opacity: 0, y: 10},
               transition: {duration: 0.3},
-                             className: `mb-4 text-xl font-medium ${getResultTextColor(availability, status)}`,
-               style: getResultTextColor(availability, status) === '' ? { color: '#a8b545' } : undefined,
+              className: `mb-4 text-xl font-medium ${getResultTextColor(availability, status)}`,
             } as any}
           >
             {searchResult}
@@ -74,7 +73,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               className: "mt-6",
             } as any}
           >
-                         <p className="italic text-md" style={{ color: '#a8b545' }}>Nova is searching for creative alternatives...</p>
+            <p className="text-gray-600 italic text-md">Nova is searching for creative alternatives...</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -108,7 +107,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               className: "mt-8 pt-6 border-t border-gray-300",
             } as any}
           >
-                         <h3 className="text-2xl font-semibold mb-6" style={{ color: '#a8b545' }}>AI-Powered Suggestions:</h3>
+            <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-6">AI-Powered Suggestions:</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {suggestions.map((suggestion, index) => (
                 <motion.div 
@@ -126,18 +125,19 @@ const SearchResults: React.FC<SearchResultsProps> = ({
                   <button
                     onClick={() => onSuggestionClick(suggestion)}
                     disabled={isLoading}
-                    className="mt-3 w-full px-4 py-2 text-sm font-semibold border rounded-md focus:outline-none focus:ring-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="mt-3 w-full px-4 py-2 text-sm font-semibold border rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{ 
                       borderColor: '#a8b545', 
                       color: '#a8b545',
-                      '--tw-ring-color': '#a8b545'
+                      '--hover-bg-color': '#a8b545',
+                      '--hover-text-color': 'white'
                     } as React.CSSProperties}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = '#a8b545';
                       e.currentTarget.style.color = 'white';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.backgroundColor = '';
                       e.currentTarget.style.color = '#a8b545';
                     }}
                   >

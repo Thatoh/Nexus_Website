@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router';
 import { NAV_ITEMS } from '../constants';
 import { NavItem } from '../types';
 import MegaMenu from './MegaMenu';
-import { MenuIcon, XMarkIcon, ChevronDownIcon, UserCircleIcon, ShoppingCartIcon, TicketIcon } from './icons'; // Added UserCircleIcon, ShoppingCartIcon, TicketIcon
+import { MenuIcon, XMarkIcon, ChevronDownIcon, UserCircleIcon, ShoppingCartIcon } from './icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../contexts/CartContext'; // Added useCart
 
@@ -81,7 +81,6 @@ const Header: React.FC = () => {
               <img src="/logo/logo-w.png" alt="NexusByte" className="h-12 w-auto" />
             </Link>
           </div>
-
           {/* Navigation Links */}
           <nav className="hidden md:flex ml-8 space-x-1 items-center">
             {NAV_ITEMS.map((item: NavItem) => (
@@ -92,20 +91,19 @@ const Header: React.FC = () => {
               >
                 <button
                   onClick={() => handleNavItemClick(item.id, !!item.megaMenuContent)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex items-center
-                    ${location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? 'text-nexusbyte-accent-green' : 'text-gray-300'}`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex items-center text-gray-300`}
                   style={{ 
                     '--hover-color': '#a8b545',
                     '--active-color': location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? '#a8b545' : undefined
                   } as React.CSSProperties}
                   onMouseEnter={(e) => {
-                    if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
-                      e.currentTarget.style.color = '#a8b545';
-                    }
+                    e.currentTarget.style.color = '#a8b545';
                   }}
                   onMouseLeave={(e) => {
                     if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
                       e.currentTarget.style.color = '';
+                    } else {
+                      e.currentTarget.style.color = '#a8b545';
                     }
                   }}
                   aria-haspopup={!!item.megaMenuContent}
@@ -209,21 +207,6 @@ const Header: React.FC = () => {
                   </span>
                 )}
               </Link>
-
-              {/* Support Menu Option - Text Only */}
-              <a
-                href="https://www.ticketing.nexusbyte.co.za"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 transition-colors focus:outline-none text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700"
-                style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
-                onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                aria-label="Support and ticketing system"
-                title="Support & Ticketing System"
-              >
-                Support
-              </a>
             </div>
             
             {/* Mobile Menu Toggle */}
@@ -258,16 +241,16 @@ const Header: React.FC = () => {
                 <div key={`${item.id}-mobile`}>
                   <button
                      onClick={() => handleNavItemClick(item.id, !!item.megaMenuContent)}
-                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex justify-between items-center
-                      ${location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? 'text-nexusbyte-accent-green' : 'text-gray-300'}`}
-                    style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                    onMouseEnter={(e) => {
-                      if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
-                        e.currentTarget.style.color = '#a8b545';
-                      }
-                    }}
+                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition-colors duration-150 flex justify-between items-center text-gray-300`}
+                    style={{ 
+                      '--hover-color': '#a8b545',
+                      '--active-color': location.pathname.startsWith(item.path) || activeMegaMenu === item.id ? '#a8b545' : undefined
+                    } as React.CSSProperties}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
                     onMouseLeave={(e) => {
-                      if (!(location.pathname.startsWith(item.path) || activeMegaMenu === item.id)) {
+                      if (location.pathname.startsWith(item.path) || activeMegaMenu === item.id) {
+                        e.currentTarget.style.color = '#a8b545';
+                      } else {
                         e.currentTarget.style.color = '';
                       }
                     }}
@@ -329,48 +312,36 @@ const Header: React.FC = () => {
                   )}
                 </div>
               ))}
-              {/* Added User/Cart/Support links for mobile */}
+              {/* Added User/Cart links for mobile */}
               <div className="border-t border-gray-700 mt-3 pt-3 space-y-1">
-                <Link
-                  to="/signin"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
-                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                >
+                                  <Link
+                    to="/signin"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                    style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                  >
                   Sign In
                 </Link>
-                <Link
-                  to="/signup"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
-                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                >
+                                  <Link
+                    to="/signup"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                    style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                  >
                   Sign Up
                 </Link>
-                <a
-                  href="https://www.ticketing.nexusbyte.co.za"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
-                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                >
-                  Support
-                </a>
-                <Link
-                  to="/cart"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
-                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                >
+                                  <Link
+                    to="/cart"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700"
+                    style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                  >
                   <span>View Cart</span>
                   {cartItemCount > 0 && (
                     <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">

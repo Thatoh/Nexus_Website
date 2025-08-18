@@ -70,6 +70,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             top: `${position.top}px`,
             left: '0px', // Align to the left edge of the viewport
           }}
+
         >
           <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8"> {/* Content wrapper */}
             <div className="flex h-full"> {/* Existing flex container for left/right panels */}
@@ -78,17 +79,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                 {content.items.map((item, index) => (
                   <button
                     key={item.id}
-                    onMouseEnter={() => setActiveIndex(index)}
-                    className={`block w-full text-left p-3 my-1 rounded-md text-sm font-semibold transition-all duration-150 ease-in-out focus:outline-none
-                      ${currentActiveIndex === index
-                        ? 'bg-white shadow-sm transform scale-[1.02]'
-                        : 'text-nexusbyte-primary-dark hover:bg-gray-200/80'
-                      }`}
-                    style={{ 
-                      '--hover-color': '#a8b545',
-                      '--active-color': currentActiveIndex === index ? '#a8b545' : undefined
-                    } as React.CSSProperties}
                     onMouseEnter={(e) => {
+                      setActiveIndex(index);
                       if (currentActiveIndex !== index) {
                         e.currentTarget.style.color = '#a8b545';
                       }
@@ -98,6 +90,15 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                         e.currentTarget.style.color = '';
                       }
                     }}
+                    className={`block w-full text-left p-3 my-1 rounded-md text-sm font-semibold transition-all duration-150 ease-in-out focus:outline-none
+                      ${currentActiveIndex === index
+                        ? 'bg-white shadow-sm transform scale-[1.02]'
+                        : 'text-nexusbyte-primary-dark hover:bg-gray-200/80'
+                      }`}
+                    style={{ 
+                      '--hover-color': '#a8b545',
+                      '--active-color': currentActiveIndex === index ? '#a8b545' : undefined
+                    } as React.CSSProperties}
                     aria-current={currentActiveIndex === index ? "true" : "false"}
                   >
                     {item.title} &raquo;
@@ -153,10 +154,10 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                           <img
                               src={subLink.imageUrl}
                               alt={subLink.title}
-                              className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-md flex-shrink-0 border border-gray-200 transition-colors"
+                              className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-md flex-shrink-0 border border-gray-200 transition-colors" // Slightly larger images
                               style={{ '--hover-border-color': '#a8b545' } as React.CSSProperties}
                               onMouseEnter={(e) => e.currentTarget.style.borderColor = '#a8b545'}
-                              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''} // Slightly larger images
+                              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
                               onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
                           />
                           <div className="flex-grow">
