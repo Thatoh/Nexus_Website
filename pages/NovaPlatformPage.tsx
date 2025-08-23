@@ -106,7 +106,7 @@ const NovaPlatformPage: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-nexusbyte-primary-dark text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-nexusbyte-primary-dark text-white min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <BoltIcon className="absolute top-1/4 left-1/4 w-64 h-64 text-gray-700 transform rotate-12" />
         </div>
@@ -152,19 +152,30 @@ const NovaPlatformPage: React.FC = () => {
         </motion.div>
       </Section>
       
-      {/* What is Nova AI Platform? Section */}
-      <Section title="What is the Nova AI Platform?" className="bg-gray-50"
-               subtitle="Nova is a secure, multi-layered AI orchestration environment that allows businesses to build, train, deploy custom GPT/LLM agents, integrate with internal systems, define data boundaries, and utilize agentic workflows.">
-        <div className="text-left max-w-3xl mx-auto mt-8">
-            <p className="text-gray-700 mb-4">It supports deployments on NexusByte's hosted infrastructure, on-premises, or in cloud-native environments, ensuring flexibility.</p>
-            <h4 className="text-xl font-semibold text-nexusbyte-primary-dark mb-2">Pre-equipped with connectors to:</h4>
-            <ul className="list-disc list-inside text-gray-700 space-y-1 pl-4">
-                <li>OpenAI, Azure AI Studio, Google Vertex</li>
-                <li>Microsoft 365, Salesforce, Slack, WhatsApp, and more</li>
-            </ul>
-            <p className="text-gray-700 mt-4">Nova is platform-agnostic, built for hybrid cloud, and serves AI through secure APIs, embeddable widgets, and front-end portals.</p>
-        </div>
-      </Section>
+             {/* What is Nova AI Platform? Section */}
+       <div className="bg-gray-50 py-24 sm:py-32">
+         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+           <div className="mx-auto max-w-2xl text-center">
+             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+               What is the Nova AI Platform?
+             </h2>
+             <p className="mt-6 text-lg leading-8 text-gray-600">
+               Nova is a secure, multi-layered AI orchestration environment that allows businesses to build, train, deploy custom GPT/LLM agents, integrate with internal systems, define data boundaries, and utilize agentic workflows.
+             </p>
+           </div>
+           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+             <div className="text-left max-w-3xl mx-auto">
+                 <p className="text-gray-700 mb-4">It supports deployments on NexusByte's hosted infrastructure, on-premises, or in cloud-native environments, ensuring flexibility.</p>
+                 <h4 className="text-xl font-semibold text-nexusbyte-primary-dark mb-2">Pre-equipped with connectors to:</h4>
+                 <ul className="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                     <li>OpenAI, Azure AI Studio, Google Vertex</li>
+                     <li>Microsoft 365, Salesforce, Slack, WhatsApp, and more</li>
+                 </ul>
+                 <p className="text-gray-700 mt-4">Nova is platform-agnostic, built for hybrid cloud, and serves AI through secure APIs, embeddable widgets, and front-end portals.</p>
+             </div>
+           </div>
+         </div>
+       </div>
 
       {/* Platform Capabilities Section */}
       <Section title="Core Platform Capabilities">
