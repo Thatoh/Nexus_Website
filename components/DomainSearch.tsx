@@ -1,140 +1,145 @@
-import React, { useState, useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { generateDomainSuggestions } from '../services/geminiService';
-import { SuggestedDomain } from '../types';
+"use client"
 
-// Child Components
-import DomainSearchForm from './domainSearch/DomainSearchForm';
-import SearchResults from './domainSearch/SearchResults';
-import ScrollingQuotes from './domainSearch/ScrollingQuotes';
+import type React from "react"
+import { useState, useCallback, useRef } from "react"
+import { Link } from "react-router-dom"
+import DomainSearchForm from "./domainSearch/DomainSearchForm"
+import SearchResults from "./domainSearch/SearchResults"
+import ScrollingQuotes from "./domainSearch/ScrollingQuotes"
 
-type SearchStatus = 'idle' | 'searching' | 'suggesting' | 'success' | 'error';
+type SearchStatus = "idle" | "searching" | "suggesting" | "success" | "error"
 
-const DomainSearch: React.FC = () => {
-  const [domainName, setDomainName] = useState('');
-  const [searchResult, setSearchResult] = useState<string | null>(null);
-  const [status, setStatus] = useState<SearchStatus>('idle');
-  const [availability, setAvailability] = useState<'available' | 'taken' | null>(null);
+interface SuggestedDomain {
+  name: string
+  tld: string
+  available: boolean
+  price?: string
+}
 
-  const [suggestedDomains, setSuggestedDomains] = useState<SuggestedDomain[]>([]);
-  const [suggestionsError, setSuggestionsError] = useState<string | null>(null);
+const DomainSearchComplete: React.FC = () => {
+  const [domainName, setDomainName] = useState("")
+  const [searchResult, setSearchResult] = useState<string | null>(null)
+  const [status, setStatus] = useState<SearchStatus>("idle")
+  const [availability, setAvailability] = useState<"available" | "taken" | null>(null)
+  const [suggestedDomains, setSuggestedDomains] = useState<SuggestedDomain[]>([])
 
-  const contentAboveScrollingTextRef = useRef<HTMLDivElement>(null);
+  const contentAboveScrollingTextRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const generateMockSuggestions = (domain: string): SuggestedDomain[] => {
+    const baseName = domain.replace(/\.(com|net|org|io|co)$/i, "")
+    const tlds = [".com", ".net", ".org", ".io", ".co", ".app", ".dev", ".tech"]
+
+    return tlds.slice(0, 6).map((tld) => ({
+      name: baseName,
+      tld,
+      available: Math.random() > 0.3,
+      price: `$${Math.floor(Math.random() * 50) + 10}.99`,
+    }))
+  }
 
   const handleSearch = useCallback(async (domainToSearch: string) => {
-    const trimmedDomain = domainToSearch.trim();
+    const trimmedDomain = domainToSearch.trim()
     if (!trimmedDomain) {
-      setStatus('error');
-      setSearchResult('Please enter a domain name.');
-      setSuggestedDomains([]);
-      setSuggestionsError(null);
-      setAvailability(null);
-      return;
+      setStatus("error")
+      setSearchResult("Please enter a domain name.")
+      setSuggestedDomains([])
+      setAvailability(null)
+      return
     }
 
-    // Start
-    setStatus('searching');
-    setSearchResult(`Searching for ${trimmedDomain}...`);
-    setSuggestedDomains([]);
-    setSuggestionsError(null);
-    setAvailability(null);
+    setStatus("searching")
+    setSearchResult(`Searching for ${trimmedDomain}...`)
+    setSuggestedDomains([])
+    setAvailability(null)
 
-    // Mock delay – replace with your real API call
-    await new Promise((r) => setTimeout(r, 1000));
+    // Simulate search delay
+    await new Promise((r) => setTimeout(r, 1500))
 
-    // Mock availability
-    const isAvailable = Math.random() > 0.5;
-    const currentAvailability = isAvailable ? 'available' : 'taken';
-    setAvailability(currentAvailability);
+    const isAvailable = Math.random() > 0.5
+    const currentAvailability = isAvailable ? "available" : "taken"
+    setAvailability(currentAvailability)
     setSearchResult(
-      isAvailable
-        ? `Congratulations! "${trimmedDomain}" is available.`
-        : `Sorry, "${trimmedDomain}" is already taken. Try another?`
-    );
+      isAvailable ? `Great news! "${trimmedDomain}" is available!` : `Sorry, "${trimmedDomain}" is already taken.`,
+    )
 
-    // Suggestions
-    setStatus('suggesting');
-    try {
-      const suggestions = await generateDomainSuggestions(trimmedDomain, currentAvailability);
-      if (suggestions?.length) {
-        setSuggestedDomains(suggestions);
-        setSuggestionsError(null);
-      } else {
-        setSuggestedDomains([]);
-        setSuggestionsError("Nova couldn't fetch suggestions this time. Try again?");
-      }
-    } catch (err) {
-      console.error('Error fetching domain suggestions:', err);
-      setSuggestedDomains([]);
-      setSuggestionsError('An error occurred while fetching suggestions.');
-    } finally {
-      setStatus('success');
-    }
-  }, []);
+    setStatus("suggesting")
+
+    // Generate suggestions
+    await new Promise((r) => setTimeout(r, 1000))
+    const suggestions = generateMockSuggestions(trimmedDomain)
+    setSuggestedDomains(suggestions)
+    setStatus("success")
+  }, [])
 
   const handleSuggestionClick = (suggestion: SuggestedDomain) => {
-    const fullSuggestedDomain = `${suggestion.name}${suggestion.tld}`;
-    setDomainName(fullSuggestedDomain);
-    handleSearch(fullSuggestedDomain);
+    const fullSuggestedDomain = `${suggestion.name}${suggestion.tld}`
+    setDomainName(fullSuggestedDomain)
+    handleSearch(fullSuggestedDomain)
     contentAboveScrollingTextRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
+      behavior: "smooth",
+      block: "start",
+    })
+  }
 
-  const isLoading = status === 'searching' || status === 'suggesting';
+  const isLoading = status === "searching" || status === "suggesting"
 
   return (
-    <section className="px-6 sm:px-8 lg:px-10 py-24 md:py-32">
-      <div ref={contentAboveScrollingTextRef} className="text-center mx-auto max-w-3xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow mb-4">
-          Find Your Perfect Domain
-        </h2>
-        <p className="text-lg text-white/85 mb-8">
-          Start your online journey with a unique domain name. Powered by Nova AI suggestions.
-        </p>
+    <section ref={sectionRef} className="relative w-full overflow-hidden" style={{ minHeight: "200vh" }}>
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <img src="/images/ab-3.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      </div>
 
-        <DomainSearchForm
-          domainName={domainName}
-          setDomainName={setDomainName}
-          onSearch={handleSearch}
-          isLoading={isLoading}
-        />
+      {/* Overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
-        <div className="mt-4 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-8">
-          <Link
-            to="/register-domain"
-            className="text-xs font-normal text-white/80 hover:text-white hover:underline"
-          >
-            Register a domain
-          </Link>
-          <Link to="/signup" className="text-xs font-normal text-white/80 hover:text-white hover:underline">
-            SignUp
-          </Link>
-          <Link to="/signin" className="text-xs font-normal text-white/80 hover:text-white hover:underline">
-            Customer Signin
-          </Link>
+      {/* Content */}
+      <div className="relative z-10 flex flex-col">
+        {/* Main Search Section */}
+        <div className="flex items-center justify-center min-h-screen px-6 py-24">
+          <div className="w-full max-w-4xl mx-auto text-center">
+            {/* Header */}
+            <div ref={contentAboveScrollingTextRef} className="mb-12">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+                Find Your Perfect Domain
+              </h1>
+              <p className="text-xl text-white/90 mb-8 drop-shadow">
+                Start your online journey with a unique domain name. Get instant availability results and smart
+                suggestions.
+              </p>
+            </div>
+
+            {/* Search Form */}
+            <div className="mb-8">
+              <DomainSearchForm
+                domainName={domainName}
+                setDomainName={setDomainName}
+                onSearch={handleSearch}
+                isLoading={isLoading}
+              />
+            </div>
+
+            {/* Search Results */}
+            <SearchResults
+              status={status}
+              searchResult={searchResult}
+              availability={availability}
+              suggestions={suggestedDomains}
+              suggestionsError={null}
+              onSuggestionClick={handleSuggestionClick}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
 
-        <SearchResults
-          status={status}
-          searchResult={searchResult}
-          availability={availability}
-          suggestions={suggestedDomains}
-          suggestionsError={suggestionsError}
-          onSuggestionClick={handleSuggestionClick}
-          isLoading={isLoading}
-        />
-      </div>
-
-      {/* Scrolling Quotes Area */}
-      <div className="mt-16">
-        <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
+        {/* Scrolling Quotes Section */}
+        <div className="min-h-screen flex items-center">
+          <ScrollingQuotes contentAboveRef={contentAboveScrollingTextRef} />
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default DomainSearch;
-
-
+export default DomainSearchComplete

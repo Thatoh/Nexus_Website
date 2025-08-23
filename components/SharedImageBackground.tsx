@@ -26,21 +26,16 @@ export default function SharedImageBackground({
   return (
     <section
       ref={ref}
-      className="relative w-full overflow-hidden min-h-screen"
+      className="relative w-full overflow-hidden min-h-screen bg-gray-900"
       style={heightPx ? { minHeight: `${heightPx}px` } : undefined}
     >
       {/* Background image with motion effects */}
       <motion.div className="pointer-events-none absolute inset-0 -z-10" style={{ y: bgY, scale: bgScale }}>
-        <img 
-          src={src} 
-          alt="" 
-          className="h-full w-full object-cover" 
-          onError={(e) => {
-            console.error(`Failed to load image: ${src}`);
-            e.currentTarget.style.display = 'none';
-          }}
+        <div 
+          className="h-full w-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${src})` }}
         />
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-black/40" />
       </motion.div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14 py-24 md:py-32 space-y-24 md:space-y-32">

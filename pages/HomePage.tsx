@@ -8,7 +8,7 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import AnnouncementBanner from '../components/AnnouncementBanner';
 import SharedVideoBackground from '../components/SharedVideoBackground';
 import NewsletterContent from '../components/NewsletterContent';
-import DomainSearchContent from '../components/DomainSearchContent';
+import DomainSearchComplete from '../components/DomainSearch';
 import SharedImageBackground from '../components/SharedImageBackground';
 import ProductivityContent from '../components/ProductivityContent';
 import CaseStudiesContent from '../components/CaseStudiesContent';
@@ -56,12 +56,22 @@ const HomePage: React.FC<HomePageProps> = ({ openChat }) => {
       
       <ServicesCarousel />
       
-      {/* Image background page with Newsletter and Domain Search */}
-      <SharedImageBackground
-        src="/images/resources/ab-3.jpg"
-        firstContent={<NewsletterContent />}
-        secondContent={<DomainSearchContent />}
-      />
+      {/* Newsletter Section with its own background */}
+      <section className="relative w-full overflow-hidden bg-gray-900">
+        <div className="absolute inset-0 -z-10">
+          <div 
+            className="h-full w-full bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: 'url(/images/resources/ab-1.jpg)' }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14 py-24 md:py-32">
+          <NewsletterContent />
+        </div>
+      </section>
+      
+      {/* Domain Search Section - now self-contained */}
+      <DomainSearchComplete />
       
       <AIChatbotSection onOpenChat={openChat} /> 
       

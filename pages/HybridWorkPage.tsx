@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckIcon, ArrowRightIcon, ShieldCheckIcon, UsersIcon, CpuChipIcon, LockClosedIcon } from '../components/icons';
+import BlurFollowText from '../components/BlurFollowText';
 
 // Reusable Section Component
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string; textWhite?: boolean}> = ({ title, subtitle, children, className = 'py-16 md:py-20', textWhite }) => (
@@ -86,28 +87,37 @@ const HybridWorkPage: React.FC = () => {
 
   {/* Content */}
   <div className="relative z-10 mx-auto max-w-4xl text-center">
-    <motion.h1
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6"
+      className="mb-6"
     >
-      Hybrid Work Solutions
-    </motion.h1>
+      <BlurFollowText text="Hybrid Work" radius={150} blur={15} />
+    </motion.div>
+    
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-nexusbyte-accent-green"
+    >
+      Solutions
+    </motion.h2>
 
     <motion.p
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      transition={{ duration: 0.6, delay: 0.3 }}
       className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
     >
-      NexusByte’s Hybrid Work Solutions empower your team to thrive—whether remote, on-site, or on the move. We deliver secure access, seamless communication, and cloud-based productivity tools that ensure continuity without compromising performance.
+      Empower your team to thrive—whether remote, on-site, or on the move. We deliver secure access, seamless communication, and cloud-based productivity tools that ensure continuity without compromising performance.
     </motion.p>
 
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
+      transition={{ duration: 0.6, delay: 0.5 }}
       className="mt-8 text-center max-w-2xl mx-auto bg-white/5 p-6 rounded-lg shadow-lg ring-1 ring-white/10 backdrop-blur"
     >
       <blockquote className="text-xl italic text-gray-100 leading-relaxed">

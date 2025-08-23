@@ -70,3 +70,30 @@ textarea {
     scrollbar-width: none;
     /* Firefox */
 }
+
+/* Blur Follow Text Component Styles */
+:root {
+    --x: 50%;
+    --y: 50%;
+}
+
+.blur-flow {
+    position: relative;
+    display: inline-block;
+    font: 900 clamp(48px, 12vw, 220px)/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: #fff;
+}
+
+.flow-base {
+    position: relative;
+    z-index: 1;
+}
+
+.flow-blur {
+    position: absolute;
+    inset: 0;
+    filter: blur(var(--blur, 10px));
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(circle var(--radius, 120px) at var(--x) var(--y), #000 0, #0000 60%);
+    mask-image: radial-gradient(circle var(--radius, 120px) at var(--x) var(--y), #000 0, #0000 60%);
+}
