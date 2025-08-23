@@ -1,7 +1,84 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CpuChipIcon, PuzzlePieceIcon, BoltIcon, CreditCardIcon, UsersIcon, ChatBubbleOvalLeftEllipsisIcon, TicketIcon, ChevronDownIcon, ChevronUpIcon, ArrowRightIcon, CheckIcon, ArrowLeftIcon } from '../components/icons'; // Added CheckIcon and ArrowLeftIcon
+import { CpuChipIcon, PuzzlePieceIcon, BoltIcon, CreditCardIcon, UsersIcon, ChatBubbleOvalLeftEllipsisIcon, TicketIcon, ChevronDownIcon, ChevronUpIcon, ArrowRightIcon, CheckIcon, ArrowLeftIcon, XMarkIcon } from '../components/icons';
+
+// Pricing data for Nova AI Plans
+const frequencies = [
+  { value: 'monthly', label: 'Monthly' },
+  { value: 'annually', label: 'Annually' },
+];
+
+const tiers = [
+  {
+    name: 'Starter',
+    id: 'tier-starter',
+    href: '#',
+    featured: false,
+    description: 'Everything you need to get started.',
+    price: { monthly: 'R499', annually: 'R4999' },
+    highlights: ['Custom domains', 'Edge content delivery', 'Advanced analytics'],
+  },
+  {
+    name: 'Scale',
+    id: 'tier-scale',
+    href: '#',
+    featured: true,
+    description: 'Added flexibility at scale.',
+    price: { monthly: 'R1499', annually: 'R14999' },
+    highlights: [
+      'Custom domains',
+      'Edge content delivery',
+      'Advanced analytics',
+      'Quarterly workshops',
+      'Single sign-on (SSO)',
+      'Priority phone support',
+    ],
+  },
+  {
+    name: 'Growth',
+    id: 'tier-growth',
+    href: '#',
+    featured: false,
+    description: 'All the extras for your growing team.',
+    price: { monthly: 'R999', annually: 'R9999' },
+    highlights: ['Custom domains', 'Edge content delivery', 'Advanced analytics', 'Quarterly workshops'],
+  },
+];
+
+const sections = [
+  {
+    name: 'Features',
+    features: [
+      { name: 'Edge content delivery', tiers: { Starter: true, Growth: true, Scale: true } },
+      { name: 'Custom domains', tiers: { Starter: '1', Growth: '3', Scale: 'Unlimited' } },
+      { name: 'Team members', tiers: { Starter: '3', Growth: '20', Scale: 'Unlimited' } },
+      { name: 'Single sign-on (SSO)', tiers: { Starter: false, Growth: false, Scale: true } },
+    ],
+  },
+  {
+    name: 'Reporting',
+    features: [
+      { name: 'Advanced analytics', tiers: { Starter: true, Growth: true, Scale: true } },
+      { name: 'Basic reports', tiers: { Starter: false, Growth: true, Scale: true } },
+      { name: 'Professional reports', tiers: { Starter: false, Growth: false, Scale: true } },
+      { name: 'Custom report builder', tiers: { Starter: false, Growth: false, Scale: true } },
+    ],
+  },
+  {
+    name: 'Support',
+    features: [
+      { name: '24/7 online support', tiers: { Starter: true, Growth: true, Scale: true } },
+      { name: 'Quarterly workshops', tiers: { Starter: false, Growth: true, Scale: true } },
+      { name: 'Priority phone support', tiers: { Starter: false, Growth: false, Scale: true } },
+      { name: '1:1 onboarding tour', tiers: { Starter: false, Growth: false, Scale: true } },
+    ],
+  },
+];
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}
 
 // Placeholder data for the page
 const aiProviders = [
@@ -42,12 +119,6 @@ const useCases = [
     description: 'Develop custom AI chatbots and agents for specific tasks, from internal helpdesks to specialized client-facing applications, integrated with your data and workflows.',
     visualUrl: 'https://picsum.photos/seed/custombots_ui/500/300?text=Custom+Bots+UI+GIF'
   },
-];
-
-const pricingPlans = [
-  { name: 'Starter', price: 'R499', target: 'Individuals & Startups', requests: '20,000 /mo', integrations: 'All NexusByte Apps', support: 'Standard Support', cta: 'Choose Plan', featured: false },
-  { name: 'Pro', price: 'R1499', target: 'Growing Teams', requests: '100,000 /mo', integrations: 'All NexusByte Apps', support: 'Priority Support', cta: 'Choose Plan', featured: true },
-  { name: 'Enterprise', price: 'Contact Us', target: 'Large-Scale Operations', requests: 'Custom Volume', integrations: 'All NexusByte Apps', support: 'Dedicated Account Manager', cta: 'Contact Sales', featured: false },
 ];
 
 const faqsData = [
@@ -133,7 +204,7 @@ const AIAgentsAutomationPage: React.FC = () => {
             {aiProviders.map(provider => (
               <motion.div
                 key={provider.id}
-                className="relative p-6 bg-white rounded-xl shadow-lg border border-gray-200 text-center transition-all duration-300 hover:shadow-2xl hover:border-nexusbyte-accent-green"
+                                 className="relative p-6 bg-white rounded-xl shadow-lg border border-gray-200 text-center transition-all duration-300 hover:shadow-2xl hover:border-[#a8b545]"
                 onMouseEnter={() => setHoveredProvider(provider.id)}
                 onMouseLeave={() => setHoveredProvider(null)}
               >
@@ -165,7 +236,7 @@ const AIAgentsAutomationPage: React.FC = () => {
                     const Icon = item.icon;
                     return (
                         <div key={item.step} className="flex flex-col items-center p-4">
-                            <div className="bg-nexusbyte-accent-green/10 text-nexusbyte-accent-green p-3 rounded-full mb-3">
+                                                         <div className="bg-[#a8b545]/10 text-[#a8b545] p-3 rounded-full mb-3">
                                 <Icon className="w-8 h-8"/>
                             </div>
                             <h4 className="font-semibold text-lg mb-1">Step {item.step}: {item.title}</h4>
@@ -176,7 +247,7 @@ const AIAgentsAutomationPage: React.FC = () => {
              </div>
           </div>
           <div className="text-center">
-            <Link to="/docs/byok-integration" className="text-nexusbyte-accent-green font-semibold hover:underline text-lg">
+                         <Link to="/docs/byok-integration" className="text-[#a8b545] font-semibold hover:underline text-lg">
               View Integration Docs <ArrowRightIcon className="inline w-5 h-5 ml-1"/>
             </Link>
           </div>
@@ -196,7 +267,7 @@ const AIAgentsAutomationPage: React.FC = () => {
             <img src="https://picsum.photos/seed/gemini_logo_flow/80/40?grayscale&text=Gemini" alt="Gemini Logo" className="opacity-70"/>
           </div>
           <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Introducing <strong className="text-nexusbyte-accent-green">Nova AI</strong>, the native intelligence layer for the NexusByte ecosystem. Get the combined power of the world's best models, plus our own proprietary AI, through one simple subscription.
+                         Introducing <strong className="text-[#a8b545]">Nova AI</strong>, the native intelligence layer for the NexusByte ecosystem. Get the combined power of the world's best models, plus our own proprietary AI, through one simple subscription.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -204,7 +275,7 @@ const AIAgentsAutomationPage: React.FC = () => {
               const Icon = feature.icon;
               return (
                 <div key={feature.title} className="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-colors">
-                  <Icon className="w-10 h-10 text-nexusbyte-accent-green mb-4 mx-auto" />
+                                     <Icon className="w-10 h-10 text-[#a8b545] mb-4 mx-auto" />
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-400">{feature.description}</p>
                 </div>
@@ -223,12 +294,12 @@ const AIAgentsAutomationPage: React.FC = () => {
               <button
                 key={uc.id}
                 onClick={() => setActiveUseCaseTab(uc.id)}
-                className={`px-4 py-3 sm:px-6 font-medium text-sm sm:text-base border-b-2 transition-colors duration-200 focus:outline-none
-                  ${activeUseCaseTab === uc.id 
-                    ? 'border-nexusbyte-accent-green text-nexusbyte-accent-green' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-400'}`}
-              >
-                <uc.icon className={`inline w-5 h-5 mr-2 ${activeUseCaseTab === uc.id ? 'text-nexusbyte-accent-green' : 'text-gray-400'}`} />
+                                 className={`px-4 py-3 sm:px-6 font-medium text-sm sm:text-base border-b-2 transition-colors duration-200 focus:outline-none
+                   ${activeUseCaseTab === uc.id 
+                     ? 'border-[#a8b545] text-[#a8b545]' 
+                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-400'}`}
+               >
+                 <uc.icon className={`inline w-5 h-5 mr-2 ${activeUseCaseTab === uc.id ? 'text-[#a8b545]' : 'text-gray-400'}`} />
                 {uc.title}
               </button>
             ))}
@@ -247,9 +318,9 @@ const AIAgentsAutomationPage: React.FC = () => {
                 <div className="text-left">
                   <h3 className="text-2xl font-semibold text-nexusbyte-primary-dark mb-3">{activeUseCase.headline}</h3>
                   <p className="text-gray-600 mb-4">{activeUseCase.description}</p>
-                  <p className="text-xs text-gray-500">
-                    Powered by: <span className="font-semibold text-nexusbyte-accent-green">Nova AI</span> or <span className="font-semibold">Your Connected AI</span>
-                  </p>
+                                     <p className="text-xs text-gray-500">
+                     Powered by: <span className="font-semibold text-[#a8b545]">Nova AI</span> or <span className="font-semibold">Your Connected AI</span>
+                   </p>
                 </div>
                 <div>
                   <img src={activeUseCase.visualUrl} alt={`${activeUseCase.title} UI showcase`} className="rounded-lg shadow-xl w-full object-cover aspect-video" />
@@ -261,43 +332,375 @@ const AIAgentsAutomationPage: React.FC = () => {
       </section>
 
       {/* 5. Nova AI Plans & Pricing */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-nexusbyte-primary-dark mb-3">Nova AI Plans & Pricing</h2>
-            <p className="text-gray-600">All plans include access to Gemini, ChatGPT, Claude, and our proprietary Nova model.</p>
-            <p className="text-gray-600 mt-1">Just want to connect your own model? It's free. Your provider's rates apply.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-            {pricingPlans.map(plan => (
-              <div key={plan.name} className={`rounded-xl p-8 flex flex-col shadow-lg transition-all duration-300 hover:shadow-2xl
-                ${plan.featured ? 'bg-nexusbyte-primary-dark text-white ring-4 ring-nexusbyte-accent-green transform scale-105' : 'bg-gray-50 text-nexusbyte-primary-dark border border-gray-200'}`}
-              >
-                <h3 className={`text-2xl font-bold mb-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-primary-dark'}`}>{plan.name}</h3>
-                <p className={`text-sm mb-4 ${plan.featured ? 'text-gray-300' : 'text-gray-500'}`}>{plan.target}</p>
-                <p className={`text-4xl font-extrabold mb-1 ${plan.featured ? 'text-white' : 'text-nexusbyte-primary-dark'}`}>{plan.price}</p>
-                <p className={`text-sm mb-6 ${plan.featured ? 'text-gray-400' : 'text-gray-500'}`}>{plan.name !== 'Enterprise' ? '/mo' : ''}</p>
-                
-                <ul className={`space-y-3 text-sm mb-8 flex-grow ${plan.featured ? 'text-gray-300' : 'text-gray-600'}`}>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} /> AI Requests: {plan.requests}</li>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} /> Integrates with: {plan.integrations}</li>
-                  <li className="flex items-center"><CheckIcon className={`w-5 h-5 mr-2 ${plan.featured ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} /> Support: {plan.support}</li>
-                </ul>
-                <Link
-                  to={plan.name === 'Enterprise' ? '/contact' : `/signup?plan=${plan.name.toLowerCase()}`}
-                  className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-colors duration-200
-                    ${plan.featured 
-                      ? 'bg-nexusbyte-accent-green text-nexusbyte-primary-dark hover:bg-opacity-80' 
-                      : 'bg-nexusbyte-accent-green text-nexusbyte-primary-dark hover:bg-opacity-80'}`}
-                >
-                  {plan.cta}
-                </Link>
+      <form className="group/tiers isolate overflow-hidden bg-white dark:bg-gray-900">
+        <div className="flow-root border-b border-b-transparent bg-gray-900 pt-24 pb-16 sm:pt-32 lg:pb-0 dark:border-b-white/5 dark:bg-gray-800/25">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="relative z-10">
+              <h2 className="mx-auto max-w-4xl text-center text-5xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
+                Pricing that grows with you
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
+                Choose an affordable plan that's packed with the best features for engaging your audience, creating
+                customer loyalty, and driving sales.
+              </p>
+              <div className="mt-16 flex justify-center">
+                <fieldset aria-label="Payment frequency">
+                  <div className="grid grid-cols-2 gap-x-1 rounded-full bg-white/5 p-1 text-center text-xs/5 font-semibold text-white">
+                    <label className="group relative rounded-full px-2.5 py-1 has-checked:bg-[#a8b545]">
+                      <input
+                        defaultValue="monthly"
+                        defaultChecked
+                        name="frequency"
+                        type="radio"
+                        className="absolute inset-0 appearance-none rounded-full"
+                      />
+                      <span className="text-white">Monthly</span>
+                    </label>
+                    <label className="group relative rounded-full px-2.5 py-1 has-checked:bg-[#a8b545]">
+                      <input
+                        defaultValue="annually"
+                        name="frequency"
+                        type="radio"
+                        className="absolute inset-0 appearance-none rounded-full"
+                      />
+                      <span className="text-white">Annually</span>
+                    </label>
+                  </div>
+                </fieldset>
               </div>
-            ))}
+            </div>
+            <div className="relative mx-auto mt-10 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:-mb-14 lg:max-w-none lg:grid-cols-3">
+              <svg
+                viewBox="0 0 1208 1024"
+                aria-hidden="true"
+                className="absolute -bottom-48 left-1/2 h-256 -translate-x-1/2 translate-y-1/2 mask-[radial-gradient(closest-side,white,transparent)] lg:-top-48 lg:bottom-auto lg:translate-y-0"
+              >
+                <ellipse cx={604} cy={512} rx={604} ry={512} fill="url(#d25c25d4-6d43-4bf9-b9ac-1842a30a4867)" />
+                <defs>
+                  <radialGradient id="d25c25d4-6d43-4bf9-b9ac-1842a30a4867">
+                    <stop stopColor="#a8b545" />
+                    <stop offset={1} stopColor="#8a9a3a" />
+                  </radialGradient>
+                </defs>
+              </svg>
+              <div
+                aria-hidden="true"
+                className="hidden lg:absolute lg:inset-x-px lg:top-4 lg:bottom-0 lg:block lg:rounded-t-2xl lg:bg-gray-800/80 lg:ring-1 lg:ring-white/10"
+              />
+              {tiers.map((tier) => (
+                <div
+                  key={tier.id}
+                  data-featured={tier.featured ? 'true' : undefined}
+                  className={classNames(
+                    tier.featured
+                      ? 'z-10 bg-white shadow-xl outline-1 outline-gray-900/10 dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10'
+                      : 'bg-gray-800/80 outline-1 -outline-offset-1 outline-white/10 lg:bg-transparent lg:pb-14 lg:outline-0',
+                    'group/tier relative rounded-2xl',
+                  )}
+                >
+                  <div className="p-8 lg:pt-12 xl:p-10 xl:pt-14">
+                    <h3
+                      id={`tier-${tier.id}`}
+                      className="text-sm/6 font-semibold text-white group-data-featured/tier:text-gray-900 dark:group-data-featured/tier:text-white"
+                    >
+                      {tier.name}
+                    </h3>
+                    <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-stretch">
+                      <div className="mt-2 flex items-center gap-x-4">
+                        <p className="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-900 dark:group-data-featured/tier:text-white">
+                          {tier.price.monthly}
+                        </p>
+                        <p className="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden group-data-featured/tier:text-gray-900 dark:group-data-featured/tier:text-white">
+                          {tier.price.annually}
+                        </p>
+                        <div className="text-sm">
+                          <p className="text-white group-data-featured/tier:text-gray-900 dark:group-data-featured/tier:text-white">
+                            ZAR
+                          </p>
+                          <p className="text-gray-400 group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-500 dark:group-data-featured/tier:text-gray-400">
+                            Billed monthly
+                          </p>
+                          <p className="text-gray-400 group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden group-data-featured/tier:text-gray-500 dark:group-data-featured/tier:text-gray-400">
+                            Billed annually
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        value={tier.id}
+                        name="tier"
+                        type="submit"
+                        aria-describedby={`tier-${tier.id}`}
+                        className="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-[#a8b545] group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-[#8a9a3a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-[#a8b545] dark:group-data-featured/tier:bg-[#a8b545] dark:group-data-featured/tier:shadow-none dark:group-data-featured/tier:hover:bg-[#8a9a3a] dark:group-data-featured/tier:focus-visible:outline-[#a8b545]"
+                      >
+                        Buy this plan
+                      </button>
+                    </div>
+                    <div className="mt-8 flow-root sm:mt-10">
+                      <ul
+                        role="list"
+                        className="-my-2 divide-y divide-white/5 border-t border-white/5 text-sm/6 text-white group-data-featured/tier:divide-gray-900/5 group-data-featured/tier:border-gray-900/5 group-data-featured/tier:text-gray-600 lg:border-t-0 dark:group-data-featured/tier:divide-white/10 dark:group-data-featured/tier:border-white/10 dark:group-data-featured/tier:text-white"
+                      >
+                        {tier.highlights.map((mainFeature) => (
+                          <li key={mainFeature} className="flex gap-x-3 py-2">
+                            <CheckIcon
+                              aria-hidden="true"
+                              className="h-6 w-5 flex-none text-gray-500 group-data-featured/tier:text-[#a8b545] dark:group-data-featured/tier:text-[#a8b545]"
+                            />
+                            {mainFeature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+        <div className="relative bg-gray-50 lg:pt-14 dark:bg-gray-900">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+            {/* Feature comparison (up to lg) */}
+            <section aria-labelledby="mobile-comparison-heading" className="lg:hidden">
+              <h2 id="mobile-comparison-heading" className="sr-only">
+                Feature comparison
+              </h2>
+
+              <div className="mx-auto max-w-2xl space-y-16">
+                {tiers.map((tier) => (
+                  <div key={tier.id} className="border-t border-gray-900/10 dark:border-white/10">
+                    <div
+                      className={classNames(
+                        tier.featured ? 'border-[#a8b545] dark:border-[#a8b545]' : 'border-transparent',
+                        '-mt-px w-72 border-t-2 pt-10 md:w-80',
+                      )}
+                    >
+                      <h3
+                        className={classNames(
+                          tier.featured ? 'text-[#a8b545] dark:text-[#a8b545]' : 'text-gray-900 dark:text-white',
+                          'text-sm/6 font-semibold',
+                        )}
+                      >
+                        {tier.name}
+                      </h3>
+                      <p className="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{tier.description}</p>
+                    </div>
+
+                    <div className="mt-10 space-y-10">
+                      {sections.map((section) => (
+                        <div key={section.name}>
+                          <h4 className="text-sm/6 font-semibold text-gray-900 dark:text-white">{section.name}</h4>
+                          <div className="relative mt-6">
+                            {/* Fake card background */}
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block dark:bg-gray-800/50 dark:shadow-none"
+                            />
+
+                            <div
+                              className={classNames(
+                                tier.featured
+                                  ? 'ring-2 ring-[#a8b545] dark:ring-[#a8b545]'
+                                  : 'ring-1 ring-gray-900/10 dark:ring-white/10',
+                                'relative rounded-lg bg-white shadow-xs sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 dark:bg-gray-800/50 dark:shadow-none dark:sm:bg-transparent',
+                              )}
+                            >
+                              <dl className="divide-y divide-gray-200 text-sm/6 dark:divide-white/10">
+                                {section.features.map((feature) => (
+                                  <div
+                                    key={feature.name}
+                                    className="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
+                                  >
+                                    <dt className="pr-4 text-gray-600 dark:text-gray-400">{feature.name}</dt>
+                                    <dd className="flex items-center justify-end sm:justify-center sm:px-4">
+                                      {typeof feature.tiers[tier.name] === 'string' ? (
+                                        <span
+                                          className={
+                                            tier.featured
+                                              ? 'font-semibold text-[#a8b545] dark:text-[#a8b545]'
+                                              : 'text-gray-900 dark:text-white'
+                                          }
+                                        >
+                                          {feature.tiers[tier.name]}
+                                        </span>
+                                      ) : (
+                                        <>
+                                          {feature.tiers[tier.name] === true ? (
+                                            <CheckIcon
+                                              aria-hidden="true"
+                                              className="mx-auto size-5 text-[#a8b545] dark:text-[#a8b545]"
+                                            />
+                                          ) : (
+                                            <XMarkIcon
+                                              aria-hidden="true"
+                                              className="mx-auto size-5 text-gray-400 dark:text-gray-600"
+                                            />
+                                          )}
+
+                                          <span className="sr-only">
+                                            {feature.tiers[tier.name] === true ? 'Yes' : 'No'}
+                                          </span>
+                                        </>
+                                      )}
+                                    </dd>
+                                  </div>
+                                ))}
+                              </dl>
+                            </div>
+
+                            {/* Fake card border */}
+                            <div
+                              aria-hidden="true"
+                              className={classNames(
+                                tier.featured
+                                  ? 'ring-2 ring-[#a8b545] dark:ring-[#a8b545]'
+                                  : 'ring-1 ring-gray-900/10 dark:ring-white/10',
+                                'pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block',
+                              )}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Feature comparison (lg+) */}
+            <section aria-labelledby="comparison-heading" className="hidden lg:block">
+              <h2 id="comparison-heading" className="sr-only">
+                Feature comparison
+              </h2>
+
+              <div className="grid grid-cols-4 gap-x-8 border-t border-gray-900/10 before:block dark:border-white/10">
+                {tiers.map((tier) => (
+                  <div key={tier.id} aria-hidden="true" className="-mt-px">
+                    <div
+                      className={classNames(
+                        tier.featured ? 'border-[#a8b545] dark:border-[#a8b545]' : 'border-transparent',
+                        'border-t-2 pt-10',
+                      )}
+                    >
+                      <p
+                        className={classNames(
+                          tier.featured ? 'text-[#a8b545] dark:text-[#a8b545]' : 'text-gray-900 dark:text-white',
+                          'text-sm/6 font-semibold',
+                        )}
+                      >
+                        {tier.name}
+                      </p>
+                      <p className="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{tier.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="-mt-6 space-y-16">
+                {sections.map((section) => (
+                  <div key={section.name}>
+                    <h3 className="text-sm/6 font-semibold text-gray-900 dark:text-white">{section.name}</h3>
+                    <div className="relative -mx-8 mt-10">
+                      {/* Fake card backgrounds */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
+                      >
+                        <div className="size-full rounded-lg bg-white shadow-xs dark:bg-gray-800/50 dark:shadow-none" />
+                        <div className="size-full rounded-lg bg-white shadow-xs dark:bg-gray-800/50 dark:shadow-none" />
+                        <div className="size-full rounded-lg bg-white shadow-xs dark:bg-gray-800/50 dark:shadow-none" />
+                      </div>
+
+                      <table className="relative w-full border-separate border-spacing-x-8">
+                        <thead>
+                          <tr className="text-left">
+                            <th scope="col">
+                              <span className="sr-only">Feature</span>
+                            </th>
+                            {tiers.map((tier) => (
+                              <th key={tier.id} scope="col">
+                                <span className="sr-only">{tier.name} tier</span>
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.features.map((feature, featureIdx) => (
+                            <tr key={feature.name}>
+                              <th
+                                scope="row"
+                                className="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900 dark:text-white"
+                              >
+                                {feature.name}
+                                {featureIdx !== section.features.length - 1 ? (
+                                  <div className="absolute inset-x-8 mt-3 h-px bg-gray-200 dark:bg-white/10" />
+                                ) : null}
+                              </th>
+                              {tiers.map((tier) => (
+                                <td key={tier.id} className="relative w-1/4 px-4 py-0 text-center">
+                                  <span className="relative size-full py-3">
+                                    {typeof feature.tiers[tier.name] === 'string' ? (
+                                      <span
+                                        className={classNames(
+                                          tier.featured
+                                            ? 'font-semibold text-[#a8b545] dark:text-[#a8b545]'
+                                            : 'text-gray-900 dark:text-white',
+                                          'text-sm/6',
+                                        )}
+                                      >
+                                        {feature.tiers[tier.name]}
+                                      </span>
+                                    ) : (
+                                      <>
+                                                                                 {feature.tiers[tier.name] === true ? (
+                                           <CheckIcon
+                                             aria-hidden="true"
+                                             className="mx-auto size-5 text-[#a8b545] dark:text-[#a8b545]"
+                                           />
+                                         ) : (
+                                           <XMarkIcon
+                                             aria-hidden="true"
+                                             className="mx-auto size-5 text-gray-400 dark:text-gray-600"
+                                           />
+                                         )}
+
+                                        <span className="sr-only">
+                                          {feature.tiers[tier.name] === true ? 'Yes' : 'No'}
+                                        </span>
+                                      </>
+                                    )}
+                                  </span>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+
+                      {/* Fake card borders */}
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
+                      >
+                        {tiers.map((tier) => (
+                          <div
+                            key={tier.id}
+                            className={classNames(
+                              tier.featured
+                                ? 'ring-2 ring-[#a8b545] dark:ring-[#a8b545]'
+                                : 'ring-1 ring-gray-900/10 dark:ring-white/10',
+                              'rounded-lg',
+                            )}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </form>
 
       {/* 6. Frequently Asked Questions */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
@@ -312,7 +715,7 @@ const AIAgentsAutomationPage: React.FC = () => {
                   aria-expanded={openFaqIndex === index}
                 >
                   <span>{faq.question}</span>
-                  {openFaqIndex === index ? <ChevronUpIcon className="w-6 h-6 text-nexusbyte-accent-green" /> : <ChevronDownIcon className="w-6 h-6 text-gray-400" />}
+                                     {openFaqIndex === index ? <ChevronUpIcon className="w-6 h-6 text-[#a8b545]" /> : <ChevronDownIcon className="w-6 h-6 text-gray-400" />}
                 </button>
                 <AnimatePresence>
                   {openFaqIndex === index && (

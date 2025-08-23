@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckIcon, CpuChipIcon, ArrowRightIcon } from '../components/icons'; // Assuming ArrowRightIcon is available
+import { CheckIcon, CpuChipIcon, ArrowRightIcon, CloudArrowUpIcon, LockClosedIcon, CogIcon, ShieldCheckIcon, BoltIcon } from '../components/icons';
 
 const Section: React.FC<{title: string; subtitle?: string; children: React.ReactNode; className?: string; titleClassName?: string; subtitleClassName?: string; textWhite?: boolean}> = 
   ({ title, subtitle, children, className = 'py-16 md:py-20', titleClassName = 'text-3xl md:text-4xl font-bold mb-4', subtitleClassName = 'text-lg md:text-xl mb-10 max-w-3xl mx-auto', textWhite }) => (
@@ -41,11 +41,11 @@ const PlanCard: React.FC<{plan: any; index: number}> = ({ plan, index }) => (
     transition={{ duration: 0.5, delay: index * 0.1 }}
     className={`p-8 rounded-xl shadow-xl flex flex-col h-full ${
       plan.name === 'Agentic Pro' // Example of a "featured" plan
-        ? 'bg-nexusbyte-primary-dark text-white ring-2 ring-nexusbyte-accent-green'
+        ? 'bg-nexusbyte-primary-dark text-white ring-2 ring-[#a8b545]'
         : 'bg-gray-100 text-nexusbyte-primary-dark'
     }`}
   >
-    <h3 className={`text-2xl font-bold mb-2 ${plan.name === 'Agentic Pro' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-primary-dark'}`}>{plan.name}</h3>
+    <h3 className={`text-2xl font-bold mb-2 ${plan.name === 'Agentic Pro' ? 'text-[#a8b545]' : 'text-nexusbyte-primary-dark'}`}>{plan.name}</h3>
     <p className={`text-sm mb-4 ${plan.name === 'Agentic Pro' ? 'text-gray-300' : 'text-gray-500'}`}>{plan.description}</p>
     <p className={`text-4xl font-extrabold mb-1 ${plan.name === 'Agentic Pro' ? 'text-white' : 'text-nexusbyte-primary-dark'}`}>{plan.price}</p>
     {plan.subPrice && <p className={`text-sm mb-6 ${plan.name === 'Agentic Pro' ? 'text-gray-400' : 'text-gray-500'}`}>{plan.subPrice}</p>}
@@ -53,7 +53,7 @@ const PlanCard: React.FC<{plan: any; index: number}> = ({ plan, index }) => (
     <ul className="space-y-3 text-sm mb-8 flex-grow">
       {plan.features.map((feature: string, i: number) => (
         <li key={i} className="flex items-start">
-          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.name === 'Agentic Pro' ? 'text-nexusbyte-accent-green' : 'text-nexusbyte-accent-green'}`} />
+          <CheckIcon className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${plan.name === 'Agentic Pro' ? 'text-[#a8b545]' : 'text-[#a8b545]'}`} />
           <span>{feature}</span>
         </li>
       ))}
@@ -63,8 +63,8 @@ const PlanCard: React.FC<{plan: any; index: number}> = ({ plan, index }) => (
       state={plan.ctaLinkState}
       className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-colors duration-200
         ${plan.name === 'Agentic Pro' 
-          ? 'bg-nexusbyte-accent-green text-nexusbyte-primary-dark hover:bg-opacity-80' 
-          : 'bg-nexusbyte-accent-green text-nexusbyte-primary-dark hover:bg-opacity-80'}`}
+          ? 'bg-[#a8b545] text-nexusbyte-primary-dark hover:bg-opacity-80' 
+          : 'bg-[#a8b545] text-nexusbyte-primary-dark hover:bg-opacity-80'}`}
     >
       {plan.ctaText}
     </Link>
@@ -141,77 +141,301 @@ const CustomGptsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Overview Section (Adapting from textual content's "Overview") */}
-      <Section title="Intelligent Assistants, Tailored for You" 
-               subtitle="NexusByte's Custom GPTs and AI Chatbot Solutions are designed to help businesses automate processes, scale customer interactions, and enhance user experiences across all digital touchpoints. We build smart, secure, and context-aware AI assistants that feel like a natural extension of your team.">
-        <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-8 text-left max-w-3xl mx-auto bg-gray-50 p-6 rounded-lg shadow-md">
-            <p className="text-gray-700 leading-relaxed">
-            Whether you require a sophisticated assistant for round-the-clock customer support, a specialized bot for legal research, or a highly efficient internal productivity agent, our solutions are meticulously crafted to align with your specific operational goals and challenges. By leveraging advanced natural language processing (NLP), proprietary datasets, and seamless integration capabilities, we create AI solutions that are not only intelligent but also secure and deeply aware of the context in which they operate.
-            </p>
-        </motion.div>
-      </Section>
+                           {/* Overview Section */}
+        <div className="relative bg-white py-24 sm:py-32">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: 'url(/images/resources/cgpt-2.jpg)' }}
+          ></div>
+          {/* Content */}
+          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl lg:mx-0">
+              <h2 className="text-base/7 font-semibold text-[#a8b545]">Everything you need</h2>
+              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl">
+                Intelligent Assistants, Tailored for You
+              </p>
+              <p className="mt-6 text-lg/8 text-black">
+                NexusByte's Custom GPTs and AI Chatbot Solutions are designed to help businesses automate processes, scale customer interactions, and enhance user experiences across all digital touchpoints. We build smart, secure, and context-aware AI assistants that feel like a natural extension of your team.
+              </p>
+            </div>
+            <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base/7 text-black sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-16">
+             {[
+               {
+                 name: 'Round-the-clock Support',
+                 description: 'Whether you require a sophisticated assistant for round-the-clock customer support, our solutions are meticulously crafted to align with your specific operational goals.',
+                 icon: CloudArrowUpIcon,
+               },
+               {
+                 name: 'Specialized Expertise',
+                 description: 'From specialized bots for legal research to highly efficient internal productivity agents, we create AI solutions that are intelligent and secure.',
+                 icon: LockClosedIcon,
+               },
+               {
+                 name: 'Advanced NLP',
+                 description: 'By leveraging advanced natural language processing (NLP), proprietary datasets, and seamless integration capabilities.',
+                 icon: BoltIcon,
+               },
+               {
+                 name: 'Context Awareness',
+                 description: 'Our AI assistants are deeply aware of the context in which they operate, providing relevant and accurate responses.',
+                 icon: ShieldCheckIcon,
+               },
+               {
+                 name: 'Seamless Integration',
+                 description: 'We create AI solutions that integrate seamlessly with your existing systems and workflows.',
+                 icon: CogIcon,
+               },
+               {
+                 name: 'Secure & Compliant',
+                 description: 'Built with security and compliance in mind, ensuring your data and operations remain protected.',
+                 icon: CpuChipIcon,
+               },
+             ].map((feature) => (
+                               <div key={feature.name} className="relative pl-9">
+                  <dt className="inline font-semibold text-black">
+                    <feature.icon
+                      aria-hidden="true"
+                      className="absolute top-1 left-1 size-5 text-[#a8b545]"
+                    />
+                    {feature.name}
+                  </dt>{' '}
+                  <dd className="inline">{feature.description}</dd>
+                </div>
+             ))}
+           </dl>
+         </div>
+       </div>
       
-      {/* Why Choose NexusByte Chatbots? Section */}
-      <Section title="Why Choose NexusByte Chatbots?" className="bg-gray-50"
-               subtitle="Our chatbots are built with cutting-edge technology and a focus on your business needs.">
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-12 text-left max-w-4xl mx-auto">
-          {[
-            "Built on OpenAI, Azure, and Google AI platforms",
-            "Custom-trained on your business data (documents, PDFs, emails, scripts)",
-            "Multilingual capabilities for global or diverse customer bases",
-            "24/7 availability with zero fatigue",
-            "POP Act-compliant with secure data protocols",
-            "Deployable on websites, WhatsApp, Teams, Messenger, Slack, and more",
-            "Fully modular for specific workflows: customer onboarding, support ticketing, HR queries, etc."
-          ].map((feature, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="flex items-start"
-            >
-              <CheckIcon className="w-6 h-6 text-nexusbyte-accent-green mr-3 mt-1 flex-shrink-0" />
-              <span className="text-gray-700">{feature}</span>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+             {/* Why Choose NexusByte Chatbots? Section */}
+       <div className="relative overflow-hidden bg-gray-50 pt-16 pb-32">
+         <div className="relative">
+           <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+             <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:px-0 lg:py-16">
+               <div>
+                 <div>
+                   <span className="flex size-12 items-center justify-center rounded-xl bg-[#a8b545]">
+                     <CpuChipIcon aria-hidden="true" className="size-8 text-white" />
+                   </span>
+                 </div>
+                 <div className="mt-6">
+                   <h2 className="text-3xl font-bold tracking-tight text-gray-900">Built on cutting-edge AI platforms</h2>
+                   <p className="mt-4 text-lg text-gray-500">
+                     Our chatbots are built on OpenAI, Azure, and Google AI platforms, ensuring you get the most advanced AI capabilities available. Custom-trained on your business data including documents, PDFs, emails, and scripts for unparalleled accuracy and relevance.
+                   </p>
+                   <div className="mt-6">
+                     <Link
+                       to="/contact"
+                       state={{ subject: 'Inquiry about AI Platform Integration' }}
+                       className="inline-flex rounded-lg bg-[#a8b545] px-4 py-1.5 text-base/7 font-semibold text-white shadow-xs ring-1 ring-[#a8b545] hover:bg-opacity-80 hover:ring-[#a8b545]"
+                     >
+                       Get started
+                     </Link>
+                   </div>
+                 </div>
+               </div>
+               <div className="mt-8 border-t border-gray-200 pt-6">
+                 <blockquote>
+                   <div>
+                     <p className="text-base text-gray-500">
+                       &ldquo;The multilingual capabilities and 24/7 availability have transformed our customer support. Zero fatigue means consistent quality service around the clock.&rdquo;
+                     </p>
+                   </div>
+                   <footer className="mt-3">
+                     <div className="flex items-center space-x-3">
+                       <div className="shrink-0">
+                         <img
+                           alt=""
+                           src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                           className="size-6 rounded-full"
+                         />
+                       </div>
+                       <div className="text-base font-medium text-gray-700">Marcia Hill, Digital Marketing Manager</div>
+                     </div>
+                   </footer>
+                 </blockquote>
+               </div>
+             </div>
+             <div className="mt-12 sm:mt-16 lg:mt-0">
+               <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+                 <img
+                   alt="AI Chatbot Interface"
+                   src="https://tailwindcss.com/plus-assets/img/component-images/inbox-app-screenshot-1.jpg"
+                   className="w-full rounded-xl shadow-xl ring-1 ring-black/5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                 />
+               </div>
+             </div>
+           </div>
+         </div>
+         <div className="mt-24">
+           <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+             <div className="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:px-0 lg:py-32">
+               <div>
+                 <div>
+                   <span className="flex size-12 items-center justify-center rounded-xl bg-[#a8b545]">
+                     <ShieldCheckIcon aria-hidden="true" className="size-8 text-white" />
+                   </span>
+                 </div>
+                 <div className="mt-6">
+                   <h2 className="text-3xl font-bold tracking-tight text-gray-900">Secure and compliant deployment</h2>
+                   <p className="mt-4 text-lg text-gray-500">
+                     POP Act-compliant with secure data protocols, our chatbots are deployable across multiple platforms including websites, WhatsApp, Teams, Messenger, and Slack. Fully modular for specific workflows like customer onboarding, support ticketing, and HR queries.
+                   </p>
+                   <div className="mt-6">
+                     <Link
+                       to="/contact"
+                       state={{ subject: 'Inquiry about Secure Chatbot Deployment' }}
+                       className="inline-flex rounded-lg bg-[#a8b545] px-4 py-1.5 text-base/7 font-semibold text-white shadow-xs ring-1 ring-[#a8b545] hover:bg-opacity-80 hover:ring-[#a8b545]"
+                     >
+                       Get started
+                     </Link>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div className="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
+               <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+                 <img
+                   alt="Multi-platform chatbot deployment"
+                   src="https://tailwindcss.com/plus-assets/img/component-images/inbox-app-screenshot-2.jpg"
+                   className="w-full rounded-xl shadow-xl ring-1 ring-black/5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
+                 />
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
 
-      {/* Packages and Plans Section */}
-      <Section title="Packages and Plans" subtitle="Flexible plans tailored to the scale and complexity of your needs. Additional enterprise-level plans are available on request.">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {plansData.map((plan, index) => (
-            <PlanCard key={plan.name} plan={plan} index={index} />
-          ))}
-        </div>
-      </Section>
+             {/* Packages and Plans Section */}
+       <div className="bg-white py-24 sm:py-32 dark:bg-gray-900">
+         <div className="mx-auto max-w-4xl px-6 max-lg:text-center lg:max-w-7xl lg:px-8">
+           <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-950 sm:text-6xl lg:text-pretty dark:text-white">
+             Pricing that grows with your business
+           </h1>
+           <p className="mt-6 max-w-2xl text-lg font-medium text-pretty text-gray-600 max-lg:mx-auto sm:text-xl/8 dark:text-gray-400">
+             Choose an affordable plan that's packed with the best features for automating your processes, engaging your customers, and driving business growth.
+           </p>
+         </div>
+         <div className="relative pt-16 sm:pt-24">
+           <div className="absolute inset-x-0 top-48 bottom-0 bg-[radial-gradient(circle_at_center_center,#a8b545,#8a9a3a,#030712_70%)] lg:bg-[radial-gradient(circle_at_center_150%,#a8b545,#8a9a3a,#030712_70%)] dark:bg-[radial-gradient(circle_at_center_center,#a8b54580,#8a9a3a80,transparent_70%)] dark:lg:bg-[radial-gradient(circle_at_center_150%,#a8b54580,#8a9a3a80,transparent_70%)]" />
+           <div className="relative mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+                           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {plansData.map((plan) => (
+                  <div
+                    key={plan.name}
+                    className="-m-2 grid grid-cols-1 rounded-4xl bg-white/2.5 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-black/5 max-lg:mx-auto max-lg:w-full max-lg:max-w-md dark:shadow-[inset_0_0_2px_1px_#ffffff32]"
+                  >
+                   <div className="grid grid-cols-1 rounded-4xl p-2 shadow-md shadow-black/5 dark:shadow-none">
+                     <div className="rounded-3xl bg-white p-10 pb-9 shadow-2xl ring-1 ring-black/5 dark:bg-gray-800 dark:shadow-none dark:ring-white/10">
+                       <h2 className="text-sm font-semibold text-[#a8b545] dark:text-[#a8b545]">
+                         {plan.name} <span className="sr-only">plan</span>
+                       </h2>
+                       <p className="mt-2 text-sm/6 text-pretty text-gray-600 dark:text-gray-300">{plan.description}</p>
+                       <div className="mt-8 flex items-center gap-4">
+                         <div className="text-5xl font-semibold text-gray-950 dark:text-white">{plan.price}</div>
+                         {plan.subPrice && (
+                           <div className="text-sm text-gray-600 dark:text-gray-400">
+                             <p>{plan.subPrice}</p>
+                           </div>
+                         )}
+                       </div>
+                       <div className="mt-8">
+                         <Link
+                           to="/contact"
+                           state={plan.ctaLinkState}
+                           aria-label={`Get started with the ${plan.name} plan`}
+                           className="inline-block rounded-md bg-[#a8b545] px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a8b545] dark:bg-[#a8b545] dark:shadow-none dark:hover:bg-opacity-80 dark:focus-visible:outline-[#a8b545]"
+                         >
+                           {plan.ctaText}
+                         </Link>
+                       </div>
+                       <div className="mt-8">
+                         <h3 className="text-sm/6 font-medium text-gray-950 dark:text-white">Includes:</h3>
+                         <ul className="mt-3 space-y-3">
+                           {plan.features.map((feature, index) => (
+                             <li
+                               key={index}
+                               className="group flex items-start gap-4 text-sm/6 text-gray-600 dark:text-gray-300"
+                             >
+                               <span className="inline-flex h-6 items-center">
+                                 <CheckIcon
+                                   aria-hidden="true"
+                                   className="size-4 fill-[#a8b545] dark:fill-[#a8b545]"
+                                 />
+                               </span>
+                               {feature}
+                             </li>
+                           ))}
+                         </ul>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               ))}
+             </div>
+             <div className="flex justify-between py-16 opacity-60 max-sm:mx-auto max-sm:max-w-md max-sm:flex-wrap max-sm:justify-evenly max-sm:gap-x-4 max-sm:gap-y-4 sm:py-24">
+               <img
+                 alt="OpenAI"
+                 src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg"
+                 className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
+               />
+               <img
+                 alt="Azure"
+                 src="https://tailwindcss.com/plus-assets/img/logos/158x48/laravel-logo-white.svg"
+                 className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
+               />
+               <img
+                 alt="Google AI"
+                 src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg"
+                 className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
+               />
+               <img
+                 alt="WhatsApp"
+                 src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg"
+                 className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
+               />
+               <img
+                 alt="Teams"
+                 src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg"
+                 className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
+               />
+             </div>
+           </div>
+         </div>
+       </div>
 
-      {/* Use Cases Section */}
-      <Section title="Versatile Use Cases Across Industries" className="bg-gray-50"
-               subtitle="Our AI chatbots can be adapted to a wide range of applications.">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {useCasesData.map((useCase, index) => (
-            <motion.div 
-              key={useCase.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow text-left"
-            >
-              <h3 className="text-xl font-semibold text-nexusbyte-primary-dark mb-2">{useCase.name}</h3>
-              <p className="text-gray-600 text-sm">{useCase.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
+             {/* Use Cases Section */}
+       <div className="bg-gray-50 py-24 sm:py-32">
+         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+           <div className="mx-auto max-w-2xl text-center">
+             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+               Versatile Use Cases Across Industries
+             </h2>
+             <p className="mt-6 text-lg leading-8 text-gray-600">
+               Our AI chatbots can be adapted to a wide range of applications.
+             </p>
+           </div>
+           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+               {useCasesData.map((useCase, index) => (
+                 <motion.div 
+                   key={useCase.name}
+                   initial={{ opacity: 0, scale: 0.9 }}
+                   whileInView={{ opacity: 1, scale: 1 }}
+                   viewport={{ once: true, amount: 0.3 }}
+                   transition={{ duration: 0.4, delay: index * 0.1 }}
+                   className="flex flex-col"
+                 >
+                   <dt className="text-lg font-semibold leading-7 text-gray-900 mb-4">{useCase.name}</dt>
+                   <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                     <p className="flex-auto">{useCase.description}</p>
+                   </dd>
+                 </motion.div>
+               ))}
+             </dl>
+           </div>
+         </div>
+       </div>
       
       {/* Our Process Section */}
       <Section title="Our Proven Process"
@@ -226,7 +450,7 @@ const CustomGptsPage: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="flex flex-col md:flex-row items-center text-left md:space-x-8 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="flex-shrink-0 w-16 h-16 bg-nexusbyte-accent-green text-white text-2xl font-bold rounded-full flex items-center justify-center mb-4 md:mb-0">
+              <div className="flex-shrink-0 w-16 h-16 bg-[#a8b545] text-white text-2xl font-bold rounded-full flex items-center justify-center mb-4 md:mb-0">
                 {step.number}
               </div>
               <div>
@@ -238,26 +462,37 @@ const CustomGptsPage: React.FC = () => {
         </div>
       </Section>
 
-      {/* CTA Section */}
-      <Section title="Let's Build Your Intelligent Assistant" className="bg-nexusbyte-primary-dark" textWhite
-               subtitle="Ready to transform your business with intelligent automation? Contact our Solutions team to get started.">
-        <motion.div 
-            initial={{ opacity:0, y:20 }} 
-            whileInView={{ opacity:1, y:0 }} 
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration:0.6, delay:0.2 }}
-            className="mt-10"
-        >
-            <a
-              href="mailto:solutions@nexusbyte.co.za?subject=Inquiry about Custom GPT & Chatbot Solutions"
-              className="inline-flex items-center px-10 py-4 bg-nexusbyte-accent-green text-nexusbyte-primary-dark font-bold rounded-lg shadow-xl hover:bg-opacity-80 transition-colors transform hover:scale-105 text-lg"
-            >
-              Email Us: solutions@nexusbyte.co.za
-              <ArrowRightIcon className="w-5 h-5 ml-3" />
-            </a>
-            <p className="mt-6 text-gray-400">Or chat with Nova, our AI assistant, right here on the site!</p>
-        </motion.div>
-      </Section>
+             {/* CTA Section */}
+       <div className="bg-nexusbyte-primary-dark py-24 sm:py-32">
+         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+           <div className="mx-auto max-w-2xl text-center">
+             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+               Let's Build Your Intelligent Assistant
+             </h2>
+             <p className="mt-6 text-lg leading-8 text-gray-300">
+               Ready to transform your business with intelligent automation? Contact our Solutions team to get started.
+             </p>
+           </div>
+           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+             <motion.div 
+                 initial={{ opacity:0, y:20 }} 
+                 whileInView={{ opacity:1, y:0 }} 
+                 viewport={{ once: true, amount: 0.5 }}
+                 transition={{ duration:0.6, delay:0.2 }}
+                 className="text-center"
+             >
+                 <a
+                   href="mailto:solutions@nexusbyte.co.za?subject=Inquiry about Custom GPT & Chatbot Solutions"
+                   className="inline-flex items-center px-10 py-4 bg-[#a8b545] text-nexusbyte-primary-dark font-bold rounded-lg shadow-xl hover:bg-opacity-80 transition-colors transform hover:scale-105 text-lg"
+                 >
+                   Email Us: solutions@nexusbyte.co.za
+                   <ArrowRightIcon className="w-5 h-5 ml-3" />
+                 </a>
+                 <p className="mt-6 text-gray-400">Or chat with Nova, our AI assistant, right here on the site!</p>
+             </motion.div>
+           </div>
+         </div>
+       </div>
        <div className="bg-white py-4 text-center text-sm text-gray-500 border-t">
         Note: All plans are billed monthly. Custom usage or token thresholds may apply. Bulk discounts available for multi-chatbot deployments.
       </div>
