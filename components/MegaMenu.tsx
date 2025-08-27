@@ -1,9 +1,12 @@
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { NewNavLinkMegaMenuContent } from '../types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router';
+import LazyImage from './LazyImage';
+import { useMegaMenuPerformance } from '../hooks/useMegaMenuPerformance';
+import './MegaMenu.css';
 
 interface MegaMenuProps {
   isOpen: boolean;
@@ -21,39 +24,97 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [position, setPosition] = useState<{ top: number } | null>(null);
 
-  const fallbackImage = 'https://placehold.co/100x100/fee2e2/ef4444?text=ImgErr';
-  const featuredFallbackImage = 'https://placehold.co/200x200/fee2e2/ef4444?text=ImgErr';
+  // Performance monitoring
+  useMegaMenuPerformance(isOpen);
 
+  // Memoized constants for better performance
+  const fallbackImage = useMemo(() => 'https://placehold.co/100x100/fee2e2/ef4444?text=ImgErr', []);
+  const featuredFallbackImage = useMemo(() => 'https://placehold.co/200x200/fee2e2/ef4444?text=ImgErr', []);
+
+  // Memoized brand color for consistency
+  const brandColor = useMemo(() => '#a8b545', []);
+
+  // Optimized position calculation
   useEffect(() => {
-    if (isOpen && parentRef && parentRef.current) {
+    if (isOpen && parentRef?.current) {
       const rect = parentRef.current.getBoundingClientRect();
-      const topPosition = rect.bottom + 5; // Adjust this value for spacing from header
+      const topPosition = rect.bottom + 5;
       setPosition({ top: topPosition });
     } else if (!isOpen) {
       setPosition(null);
     }
   }, [isOpen, parentRef]);
 
+  // Reset active index when content changes
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && content?.items?.length) {
       setActiveIndex(0);
     }
   }, [content, isOpen]);
 
-  if (!isOpen || !position || !content || !content.items || content.items.length === 0) {
+  // Keyboard navigation handler
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    if (!isOpen || !content?.items?.length) return;
+
+    switch (event.key) {
+      case 'Escape':
+        onClose();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        setActiveIndex(prev => (prev + 1) % content.items.length);
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        setActiveIndex(prev => prev === 0 ? content.items.length - 1 : prev - 1);
+        break;
+      case 'Enter':
+      case ' ':
+        if (content.items[activeIndex]?.featured?.linkUrl) {
+          event.preventDefault();
+          window.location.href = content.items[activeIndex].featured.linkUrl!;
+        }
+        break;
+    }
+  }, [isOpen, content, activeIndex, onClose]);
+
+  // Add keyboard event listeners
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isOpen, handleKeyDown]);
+
+  // Early return with validation
+  if (!isOpen || !position || !content?.items?.length) {
     return null;
   }
 
-  const currentActiveIndex = activeIndex < content.items.length ? activeIndex : 0;
+  const currentActiveIndex = Math.min(activeIndex, content.items.length - 1);
   const activeContent = content.items[currentActiveIndex];
 
   if (!activeContent) {
     return null;
   }
 
-  const handleLinkClick = () => {
+  // Memoized click handler
+  const handleLinkClick = useCallback(() => {
     onClose();
-  };
+  }, [onClose]);
+
+  // Memoized item click handler
+  const handleItemHover = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
+
+  // Calculate dynamic height based on content
+  const calculateHeight = useMemo(() => {
+    const baseHeight = 400; // Minimum height
+    const itemHeight = 60; // Approximate height per navigation item
+    const contentHeight = content.items.length * itemHeight;
+    return Math.min(Math.max(baseHeight, contentHeight + 200), 800); // Max 800px
+  }, [content.items.length]);
 
   return (
     <AnimatePresence>
@@ -65,121 +126,115 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
           transition={{ duration: 0.2, ease: "easeOut" }}
           className="fixed bg-white shadow-2xl z-50 border-t border-gray-200"
           style={{
-            width: '100vw', // Full viewport width
-            height: '1200px', // Requested height
+            width: '100vw',
+            height: `${calculateHeight}px`, // Dynamic height
             top: `${position.top}px`,
-            left: '0px', // Align to the left edge of the viewport
+            left: '0px',
           }}
-
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
         >
-          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8"> {/* Content wrapper */}
-            <div className="flex h-full"> {/* Existing flex container for left/right panels */}
+          <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
+            <div className="flex h-full flex-col lg:flex-row"> {/* Responsive flex direction */}
+              
               {/* Left-Hand Navigation Rail */}
-              <div className="w-1/3 bg-gray-50/70 border-r border-gray-200 p-2 flex flex-col overflow-y-auto">
-                {content.items.map((item, index) => (
-                  <button
-                    key={item.id}
-                    onMouseEnter={(e) => {
-                      setActiveIndex(index);
-                      if (currentActiveIndex !== index) {
-                        e.currentTarget.style.color = '#a8b545';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (currentActiveIndex !== index) {
-                        e.currentTarget.style.color = '';
-                      }
-                    }}
-                    className={`block w-full text-left p-3 my-1 rounded-md text-sm font-semibold transition-all duration-150 ease-in-out focus:outline-none
-                      ${currentActiveIndex === index
-                        ? 'bg-white shadow-sm transform scale-[1.02]'
-                        : 'text-nexusbyte-primary-dark hover:bg-gray-200/80'
+              <div className="w-full lg:w-1/3 bg-gray-50/70 border-r border-gray-200 p-2 flex flex-col overflow-y-auto">
+                <nav role="navigation" aria-label="Mega menu navigation">
+                  {content.items.map((item, index) => (
+                    <button
+                      key={item.id}
+                      onMouseEnter={() => handleItemHover(index)}
+                      onClick={() => handleItemHover(index)}
+                      className={`mega-menu-nav-item ${
+                        currentActiveIndex === index 
+                          ? 'mega-menu-nav-item--active' 
+                          : 'mega-menu-nav-item--inactive'
                       }`}
-                    style={{ 
-                      '--hover-color': '#a8b545',
-                      '--active-color': currentActiveIndex === index ? '#a8b545' : undefined
-                    } as React.CSSProperties}
-                    aria-current={currentActiveIndex === index ? "true" : "false"}
-                  >
-                    {item.title} &raquo;
-                  </button>
-                ))}
+                      aria-current={currentActiveIndex === index ? "true" : "false"}
+                      aria-expanded={currentActiveIndex === index}
+                      tabIndex={0}
+                    >
+                      {item.title} &raquo;
+                    </button>
+                  ))}
+                </nav>
               </div>
 
               {/* Right-Hand Content Panel */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentActiveIndex}
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.25, ease: 'easeInOut' }}
-                  className="w-2/3 p-5 flex flex-col bg-white h-full overflow-y-auto" // Added h-full and overflow-y-auto
-                >
-                  {/* Top Featured Section */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <img
-                      src={activeContent.featured.imageUrl}
-                      alt={activeContent.featured.title}
-                      className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-lg flex-shrink-0 border border-gray-100" // Slightly larger image
-                      onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = featuredFallbackImage; }}
-                    />
-                    <div className="flex-grow">
-                      <h3 className="text-lg md:text-xl font-bold text-nexusbyte-primary-dark mb-2">{activeContent.featured.title}</h3>
-                      <p className="text-sm md:text-base text-gray-600 leading-relaxed line-clamp-6">{activeContent.featured.description}</p> {/* Increased line-clamp */}
-                      {activeContent.featured.linkUrl && activeContent.featured.linkText && (
+              <div className="w-full lg:w-2/3 flex-1">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentActiveIndex}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.25, ease: 'easeInOut' }}
+                    className="p-5 flex flex-col bg-white h-full overflow-y-auto"
+                  >
+                    {/* Top Featured Section */}
+                    <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                      <div className="w-full sm:w-auto flex-shrink-0">
+                        <LazyImage
+                          src={activeContent.featured.imageUrl}
+                          alt={activeContent.featured.title}
+                          fallbackSrc={featuredFallbackImage}
+                          className="w-full sm:w-24 md:w-32 h-24 md:h-32 object-cover rounded-lg border border-gray-100"
+                        />
+                      </div>
+                      <div className="flex-grow w-full sm:w-auto">
+                        <h3 className="text-lg md:text-xl font-bold text-nexusbyte-primary-dark mb-2">
+                          {activeContent.featured.title}
+                        </h3>
+                        <p className="text-sm md:text-base text-gray-600 leading-relaxed line-clamp-4 md:line-clamp-6">
+                          {activeContent.featured.description}
+                        </p>
+                        {activeContent.featured.linkUrl && activeContent.featured.linkText && (
                           <Link
-                              to={activeContent.featured.linkUrl}
-                              onClick={handleLinkClick}
-                              className="text-sm md:text-base font-semibold hover:underline inline-block mt-3"
-                              style={{ color: '#a8b545' }}
+                            to={activeContent.featured.linkUrl}
+                            onClick={handleLinkClick}
+                            className="mega-menu-featured-link"
                           >
-                              {activeContent.featured.linkText} &rarr;
+                            {activeContent.featured.linkText} &rarr;
                           </Link>
-                      )}
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Bottom Sub-Links Section */}
-                  <div className="mt-4 border-t border-gray-200 pt-6"> {/* Increased pt */}
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-4"> {/* Increased gaps */}
-                      {activeContent.subLinks.slice(0, 4).map(subLink => ( // Still showing max 4 for this layout
-                        <Link
-                          key={subLink.title}
-                          to={subLink.href}
-                          onClick={handleLinkClick}
-                          className="group p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-start gap-3" // Increased padding and gap
-                          title={subLink.title}
-                        >
-                          <img
+                    {/* Bottom Sub-Links Section */}
+                    <div className="mt-4 border-t border-gray-200 pt-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                        {activeContent.subLinks.slice(0, 4).map(subLink => (
+                          <Link
+                            key={subLink.title}
+                            to={subLink.href}
+                            onClick={handleLinkClick}
+                            className="mega-menu-sub-link"
+                            title={subLink.title}
+                          >
+                            <LazyImage
                               src={subLink.imageUrl}
                               alt={subLink.title}
-                              className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-md flex-shrink-0 border border-gray-200 transition-colors" // Slightly larger images
-                              style={{ '--hover-border-color': '#a8b545' } as React.CSSProperties}
-                              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#a8b545'}
-                              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
-                              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
-                          />
-                          <div className="flex-grow">
-                              <h4 className="font-semibold text-sm md:text-base text-gray-800 mb-1 line-clamp-1"
-                                  style={{ '--hover-color': '#a8b545' } as React.CSSProperties}
-                                  onMouseEnter={(e) => e.currentTarget.style.color = '#a8b545'}
-                                  onMouseLeave={(e) => e.currentTarget.style.color = ''}>
-                                  {subLink.title}
+                              fallbackSrc={fallbackImage}
+                              className="mega-menu-sub-link-image"
+                            />
+                            <div className="flex-grow">
+                              <h4 className="mega-menu-sub-link-title">
+                                {subLink.title}
                               </h4>
                               {subLink.description && (
-                                  <p className="text-xs md:text-sm text-gray-500 line-clamp-2 leading-tight">
-                                      {subLink.description}
-                                  </p>
+                                <p className="text-xs md:text-sm text-gray-500 line-clamp-2 leading-tight">
+                                  {subLink.description}
+                                </p>
                               )}
-                          </div>
-                        </Link>
-                      ))}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  {/* The rest of the 1200px height will be empty space below this section if content is not enough */}
-                </motion.div>
-              </AnimatePresence>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </motion.div>
