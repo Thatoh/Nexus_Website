@@ -5,9 +5,10 @@ import { Link, useLocation } from 'react-router';
 import { NAV_ITEMS } from '../constants';
 import { NavItem } from '../types';
 import MegaMenu from './MegaMenu';
+import MegaMenuErrorBoundary from './MegaMenuErrorBoundary';
 import { MenuIcon, XMarkIcon, ChevronDownIcon, UserCircleIcon, ShoppingCartIcon } from './icons';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCart } from '../contexts/CartContext'; // Added useCart
+import { useCart } from '../contexts/CartContext';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -126,12 +127,14 @@ const Header: React.FC = () => {
                   {item.megaMenuContent && <ChevronDownIcon className={`w-4 h-4 ml-1 transition-transform ${activeMegaMenu === item.id ? 'transform rotate-180' : ''}`} />}
                 </button>
                 {item.megaMenuContent && navItemRefs.current[item.id] && (
-                  <MegaMenu
-                    isOpen={activeMegaMenu === item.id}
-                    content={item.megaMenuContent}
-                    onClose={closeMegaMenuCompletely} 
-                    parentRef={{ current: navItemRefs.current[item.id] }}
-                  />
+                  <MegaMenuErrorBoundary>
+                    <MegaMenu
+                      isOpen={activeMegaMenu === item.id}
+                      content={item.megaMenuContent}
+                      onClose={closeMegaMenuCompletely} 
+                      parentRef={{ current: navItemRefs.current[item.id] }}
+                    />
+                  </MegaMenuErrorBoundary>
                 )}
               </div>
             ))}
