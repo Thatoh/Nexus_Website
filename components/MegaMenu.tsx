@@ -87,7 +87,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   }, [isOpen, handleKeyDown]);
 
   // Early return with validation
-  if (!isOpen || !position || !content?.items?.length) {
+  if (!isOpen || !content?.items?.length) {
     return null;
   }
 
@@ -118,7 +118,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
 
   return (
     <AnimatePresence>
-      {isOpen && position && (
+      {isOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
           style={{
             width: '100vw',
             height: `${calculateHeight}px`, // Dynamic height
-            top: `${position.top}px`,
+            top: position ? `${position.top}px` : '80px', // Fallback to header height if position not calculated yet
             left: '0px',
           }}
           role="dialog"
