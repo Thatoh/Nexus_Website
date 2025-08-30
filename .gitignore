@@ -95,3 +95,6 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# Temporary debug files
+debug_temp.js
